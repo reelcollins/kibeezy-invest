@@ -10,7 +10,7 @@ export default async function continueWithSocialAuth(
 		}/api/o/${provider}/?redirect_uri=${
 			process.env.NODE_ENV === 'production'
 				? process.env.NEXT_PUBLIC_REDIRECT_URL
-				: 'https://nyumbani.xyz'
+				: 'http://localhost:3000'
 		}/auth/${redirect}`;
 
 		const res = await fetch(url, {
