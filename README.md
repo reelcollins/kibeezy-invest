@@ -1,4 +1,4 @@
-# Full Auth
+# nyumbanii
 
 To run the development server:
 
