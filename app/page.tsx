@@ -16,11 +16,7 @@ export default function Page() {
 							NYUMBANI
 						</h1>
 						<p className='mt-6 text-lg leading-8 text-gray-600'>
-							Our goal is to make you feel at home ,
-							even when you are not at HOME.
-
-							Home is where you want it to be.
-							Home is where you are.
+							Karibu Nyumbani.
 						</p>
 						<div className='mt-10 flex items-center justify-center gap-x-6'>
 							<Link
