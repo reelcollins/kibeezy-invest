@@ -1,13 +1,9 @@
 'use client';
 
 import React from 'react'
-import type { Metadata } from 'next';
 import { TextField } from '@radix-ui/themes'
 
-export const metadata: Metadata = {
-	title: 'NYUMBANI | Home',
-	description: 'NYUMBANI home page',
-};
+
 
 
 
