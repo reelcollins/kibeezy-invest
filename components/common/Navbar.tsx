@@ -85,10 +85,14 @@ export default function Navbar() {
 									)}
 								</Disclosure.Button>
 							</div>
-							<div className='flex flex-1  justify-center sm:items-stretch sm:justify-start'>
-								<div className='flex flex-shrink-0'>
+							<div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
+								<div className='flex flex-shrink-0 items-center'>
 									<NavLink href='/' isBanner>
-									NYUMB<BsFillHouseHeartFill />NI
+										<span className='flex items-center text-lg font-bold ml-1'>
+											NYUMB
+											<BsFillHouseHeartFill className='h-5 w-5 text-primary ml-2' />
+											NI
+										</span>
 									</NavLink>
 								</div>
 								<div className='hidden sm:ml-6 sm:block'>
