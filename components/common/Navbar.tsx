@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 import { useLogoutMutation } from '@/redux/features/authApiSlice';
 import { logout as setLogout } from '@/redux/features/authSlice';
 import { NavLink } from '@/components/common';
-import { BsFillHouseHeartFill } from "react-icons/bs";
+import { FaHouse } from "react-icons/fa6";
 
 export default function Navbar() {
 	const pathname = usePathname();
@@ -89,7 +89,7 @@ export default function Navbar() {
 								<div className='flex flex-shrink-0 items-center'>
 									<NavLink href='/' isBanner>
 										<span className='flex items-center text-lg font-bold ml-1'>
-											NYUMB<BsFillHouseHeartFill className='h-5 w-5 text-primary ml-2' />NI
+											NYUMB<FaHouse className='h-5 w-5 text-primary ml-2' />NI
 										</span>
 									</NavLink>
 								</div>
