@@ -89,6 +89,7 @@ export default function Navbar() {
 								<div className='flex flex-shrink-0 items-center'>
 									<NavLink href='/' isBanner>
 									<BsFillHouseHeartFill />
+									Nyumbani
 									</NavLink>
 								</div>
 								<div className='hidden sm:ml-6 sm:block'>

@@ -5,11 +5,12 @@ import Provider from '@/redux/provider';
 import { Footer, Navbar } from '@/components/common';
 import { Setup } from '@/components/utils';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+	subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Full Auth',
-	description: 'Home is where you are.',
+	title: 'Nyumbani.xyz',
+	description: 'Karibu Nyumbani',
 };
 
 export default function RootLayout({

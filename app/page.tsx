@@ -2,8 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'NYUMBANI | Home',
-	description: 'NYUMBANI home page',
+	title: 'NYUMBANI | Welcome',
+	description: 'NYUMBANI Welcome page',
 };
 
 export default function Page() {
