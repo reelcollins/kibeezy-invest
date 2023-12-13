@@ -85,8 +85,8 @@ export default function Navbar() {
 									)}
 								</Disclosure.Button>
 							</div>
-							<div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start' style={{ whiteSpace: 'nowrap' }}>
-								<div className='flex flex-shrink-0 items-center'>
+							<div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
+								<div className='flex flex-shrink-0'>
 									<NavLink href='/' isBanner>
 									NYUMB<BsFillHouseHeartFill />NI
 									</NavLink>
