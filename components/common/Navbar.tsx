@@ -89,9 +89,7 @@ export default function Navbar() {
 								<div className='flex flex-shrink-0 items-center'>
 									<NavLink href='/' isBanner>
 										<span className='flex items-center text-lg font-bold ml-1'>
-											NYUMB
-											<BsFillHouseHeartFill className='h-5 w-5 text-primary ml-2' />
-											NI
+											NYUMB<BsFillHouseHeartFill className='h-5 w-5 text-primary ml-2' />NI
 										</span>
 									</NavLink>
 								</div>
