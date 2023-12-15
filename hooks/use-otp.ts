@@ -33,6 +33,7 @@ export default function useConfirmOtp() {
 			})
 			.catch(() => {
 				toast.error('OTP code invalid');
+				router.push('/home');
 			});
 	};
 
