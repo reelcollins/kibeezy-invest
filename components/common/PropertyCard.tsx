@@ -1,6 +1,6 @@
 'use client';
 
-import { usePropertyFormat } from "@/hooks/use-property-format"
+// import { usePropertyFormat } from "@/hooks/use-property-format"
 import { Badge, Box, Flex, HStack, Text } from "@chakra-ui/react";
 import {TbBed, TbBath, TbRuler} from "react-icons/tb";
 import Link from 'next/link';
