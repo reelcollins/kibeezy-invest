@@ -8,6 +8,7 @@ export default function RegisterForm() {
 		first_name,
 		last_name,
 		email,
+		phone_number,
 		password,
 		re_password,
 		isLoading,
@@ -35,6 +36,13 @@ export default function RegisterForm() {
 			labelId: 'email',
 			type: 'email',
 			value: email,
+			required: true,
+		},
+		{
+			labelText: 'Phone Number',
+			labelId: 'phone_number',
+			type: 'text',
+			value: phone_number,
 			required: true,
 		},
 		{

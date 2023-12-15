@@ -4,6 +4,7 @@ interface User {
 	first_name: string;
 	last_name: string;
 	email: string;
+	phone_number: string;
 }
 
 interface SocialAuthArgs {
@@ -49,12 +50,13 @@ const authApiSlice = apiSlice.injectEndpoints({
 				first_name,
 				last_name,
 				email,
+				phone_number,
 				password,
 				re_password,
 			}) => ({
 				url: '/users/',
 				method: 'POST',
-				body: { first_name, last_name, email, password, re_password },
+				body: { first_name, last_name, email, phone_number, password, re_password },
 			}),
 		}),
 		verify: builder.mutation({
@@ -90,6 +92,13 @@ const authApiSlice = apiSlice.injectEndpoints({
 				body: { uid, token, new_password, re_new_password },
 			}),
 		}),
+		confirmOtp: builder.mutation({
+			query: ({ otp }) => ({
+				url: 'users/otp/',
+				method: 'POST',
+				body: { otp },
+			}),
+		}),
 	}),
 });
 
@@ -103,4 +112,5 @@ export const {
 	useActivationMutation,
 	useResetPasswordMutation,
 	useResetPasswordConfirmMutation,
+	useConfirmOtpMutation,
 } = authApiSlice;

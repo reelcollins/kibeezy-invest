@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import cn from 'classnames';
 
+
 interface Props {
 	isSelected?: boolean;
 	isMobile?: boolean;
