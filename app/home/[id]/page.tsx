@@ -90,7 +90,8 @@ const PropertySingle = () => {
             </GridItem>
 
             <GridItem colSpan={{ base: 6, sm: 3}}>
-                <PropertyStats rooms={rooms} baths={baths} price={price} sqSize={sqSize}/>
+                {/* <PropertyStats rooms={rooms} baths={baths} price={price} sqSize={sqSize}/> */}
+                <PropertyStats />
                 <TextContentBox title="Description">
                     {/* <Text fontWeight="light" color="gray.600" fontSize="1rem" noOfLines="4">{description}</Text> */}
                     <Text fontWeight="light" color="gray.600" fontSize="1rem">{description}</Text>
