@@ -46,7 +46,7 @@ export default function PropertyCard() {
     
 	return (
         <Box marginBottom="4rem" backgroundColor="#fff">
-            <Link href={`/properties/${externalID}`}>
+            <Link href={`/home/${externalID}`}>
                 <Box
                 backgroundImage = {`url("${coverPhoto}")`}
                 height="250px"

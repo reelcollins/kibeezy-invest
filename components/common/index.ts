@@ -6,3 +6,8 @@ export { default as SocialButton } from './SocialButton';
 export { default as SocialButtons } from './SocialButtons';
 export { default as Spinner } from './Spinner';
 export { default as PropertyCard } from './PropertyCard';
+export { default as PropertyThumbnailSlider } from './PropertyThumbnailSlider';
+export { default as PropertyStats } from './PropertyStats';
+export { default as TextContentBox } from './TextContentBox';
+export { default as PropertyYoutubeEmbed } from './PropertyYoutubeEmbed';
+export { default as PropertyMatterPortEmbed } from './PropertyMatterPortEmbed';
