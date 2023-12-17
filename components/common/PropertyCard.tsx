@@ -21,7 +21,7 @@ export default function PropertyCard() {
     // } = usePropertyFormat(property)
     const property = {
         address: "123 Main St",
-        coverPhoto: "property-image.jpg",
+        coverPhoto: "https://s3.us-east-2.amazonaws.com/images.propertypro.africa/large/yYe39fDTZBopaISUagjI-0.jpeg",
         propertyType: "House",
         price: 500000,
         title: "Beautiful Home",

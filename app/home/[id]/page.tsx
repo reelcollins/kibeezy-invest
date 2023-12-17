@@ -11,7 +11,7 @@ import { TbMapPin } from "react-icons/tb"
 const PropertySingle = () => {
     const property = {
         address: "123 Main St",
-        coverPhoto: "url/to/cover/photo.jpg",
+        coverPhoto: "https://s3.us-east-2.amazonaws.com/images.propertypro.africa/large/yYe39fDTZBopaISUagjI-0.jpeg",
         propertyType: "Apartment",
         price: 200000,
         title: "Beautiful Apartment for Sale",
@@ -20,7 +20,7 @@ const PropertySingle = () => {
         purpose: "For Sale",
         sqSize: 1200,
         externalID: "ABC123",
-        photos: ["url/to/photo1.jpg", "url/to/photo2.jpg"],
+        photos: ["https://s3.us-east-2.amazonaws.com/images.propertypro.africa/large/yYe39fDTZBopaISUagjI-0.jpeg", "https://s3.us-east-2.amazonaws.com/images.propertypro.africa/large/88OQRHvqhvvoWXSs5GiD-1.jpeg"],
         description: "This is a stunning apartment with great amenities.",
         coverVideo: "1Kb6kYUCEWo?si=pol1LELZXbaehWiT",
         panorama: "url/to/panorama/photo.jpg",
