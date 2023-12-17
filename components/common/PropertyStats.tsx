@@ -4,27 +4,16 @@ import { Box, Center, Divider, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { TbBath, TbBed, TbRuler } from "react-icons/tb";
 
-const PropertyStats = () => {
-
-    const address = '123 Main St';
-    const coverPhoto = 'url/to/cover/photo.jpg';
-    const propertyType = 'Apartment';
-    const price = 200000;
-    const title = 'Beautiful Apartment for Sale';
-    const rooms = 2;
-    const baths = 1;
-    const purpose = 'For Sale';
-    const sqSize = 1200;
-    const externalID = 'ABC123';
-    const photos = ['url/to/photo1.jpg', 'url/to/photo2.jpg'];
-    const description = 'This is a stunning apartment with great amenities.';
-    const coverVideo = 'url/to/cover/video.mp4';
-    const panorama = 'url/to/panorama/photo.jpg';
-    const amenities = ['Swimming Pool', 'Gym', 'Parking'];
-    const furnished = true;
+interface PropertyStatsProps {
+    rooms: number; // Number of rooms
+    baths: number; // Number of bathrooms
+    price: string | number; // Price of the property (string for formatted values)
+    sqSize: string | number; // Square footage of the property (string for formatted values)
+  }
+  
     
 
-    // const PropertyStats = ({ rooms, baths, price, sqSize }) => {
+const PropertyStats = ({ rooms, baths, price, sqSize }: PropertyStatsProps ) => {
     return (
         <>
             <Box backgroundColor="white" padding="1.5rem" marginBottom="1rem">

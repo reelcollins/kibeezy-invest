@@ -90,31 +90,34 @@ const PropertySingle = () => {
             </GridItem>
 
             <GridItem colSpan={{ base: 6, sm: 3}}>
-                {/* <PropertyStats rooms={rooms} baths={baths} price={price} sqSize={sqSize}/> */}
-                <PropertyStats />
+                <PropertyStats rooms={rooms} baths={baths} price={price} sqSize={sqSize}/>
+                
                 <TextContentBox title="Description">
-                    {/* <Text fontWeight="light" color="gray.600" fontSize="1rem" noOfLines="4">{description}</Text> */}
+                    {/*<Text fontWeight="light" color="gray.600" fontSize="1rem" noOfLines="4">{description}</Text>*/}
                     <Text fontWeight="light" color="gray.600" fontSize="1rem">{description}</Text>
                 </TextContentBox>
-                {/* <TextContentBox title="Amenities">
-                    <SimpleGrid columns={{ base:1, sm:2 }} fontWeight="light" color="gray.600" fontSize="1rem">
-                        {amenities.length ? amenities.map((item) => <Text>{item}</Text>) : "Please contact us for more info"}
+                <TextContentBox title="Amenities">
+                    {/*<SimpleGrid columns={{ base:1, sm:2 }} fontWeight="light" color="gray.600" fontSize="1rem">
+                         {amenities.length ? amenities.map((item) => <Text>{item}</Text>) : "Please contact us for more info"}
+                    </SimpleGrid>*/}
+                    <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
+                    {amenities.length ? amenities.map((item) => (
+                        <Text key={item}>{item}</Text>
+                    )) : "Please contact us for more info"}
                     </SimpleGrid>
 
-                </TextContentBox> */}
+                </TextContentBox>
             </GridItem>
             <GridItem colSpan={{ base: 6, sm: 3 }}>
                 <TextContentBox title="Video Walkthrough">
-                    <PropertyYoutubeEmbed />
-                    {/* <PropertyYoutubeEmbed coverVideo={coverVideo}/> */}
+                    <PropertyYoutubeEmbed coverVideo={coverVideo}/>
                 </TextContentBox>
                 
             </GridItem>
 
             <GridItem colSpan={{ base: 6, sm: 3 }}>
                 <TextContentBox title="3D Virtual Walkthrough">
-                    {/* <PropertyMatterPortEmbed panorama={panorama}/>  */}
-                    <PropertyMatterPortEmbed /> 
+                    <PropertyMatterPortEmbed panorama={panorama}/>
                 </TextContentBox>
                 
             </GridItem>
