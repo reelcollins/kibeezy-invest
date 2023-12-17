@@ -6,7 +6,7 @@ interface TextContentBoxProps {
     children: React.ReactNode;
   }
   
-  const TextContentBox = ({ title, children }: TextContentBoxProps) => {
+const TextContentBox = ({ title, children }: TextContentBoxProps) => {
     return(
         <>
             <Box backgroundColor="white" padding="1.5" marginBottom="1rem">

@@ -11,3 +11,4 @@ export { default as PropertyStats } from './PropertyStats';
 export { default as TextContentBox } from './TextContentBox';
 export { default as PropertyYoutubeEmbed } from './PropertyYoutubeEmbed';
 export { default as PropertyMatterPortEmbed } from './PropertyMatterPortEmbed';
+export { default as PropertiesMap } from './PropertiesMap';

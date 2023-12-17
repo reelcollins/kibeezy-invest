@@ -1,6 +1,6 @@
 "use client";
 
-import { PropertyMatterPortEmbed, PropertyStats, PropertyThumbnailSlider, PropertyYoutubeEmbed, TextContentBox } from "@/components/common"
+import { PropertyMatterPortEmbed, PropertyStats, PropertyThumbnailSlider, PropertyYoutubeEmbed, TextContentBox, PropertiesMap } from "@/components/common"
 // import { usePropertyFormat } from "@/hooks/use-property-format"
 import { Badge, Box, Flex, Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/react"
 import React from "react"
@@ -118,6 +118,15 @@ const PropertySingle = () => {
                 </TextContentBox>
                 
             </GridItem>
+
+            <GridItem colSpan={{ base: 6, sm: 3 }}>
+                <TextContentBox title="Map">
+                    <PropertiesMap />
+                </TextContentBox>
+                
+            </GridItem>
+
+            
 
             
         </Grid>
