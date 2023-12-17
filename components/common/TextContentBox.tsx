@@ -1,6 +1,12 @@
 import { Box, Divider, Text } from "@chakra-ui/react"
 
-const TextContentBox = ({title, children}) => {
+
+interface TextContentBoxProps {
+    title: string;
+    children: React.ReactNode;
+  }
+  
+  const TextContentBox = ({ title, children }: TextContentBoxProps) => {
     return(
         <>
             <Box backgroundColor="white" padding="1.5" marginBottom="1rem">
