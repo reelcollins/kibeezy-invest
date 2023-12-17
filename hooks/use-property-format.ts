@@ -5,7 +5,7 @@ export const usePropertyFormat = () => {
     // const address = property.location.map((item) => item.name).join(", ");
     // const address = property.location.map((item) => item.name).join(", ");
     // const coverPhoto = property.coverPhoto.url;
-    // const propertyType = `${property.category[0].name}, ${property.category[1].name}`
+    // const propy7ertyType = `${property.category[0].name}, ${property.category[1].name}`
     // const price = property.price.toLocaleString("en-Us", {
     //     style: "currency",
     //     currency: "USD",

@@ -4,6 +4,8 @@ import React from 'react'
 import { TextField } from '@radix-ui/themes'
 import { Box, SimpleGrid } from "@chakra-ui/react"
 import { PropertyCard } from '@/components/common';
+import { FaMapMarkedAlt } from "react-icons/fa";
+import Link from 'next/link';
 
 
 
@@ -37,6 +39,14 @@ export default function Page() {
                 </Box>
 
             </Box>
+
+            <Link
+				href='/map'
+				className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
+			>
+                <FaMapMarkedAlt />
+            </Link>
+            
 
 
 

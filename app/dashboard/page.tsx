@@ -17,7 +17,7 @@ export default function Page() {
 		},
 		{
 			label: 'Email',
-			value: user?.email,
+			value: user?.email, 
 		},
 	];
 
