@@ -68,21 +68,21 @@ const PropertySingle = () => {
 
   return (
     <div>
+
       <Box backgroundColor="#f7f8f9" paddingY="3rem">
         <Grid templateColumns="repeat(6, 1fr)" gap="5" maxWidth="1280px" margin="0 auto">
-            {/* <GridItem colSpan="6"> */}
-            <GridItem>
-                <Text fontSize="3xl" fontWeight="medium" color="blue.800" textAlign={{base:"center", sm: "left"}}>
-                    {propertyType} {title}
-                </Text>
-                <Flex fontSize="xl" color="blue.600" textAlign="center" flexDirection={{ base: "column", sm: "row"}} gap="0.5rem" marginY={{ base: "1rem", sm: "0"}}>
-                    <TbMapPin/>
-                    <Text fontWeight="light">
-                        {address} - ID:{externalID}
-                    </Text>
-                    <Badge colorScheme="green">{purpose}</Badge>
-                </Flex>
-            </GridItem>
+          <GridItem colSpan={6}>
+            <Text fontSize="3xl" fontWeight="medium" color="blue.800" textAlign={{ base: "center", sm: "left" }}>
+              {propertyType} {title}
+            </Text>
+            <Flex fontSize="xl" color="blue.600" textAlign="center" flexDirection={{ base: "column", sm: "row" }} gap="0.5rem" marginY={{ base: "1rem", sm: "0" }}>
+              <TbMapPin />
+              <Text fontWeight="light">
+                {address} - ID:{externalID}
+              </Text>
+              <Badge colorScheme="green">{purpose}</Badge>
+            </Flex>
+          </GridItem>
 
             <GridItem colSpan={{base: 6, sm: 3}}>
                 {/* <PropertyThumbnailSlider photos={photos}/> */}
@@ -97,9 +97,6 @@ const PropertySingle = () => {
                     <Text fontWeight="light" color="gray.600" fontSize="1rem">{description}</Text>
                 </TextContentBox>
                 <TextContentBox title="Amenities">
-                    {/*<SimpleGrid columns={{ base:1, sm:2 }} fontWeight="light" color="gray.600" fontSize="1rem">
-                         {amenities.length ? amenities.map((item) => <Text>{item}</Text>) : "Please contact us for more info"}
-                    </SimpleGrid>*/}
                     <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
                     {amenities.length ? amenities.map((item) => (
                         <Text key={item}>{item}</Text>
@@ -115,12 +112,12 @@ const PropertySingle = () => {
                 
             </GridItem>
 
-            <GridItem colSpan={{ base: 6, sm: 3 }}>
+            {/* <GridItem colSpan={{ base: 6, sm: 3 }}>
                 <TextContentBox title="3D Virtual Walkthrough">
                     <PropertyMatterPortEmbed panorama={panorama}/>
                 </TextContentBox>
                 
-            </GridItem>
+            </GridItem> */}
 
             <GridItem colSpan={{ base: 6, sm: 3 }}>
                 <TextContentBox title="Map">
