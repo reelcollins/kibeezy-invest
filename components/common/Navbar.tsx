@@ -58,6 +58,13 @@ export default function Navbar() {
 			>
 				Register
 			</NavLink>
+			<NavLink
+				isSelected={isSelected('/home')}
+				isMobile={isMobile}
+				href='/home'
+			>
+				Home
+			</NavLink>
 		</>
 	);
 
