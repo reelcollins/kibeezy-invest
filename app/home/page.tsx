@@ -40,22 +40,69 @@ export default function Page() {
 
             </Box>
 
+            {/* <Link
+                href="/map"
+                style={{
+                position: "fixed",
+                bottom: "20px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                zIndex: 10,
+                }}
+            >
+                <FaMapMarkedAlt height="30" width="30" />
+            </Link>
             <Link
-				href='/map'
-				// className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
-			>
+                href="/shorts"
+                style={{
+                position: "fixed",
+                bottom: "20px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                zIndex: 10,
+                }}
+            >
+                <MdSmartDisplay height="30" width="30" />
+            </Link> */}
+
+            {/* <Box className="fixed bottom-0 left-0 right-0 flex justify-center">
+              
+                
+                    <Link
+                        href="/map"
+                        className="text-4xl mr-4 hover:bg-gray-200"
+                    >
+                        <FaMapMarkedAlt />
+                    </Link>
+                    <Link href="/shorts" className="text-4xl hover:bg-gray-200">
+                        <MdSmartDisplay />
+                    </Link>
+                
+    
+            
+                <Link
+                href="/map"
+                className="text-3xl mr-1 hover:bg-gray-200" // smaller icon size, margin, and hover background
+                >
                 <FaMapMarkedAlt />
-            </Link>
-            <Link
-				href='/shorts'
-				// className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
-			>
+                </Link>
+                <Link href="/shorts" className="text-3xl hover:bg-gray-200">
                 <MdSmartDisplay />
-            </Link>
-
+                </Link>
             
-            
-
+            </Box> */}
+            <Box
+                className="fixed left-0 right-0 flex justify-center bottom-5"
+                >
+                <Box className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <Link href="/map" className="text-4xl mr-4 w-full hover:bg-gray-200">
+                        <FaMapMarkedAlt />
+                    </Link>
+                    <Link href="/shorts" className="text-4xl w-full hover:bg-gray-200">
+                        <MdSmartDisplay />
+                    </Link>
+                </Box>
+            </Box>
 
 
 

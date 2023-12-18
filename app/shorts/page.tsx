@@ -49,9 +49,17 @@ const Shorts = () => {
 
             </Box>
             
-            <Link href={`/home/${externalID}`}>
-                    <FaListAlt />
-            </Link>
+            
+  
+            <Box
+                className="fixed left-0 right-0 flex justify-center bottom-5"
+                >
+                <Box className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <Link href={`/home/${externalID}`} className="text-4xl mr-4 w-full hover:bg-gray-200">
+                        <FaListAlt />
+                    </Link>
+                </Box>
+            </Box>
         </div>
 
   );
