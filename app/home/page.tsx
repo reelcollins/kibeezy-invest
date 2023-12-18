@@ -6,6 +6,7 @@ import { Box, SimpleGrid } from "@chakra-ui/react"
 import { PropertyCard } from '@/components/common';
 import { FaMapMarkedAlt } from "react-icons/fa";
 import Link from 'next/link';
+import { MdSmartDisplay } from "react-icons/md";
 
 
 
@@ -42,10 +43,18 @@ export default function Page() {
 
             <Link
 				href='/map'
-				className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
+				// className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
 			>
                 <FaMapMarkedAlt />
             </Link>
+            <Link
+				href='/shorts'
+				// className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
+			>
+                <MdSmartDisplay />
+            </Link>
+
+            
             
 
 
