@@ -1,6 +1,9 @@
+"use client";
+
 import { Box } from '@chakra-ui/react';
 import Link from 'next/link';
-import { FaListAlt } from "react-icons/fa";
+import { TextField } from '@radix-ui/themes'
+import { FaListAlt, FaSearchLocation  } from "react-icons/fa";
 
 // Pass a list of ids the filtered houses
 
@@ -28,6 +31,14 @@ const Shorts = () => {
     const ratio = (315 / 560) * 100;
     return (
         <div>
+            <TextField.Root>
+                <TextField.Slot>
+                    <FaSearchLocation height="16" width="16" />
+                </TextField.Slot>
+                
+                <TextField.Input placeholder="Search for a home…" />
+            </TextField.Root>
+
             <Box paddingTop={`${ratio}%`} position="relative" height="0" overflow="hidden" >
                 <iframe 
                 style={{position:"absolute", top: 0, bottom: 0}}

@@ -4,7 +4,7 @@ import React from 'react'
 import { TextField } from '@radix-ui/themes'
 import { Box, SimpleGrid } from "@chakra-ui/react"
 import { PropertyCard } from '@/components/common';
-import { FaMapMarkedAlt } from "react-icons/fa";
+import { FaMapMarkedAlt, FaSearchLocation } from "react-icons/fa";
 import Link from 'next/link';
 import { MdSmartDisplay } from "react-icons/md";
 
@@ -15,11 +15,10 @@ export default function Page() {
     return (
         <div>
             <TextField.Root>
-                {/*
                 <TextField.Slot>
-                    <MagnifyingGlassIcon height="16" width="16" />
+                    <FaSearchLocation height="16" width="16" />
                 </TextField.Slot>
-                */}
+                
                 <TextField.Input placeholder="Search for a home…" />
             </TextField.Root>
             <Box backgroundColor="#f7f8f9" padding="3rem" >

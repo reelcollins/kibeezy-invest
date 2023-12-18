@@ -5,6 +5,8 @@ import Provider from '@/redux/provider';
 import { Footer, Navbar } from '@/components/common';
 import { Setup } from '@/components/utils';
 import { Providers } from './providers'
+import '@radix-ui/themes/styles.css';
+import { Theme } from '@radix-ui/themes';
 
 const inter = Inter({
 	subsets: ['latin'] });
@@ -24,12 +26,14 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<Provider>
 					<Providers>
-						<Setup />
-						<Navbar />
-						<div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 my-8'>
-							{children}
-						</div>
-						<Footer />
+						<Theme>
+							<Setup />
+							<Navbar />
+							<div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 my-8'>
+								{children}
+							</div>
+							<Footer />
+						</Theme>
 					</Providers>
 				</Provider>
 
