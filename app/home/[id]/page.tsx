@@ -87,6 +87,7 @@ const PropertySingle = () => {
             <GridItem colSpan={{base: 6, sm: 3}}>
                 {/* <PropertyThumbnailSlider photos={photos}/> */}
                 <PropertyThumbnailSlider/>
+                
             </GridItem>
 
             <GridItem colSpan={{ base: 6, sm: 3}}>
