@@ -36,7 +36,7 @@ async function getData() {
 }
 
 
-export default function Page() {
+export default async function Page() {
     const properties = await getData();
     
     return (
