@@ -37,7 +37,7 @@ async function getData() {
 
 
 export default function Page() {
-    const properties = getData()
+    const properties = await getData();
     
     return (
         <div>
@@ -55,6 +55,7 @@ export default function Page() {
                     <SimpleGrid
                         columns={{ base: 1, sm: 3 }}
                         gap={{ base: "0", sm: "2rem" }}
+                        {...properties}   
                     >
                         {properties.map((property) => (
                             <PropertyCard key={property.id} {...property}/>
