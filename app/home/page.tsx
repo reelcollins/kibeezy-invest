@@ -7,11 +7,24 @@ import { PropertyCard } from '@/components/common';
 import { FaMapMarkedAlt, FaSearchLocation } from "react-icons/fa";
 import Link from 'next/link';
 import { MdSmartDisplay } from "react-icons/md";
+import { getProperties } from './api';
+
+interface Property {
+    id: number;
+    name: string;
+    price: number;
+    imageUrl: string;
+  }
+
+interface HomeProps {
+    properties: Property[]; // Replace "Property" with your actual property type
+  }
+  
 
 
+const Home = ({ properties }: HomeProps) => {
 
-// const Home = ({properties}) => {
-export default function Page() {
+// export default function Page() {
     return (
         <div>
             <TextField.Root>
@@ -23,34 +36,22 @@ export default function Page() {
             </TextField.Root>
             <Box backgroundColor="#f7f8f9" padding="3rem" >
                 <Box maxWidth="1280px" margin="0 auto">
-                    {/* <SimpleGrid
+                    <SimpleGrid
                         columns={{ base: "1", sm: "3" }}
                         gap={{ base: "0", sm: "2rem" }}
                     >
-                        {properties && properties.map((property) => (
+                        {properties.map((property) => (
                             <PropertyCard key={property.id} {...property}/>
                             
                         ))}
                         
 
                     </SimpleGrid> 
-                    */}
-                    <PropertyCard/>
+                    
+                    {/* <PropertyCard/> */}
                 </Box>
-
             </Box>
-            {/* <Box
-                className="fixed left-0 right-0 flex justify-center bottom-5"
-                >
-                <Box className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Link href="/map" className="text-4xl mr-4 w-full hover:bg-gray-200">
-                        <FaMapMarkedAlt />
-                    </Link>
-                    <Link href="/shorts" className="text-4xl w-full hover:bg-gray-200">
-                        <MdSmartDisplay />
-                    </Link>
-                </Box>
-            </Box> */}
+
             <Box
                 className="fixed left-0 right-0 flex justify-center bottom-5"
                 >
@@ -74,3 +75,10 @@ export default function Page() {
     )
 }
 
+
+export async function getStaticProps() {
+    const properties = await getProperties();
+    return (
+        { properties: properties }
+    )
+}
