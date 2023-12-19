@@ -57,11 +57,11 @@ export default function Page() {
                 <Box className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-2">
                     <Link
                     href="/map"
-                    className="text-4xl mr-4 hover:bg-gray-200"
+                    className="text-6xl mr-4 hover:bg-gray-200"
                     >
                     <FaMapMarkedAlt />
                     </Link>
-                    <Link href="/shorts" className="text-4xl hover:bg-gray-200">
+                    <Link href="/shorts" className="text-6xl hover:bg-gray-200">
                     <MdSmartDisplay />
                     </Link>
                 </Box>
