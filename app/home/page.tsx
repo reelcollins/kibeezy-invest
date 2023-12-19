@@ -9,21 +9,37 @@ import Link from 'next/link';
 import { MdSmartDisplay } from "react-icons/md";
 // import { getProperties } from '../../lib/api';
 
-// interface Property {
-//     id: number;
-//     name: string;
-//     price: number;
-//     imageUrl: string;
-//   }
+interface Property {
+    id: number;
+    realtor: string;
+    title: string;
+    slug: number;
+    address: string;
+    city: string;
+    state: string;
+    zipcode: number;
+    description: string;
+    price: number;
+    bedrooms: number;
+    bathrooms: number;
+    sale_type: string;
+    home_type: string;
+    main_photo: string;
+    photo_1: string;
+    photo_2: string;
+    photo_3: string;
+    is_published: string;
+    date_created: number;
+  }
 
-// interface HomeProps {
-//     properties: Property[]; // Replace "Property" with your actual property type
-//   }
+interface HomeProps {
+    properties: Property[]; // Replace "Property" with your actual property type
+  }
   
 
 
 // const Home = ({ properties }: HomeProps) => {
-async function getData() {
+async function getData(): Promise<{ properties: Property[] }> {
     const properties = await fetch('https://abc.nyumbani.xyz/api/listing/get-listings')
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
@@ -41,7 +57,7 @@ export default async function Page() {
     
     return (
         <div>
-            <Text>{properties}</Text>
+            
             
             <TextField.Root>
                 <TextField.Slot>
@@ -53,19 +69,14 @@ export default async function Page() {
             <Box backgroundColor="#f7f8f9" padding="3rem" >
                 <Box maxWidth="1280px" margin="0 auto">
                     <SimpleGrid
-                        columns={{ base: 1, sm: 3 }}
-                        gap={{ base: "0", sm: "2rem" }}
-                        {...properties}   
+                    columns={{ base: 1, sm: 3 }}
+                    gap={{ base: "0", sm: "2rem" }}
                     >
-                        {properties.map((property) => (
-                            <PropertyCard key={property.id} {...property}/>
-                            
-                        ))}
-                        
+                    {properties.map((property: Property) => (
+                        <PropertyCard key={property.id} {...property} />
+                    ))}
+                    </SimpleGrid>
 
-                    </SimpleGrid> 
-                    
-                    {/* <PropertyCard/> */}
                 </Box>
             </Box>
 
