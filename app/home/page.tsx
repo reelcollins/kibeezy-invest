@@ -91,7 +91,7 @@ export default function Page() {
                 </Link>
             
             </Box> */}
-            <Box
+            {/* <Box
                 className="fixed left-0 right-0 flex justify-center bottom-5"
                 >
                 <Box className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -102,7 +102,23 @@ export default function Page() {
                         <MdSmartDisplay />
                     </Link>
                 </Box>
+            </Box> */}
+            <Box
+                className="fixed left-0 right-0 flex justify-center bottom-5"
+                >
+                <Box className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-2">
+                    <Link
+                    href="/map"
+                    className="text-4xl mr-4 sm:w-1/2 sm:text-3xl hover:bg-gray-200"
+                    >
+                    <FaMapMarkedAlt />
+                    </Link>
+                    <Link href="/shorts" className="text-4xl sm:w-1/2 sm:text-3xl hover:bg-gray-200">
+                    <MdSmartDisplay />
+                    </Link>
+                </Box>
             </Box>
+
 
 
 
