@@ -75,6 +75,8 @@ const Home = ({ properties }: HomeProps) => {
     )
 }
 
+export default Home;
+
 
 export async function getStaticProps() {
     const properties = await getProperties();
