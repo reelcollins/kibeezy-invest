@@ -78,7 +78,7 @@ const Home = ({ properties }: HomeProps) => {
 export default Home;
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const properties = await getProperties();
     return (
         { properties: properties }
