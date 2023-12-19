@@ -12,3 +12,4 @@ export const getProperties = async () => {
     });
     return data.hits;
 };
+

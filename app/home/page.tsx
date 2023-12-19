@@ -7,26 +7,40 @@ import { PropertyCard } from '@/components/common';
 import { FaMapMarkedAlt, FaSearchLocation } from "react-icons/fa";
 import Link from 'next/link';
 import { MdSmartDisplay } from "react-icons/md";
-import { getProperties } from '../../lib/api';
+// import { getProperties } from '../../lib/api';
 
-interface Property {
-    id: number;
-    name: string;
-    price: number;
-    imageUrl: string;
-  }
+// interface Property {
+//     id: number;
+//     name: string;
+//     price: number;
+//     imageUrl: string;
+//   }
 
-interface HomeProps {
-    properties: Property[]; // Replace "Property" with your actual property type
-  }
+// interface HomeProps {
+//     properties: Property[]; // Replace "Property" with your actual property type
+//   }
   
 
 
-const Home = ({ properties }: HomeProps) => {
+// const Home = ({ properties }: HomeProps) => {
+async function getData() {
+    const res = await fetch('https://abc.nyumbani.xyz')
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+    if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+    }
 
-// export default function Page() {
+    return res.json()
+}
+
+
+export default function Page() {
+    const properties = await getData()
     return (
         <div>
+            { properties: properties}
             <TextField.Root>
                 <TextField.Slot>
                     <FaSearchLocation height="16" width="16" />
@@ -78,9 +92,16 @@ const Home = ({ properties }: HomeProps) => {
 export default Home;
 
 
-export async function getServerSideProps() {
-    const properties = await getProperties();
-    return (
-        { properties: properties }
-    )
-}
+
+
+   
+
+
+
+
+// export async function getServerSideProps() {
+//     const properties = await getProperties();
+//     return (
+//         { properties: properties }
+//     )
+// }
