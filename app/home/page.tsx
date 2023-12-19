@@ -7,7 +7,7 @@ import { PropertyCard } from '@/components/common';
 import { FaMapMarkedAlt, FaSearchLocation } from "react-icons/fa";
 import Link from 'next/link';
 import { MdSmartDisplay } from "react-icons/md";
-import { getProperties } from './api';
+import { getProperties } from '../../lib/api';
 
 interface Property {
     id: number;
