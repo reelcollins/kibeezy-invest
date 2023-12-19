@@ -53,7 +53,7 @@ export default function Page() {
             <Box backgroundColor="#f7f8f9" padding="3rem" >
                 <Box maxWidth="1280px" margin="0 auto">
                     <SimpleGrid
-                        columns={{ base: "1", sm: "3" }}
+                        columns={{ base: 1, sm: 3 }}
                         gap={{ base: "0", sm: "2rem" }}
                     >
                         {properties.map((property) => (
