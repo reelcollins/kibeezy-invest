@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { TextField } from '@radix-ui/themes'
-import { Box, SimpleGrid } from "@chakra-ui/react"
+import { Box, SimpleGrid, Text } from "@chakra-ui/react"
 import { PropertyCard } from '@/components/common';
 import { FaMapMarkedAlt, FaSearchLocation } from "react-icons/fa";
 import Link from 'next/link';
@@ -24,23 +24,25 @@ import { MdSmartDisplay } from "react-icons/md";
 
 // const Home = ({ properties }: HomeProps) => {
 async function getData() {
-    const res = await fetch('https://abc.nyumbani.xyz')
+    const properties = await fetch('https://abc.nyumbani.xyz/api/listing/get-listings')
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
-    if (!res.ok) {
+    if (!properties.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data')
     }
 
-    return res.json()
+    return properties.json()
 }
 
 
 export default function Page() {
-    const properties = await getData()
+    const properties = getData()
+    
     return (
         <div>
-            { properties: properties}
+            <Text>{properties}</Text>
+            
             <TextField.Root>
                 <TextField.Slot>
                     <FaSearchLocation height="16" width="16" />
@@ -88,8 +90,6 @@ export default function Page() {
         </div>
     )
 }
-
-export default Home;
 
 
 
