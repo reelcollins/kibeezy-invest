@@ -4,51 +4,52 @@
 import { Badge, Box, Flex, HStack, Text } from "@chakra-ui/react";
 import {TbBed, TbBath, TbRuler} from "react-icons/tb";
 import Link from 'next/link';
+import Image from "next/image";
+
+interface Props {
+    id: number;
+    // realtor: string;
+    title: string;
+    slug: number;
+    address: string;
+    // city: string;
+    // state: string;
+    // zipcode: number;
+    // description: string;
+    price: number;
+    bedrooms: number;
+    bathrooms: number;
+    sale_type: string;
+    home_type: string;
+    main_photo: string;
+    // photo_1: string;
+    // photo_2: string;
+    // photo_3: string;
+    // is_published: string;
+    // date_created: number;
+  }
 
 
-export default function PropertyCard() {
-    // const {
-    //     address,
-    //     coverPhoto,
-    //     propertyType,
-    //     price,
-    //     title,
-    //     rooms,
-    //     baths,
-    //     purpose,
-    //     sqSize,
-    //     externalID
-    // } = usePropertyFormat(property)
-    const property = {
-        address: "123 Main St",
-        coverPhoto: "https://vercel-app.s3.amazonaws.com/media/Screenshot_2023-12-18-03-36-45-510_com.google.android.youtube.jpg",
-        propertyType: "House",
-        price: 500000,
-        title: "Beautiful Home",
-        rooms: 3,
-        baths: 2,
-        purpose: "Sale",
-        sqSize: 2000,
-        externalID: "ABC123"
-    };
-    const {
-        address,
-        coverPhoto,
-        propertyType,
-        price,
-        title,
-        rooms,
-        baths,
-        purpose,
-        sqSize,
-        externalID
-    } = property;
-    
+
+export default function PropertyCard({
+    address,
+    main_photo,
+    home_type,
+    price,
+    title,
+    bedrooms,
+    bathrooms,
+    sale_type,
+    slug,
+    id,
+
+    }: Props) {
+  
 	return (
         <Box marginBottom="4rem" backgroundColor="#fff">
-            <Link href={`/home/${externalID}`}>
+            <Link href={`/home/${id}`}>
                 <Box
-                backgroundImage = {`url("${coverPhoto}")`}
+                backgroundImage = {`url("${main_photo}")`}
                 height="250px"
                 backgroundPosition="center center"
                 backgroundSize="cover"
@@ -57,7 +58,7 @@ export default function PropertyCard() {
                 flexDirection="column"
                 justifyContent="space-between">
                     <Box margin="1rem">
-                        <Badge colorScheme="green">{purpose}</Badge>
+                        <Badge colorScheme="green">{sale_type}</Badge>
                     </Box>
                     <Box 
                         height="50%"
@@ -74,7 +75,7 @@ export default function PropertyCard() {
                 </Box>
                 <Box padding='1.5rem'>
                     <Text fontSize="xl" fontWeight='medium' marginBottom='1rem'>
-                        {propertyType}
+                        {home_type}
                     </Text>
                     <Text fontWeight="light" fontSize="sm" isTruncated>
                         {address}
@@ -85,16 +86,15 @@ export default function PropertyCard() {
                     <HStack spacing="1.3rem" marginTop="1rem">
                         <Flex alignItems='center' gap="0.3rem">
                             <TbBed/>
-                            {rooms}
+                            {bedrooms}
                         </Flex>
                         <Flex alignItems='center' gap="0.3rem">
                             <TbBath/>
-                            {baths}
+                            {bathrooms}
                         </Flex>
                         <Flex alignItems='center' gap="0.3rem">
                             <TbRuler/>
-                            {sqSize}
-                            <sup>m2</sup>
+                            {slug}
                         </Flex>
                     </HStack>
                 </Box>

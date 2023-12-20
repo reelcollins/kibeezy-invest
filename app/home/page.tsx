@@ -9,51 +9,66 @@ import Link from 'next/link';
 import { MdSmartDisplay } from "react-icons/md";
 // import { getProperties } from '../../lib/api';
 
-interface Property {
-    id: number;
-    realtor: string;
-    title: string;
-    slug: number;
-    address: string;
-    city: string;
-    state: string;
-    zipcode: number;
-    description: string;
-    price: number;
-    bedrooms: number;
-    bathrooms: number;
-    sale_type: string;
-    home_type: string;
-    main_photo: string;
-    photo_1: string;
-    photo_2: string;
-    photo_3: string;
-    is_published: string;
-    date_created: number;
-  }
 
-interface HomeProps {
-    properties: Property[]; // Replace "Property" with your actual property type
-  }
+
+// interface HomeProps {
+//     properties: Property[]; // Replace "Property" with your actual property type
+//   }
   
 
 
 // const Home = ({ properties }: HomeProps) => {
-async function getData(): Promise<{ properties: Property[] }> {
-    const properties = await fetch('https://abc.nyumbani.xyz/api/listing/get-listings')
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
-    if (!properties.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+// async function getData(): Promise<{ properties: Property[] }> {
+//     const res = await fetch('https://abc.nyumbani.xyz/api/listing/get-listings')
+//     // The return value is *not* serialized
+//     // You can return Date, Map, Set, etc.
+//     if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//     }
+//     console.log(res)
+
+//     return res.json()
+// }
+
+async function fetchdetails() {
+    const response = await fetch(
+      "https://abc.nyumbani.xyz/api/listing/get-listings"
+    );
+    if (response.ok) {
+      const responseBody = await response.json();
+      // console.log(`data ${data}`);
+      // setData(responseBody);
+      console.log(`data ${responseBody}`);
+      return responseBody;
     }
+  }
 
-    return properties.json()
-}
+export default async function Home() {
+    const data = await fetchdetails();
 
-
-export default async function Page() {
-    const properties = await getData();
+    interface Props {
+        id: number;
+        realtor: string;
+        title: string;
+        slug: number;
+        address: string;
+        city: string;
+        state: string;
+        zipcode: number;
+        description: string;
+        price: number;
+        bedrooms: number;
+        bathrooms: number;
+        sale_type: string;
+        home_type: string;
+        main_photo: string;
+        photo_1: string;
+        photo_2: string;
+        photo_3: string;
+        is_published: string;
+        date_created: number;
+      }
     
     return (
         <div>
@@ -72,10 +87,28 @@ export default async function Page() {
                     columns={{ base: 1, sm: 3 }}
                     gap={{ base: "0", sm: "2rem" }}
                     >
-                    {properties.map((property: Property) => (
-                        <PropertyCard key={property.id} {...property} />
-                    ))}
+                    {data.listings.map(function (item: Props) {
+                        return (
+                        <PropertyCard
+                            key={item.id.toString()}
+                            address={item.address}
+                            main_photo={item.main_photo}
+                            home_type={item.home_type}
+                            price={item.price}
+                            title={item.title}
+                            bedrooms={item.bedrooms}
+                            bathrooms={item.bathrooms}
+                            sale_type={item.sale_type}
+                            slug={item.slug}
+                            id={item.id}
+                        />
+                        
+                        );
+                    })}
+                                        
+
                     </SimpleGrid>
+                    {/* <PropertyCard/> */}
 
                 </Box>
             </Box>

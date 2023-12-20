@@ -7,64 +7,45 @@ import React from "react"
 import { TbMapPin } from "react-icons/tb"
 
 
-// const PropertySingle = ({ property }) => {
-const PropertySingle = () => {
-    const property = {
-        address: "123 Main St",
-        coverPhoto: "https://s3.us-east-2.amazonaws.com/images.propertypro.africa/large/yYe39fDTZBopaISUagjI-0.jpeg",
-        propertyType: "Apartment",
-        price: 200000,
-        title: "Beautiful Apartment for Sale",
-        rooms: 2,
-        baths: 1,
-        purpose: "For Sale",
-        sqSize: 1200,
-        externalID: "ABC123",
-        photos: ["https://s3.us-east-2.amazonaws.com/images.propertypro.africa/large/yYe39fDTZBopaISUagjI-0.jpeg", "https://s3.us-east-2.amazonaws.com/images.propertypro.africa/large/88OQRHvqhvvoWXSs5GiD-1.jpeg"],
-        description: "This is a stunning apartment with great amenities.",
-        coverVideo: "1Kb6kYUCEWo?si=pol1LELZXbaehWiT",
-        panorama: "url/to/panorama/photo.jpg",
-        amenities: ["Swimming Pool", "Gym", "Parking"],
-        furnished: true
-    };
+async function fetchdetails() {
+  const response = await fetch(
+    "https://abc.nyumbani.xyz/api/listing/get-listings"
+  );
+  if (response.ok) {
+    const responseBody = await response.json();
+    // console.log(`data ${data}`);
+    // setData(responseBody);
+    console.log(`data ${responseBody}`);
+    return responseBody;
+  }
+}
 
-    // const {
-    //     address,
-    //     coverPhoto,
-    //     propertyType,
-    //     price,
-    //     title,
-    //     rooms,
-    //     baths,
-    //     purpose,
-    //     sqSize,
-    //     externalID,
-    //     photos,
-    //     description,
-    //     coverVideo,
-    //     panorama,
-    //     amenities,
-    //     furnished
-    // } = usePropertyFormat(property)
-    
-    const {
-        address,
-        coverPhoto,
-        propertyType,
-        price,
-        title,
-        rooms,
-        baths,
-        purpose,
-        sqSize,
-        externalID,
-        photos,
-        description,
-        coverVideo,
-        panorama,
-        amenities,
-        furnished
-    } = property;
+
+
+export default async function PropertySingle() {
+  const data = await fetchdetails();
+  const targetProperty = data.listings.find(
+    (item) => item.id// Replace with your desired property's ID
+);
+
+  
+  const {
+    id,
+    address,
+    title,
+    slug,
+    bedrooms,
+    bathrooms,
+    price,
+    main_photo,
+    photo_1,
+    photo_2,
+    photo_3,
+    sale_type,
+    home_type,
+    description,
+    // ...other properties
+  } = targetProperty;
 
   return (
     <div>
@@ -73,43 +54,45 @@ const PropertySingle = () => {
         <Grid templateColumns="repeat(6, 1fr)" gap="5" maxWidth="1280px" margin="0 auto">
           <GridItem colSpan={6}>
             <Text fontSize="3xl" fontWeight="medium" color="blue.800" textAlign={{ base: "center", sm: "left" }}>
-              {propertyType} {title}
+              {home_type} {title}
             </Text>
             <Flex fontSize="xl" color="blue.600" textAlign="center" flexDirection={{ base: "column", sm: "row" }} gap="0.5rem" marginY={{ base: "1rem", sm: "0" }}>
               <TbMapPin />
               <Text fontWeight="light">
-                {address} - ID:{externalID}
+                {address} - ID:{id}
               </Text>
-              <Badge colorScheme="green">{purpose}</Badge>
+              <Badge colorScheme="green">{sale_type}</Badge>
             </Flex>
           </GridItem>
 
             <GridItem colSpan={{base: 6, sm: 3}}>
-                {/* <PropertyThumbnailSlider photos={photos}/> */}
-                <PropertyThumbnailSlider/>
+                <PropertyThumbnailSlider main_photo={main_photo} photo_1={photo_1} photo_2={photo_2} photo_3={photo_3}/>
+                {/* <PropertyThumbnailSlider/> */}
                 
             </GridItem>
 
             <GridItem colSpan={{ base: 6, sm: 3}}>
-                <PropertyStats rooms={rooms} baths={baths} price={price} sqSize={sqSize}/>
+                <PropertyStats bedrooms={bedrooms} bathrooms={bathrooms} price={price} slug={slug}/>
                 
                 <TextContentBox title="Description">
                     {/*<Text fontWeight="light" color="gray.600" fontSize="1rem" noOfLines="4">{description}</Text>*/}
                     <Text fontWeight="light" color="gray.600" fontSize="1rem">{description}</Text>
                 </TextContentBox>
                 <TextContentBox title="Amenities">
-                    <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
+                    {/* <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
                     {amenities.length ? amenities.map((item) => (
                         <Text key={item}>{item}</Text>
                     )) : "Please contact us for more info"}
-                    </SimpleGrid>
+                    </SimpleGrid> */}
+                    <Text>Amenities</Text>
 
                 </TextContentBox>
             </GridItem>
             <GridItem colSpan={{ base: 6, sm: 3 }}>
-                <TextContentBox title="Video Walkthrough">
+              <Text>YouTube</Text>
+                {/* <TextContentBox title="Video Walkthrough">
                     <PropertyYoutubeEmbed coverVideo={coverVideo}/>
-                </TextContentBox>
+                </TextContentBox> */}
                 
             </GridItem>
 
@@ -137,4 +120,3 @@ const PropertySingle = () => {
   )
 }
 
-export default PropertySingle;

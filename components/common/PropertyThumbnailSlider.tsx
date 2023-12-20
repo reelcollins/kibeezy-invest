@@ -10,13 +10,21 @@ import 'swiper/css';
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-// interface PropertyThumbnailSliderProps {
-//     photos: string[];
-//   }
 
+interface Props {
+    main_photo: String;
+    photo_1: String;
+    photo_2: String;
+    photo_3: String;
+  }
+  
+export default function PropertyThumbnailSlider({
+    main_photo,
+    photo_1,
+    photo_2,
+    photo_3,
 
-// const PropertyThumbnailSlider = ({photos}: PropertyThumbnailSliderProps) => {
-const PropertyThumbnailSlider = () => {
+  }: Props) {
 
     return (
         <section className='py-12'>
@@ -29,21 +37,57 @@ const PropertyThumbnailSlider = () => {
                 className='h-96 w-full rounded-lg'
                 >
                     <SwiperSlide>
-                        {/* <Image
-                            src="https://s3.us-east-2.amazonaws.com/images.propertypro.africa/large/yYe39fDTZBopaISUagjI-0.jpeg"
-                            alt='photo'
-                            width={400}
-                            height={400}
-                            className='block h-full w-full object-cover'
-                            /> */}
-                        <Text>Photo 1</Text>
+                        <div className='flex h-full w-full items-center justify-center'>
+                            <Image
+                                src="https://vercel-app.s3.amazonaws.com/media/Screenshot_2023-12-18-03-36-45-510_com.google.android.youtube.jpg"
+                                alt='photo'
+                                width={400}
+                                height={400}
+                                className='block h-full w-full object-cover'
+                                />
+                        </div>
+    
                     </SwiperSlide>
+
                     <SwiperSlide>
-                        <Text>Photo 2</Text>
+                        <div className='flex h-full w-full items-center justify-center'>
+                            <Image
+                                src={photo_1}
+                                alt='photo'
+                                width={400}
+                                height={400}
+                                className='block h-full w-full object-cover'
+                                />
+                        </div>
+  
                     </SwiperSlide>
+
                     <SwiperSlide>
-                        <Text>Photo 3</Text>
+                        <div className='flex h-full w-full items-center justify-center'>
+                            <Image
+                                src={photo_2}
+                                alt='photo'
+                                width={400}
+                                height={400}
+                                className='block h-full w-full object-cover'
+                                />
+                        </div>
+ 
                     </SwiperSlide>
+
+                    <SwiperSlide>
+                        <div className='flex h-full w-full items-center justify-center'>
+                            <Image
+                                src={photo_3}
+                                alt='photo'
+                                width={400}
+                                height={400}
+                                className='block h-full w-full object-cover'
+                                />
+                        </div>
+
+                    </SwiperSlide>
+                
                     {/* {photos.map((photo, index) => (
                         <SwiperSlide key={index}>
                             <div className='flex h-full w-full items-center justify-center'>
@@ -60,5 +104,3 @@ const PropertyThumbnailSlider = () => {
         </section>
     )
 }
-
-export default PropertyThumbnailSlider;

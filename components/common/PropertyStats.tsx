@@ -5,15 +5,15 @@ import React from "react";
 import { TbBath, TbBed, TbRuler } from "react-icons/tb";
 
 interface PropertyStatsProps {
-    rooms: number; // Number of rooms
-    baths: number; // Number of bathrooms
+    bedrooms: number; // Number of rooms
+    bathrooms: number; // Number of bathrooms
     price: string | number; // Price of the property (string for formatted values)
-    sqSize: string | number; // Square footage of the property (string for formatted values)
+    slug: string | number; // Square footage of the property (string for formatted values)
   }
   
     
 
-const PropertyStats = ({ rooms, baths, price, sqSize }: PropertyStatsProps ) => {
+const PropertyStats = ({ bedrooms, bathrooms, price, slug }: PropertyStatsProps ) => {
     return (
         <>
             <Box backgroundColor="white" padding="1.5rem" marginBottom="1rem">
@@ -24,7 +24,7 @@ const PropertyStats = ({ rooms, baths, price, sqSize }: PropertyStatsProps ) => 
                         <Text>BEDS</Text>
                         <Flex alignItems="center" gap="0.5rem">
                             <TbBed/>
-                            {rooms}
+                            {bedrooms}
                         </Flex>
                     </Flex>
 
@@ -38,7 +38,7 @@ const PropertyStats = ({ rooms, baths, price, sqSize }: PropertyStatsProps ) => 
                         <Text>BATHS</Text>
                         <Flex alignItems="center" gap="0.5rem">
                             <TbBath/>
-                            {baths}
+                            {bathrooms}
                         </Flex>
                     </Flex>
 
@@ -52,7 +52,7 @@ const PropertyStats = ({ rooms, baths, price, sqSize }: PropertyStatsProps ) => 
                         <Text>SIZE</Text>
                         <Flex alignItems="center" gap="0.5rem">
                             <TbRuler/>
-                            {sqSize}
+                            {slug}
                             <sup>m2</sup>
                         </Flex>
                     </Flex>
