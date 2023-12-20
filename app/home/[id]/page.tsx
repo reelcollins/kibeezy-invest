@@ -40,7 +40,7 @@ interface ItemType {
 
 export default async function PropertySingle() {
   const data = await fetchdetails();
-  const targetProperty = data.listings.find((item: ItemType) => item.id === 1);
+  const targetProperty = data.listings.find((item: ItemType) => item.id );
   
   const {
     id,
