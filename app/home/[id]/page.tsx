@@ -20,14 +20,13 @@ async function fetchdetails() {
   }
 }
 
-
+interface ItemType {
+  id: number;
+}
 
 export default async function PropertySingle() {
   const data = await fetchdetails();
-  const targetProperty = data.listings.find(
-    (item) => item.id// Replace with your desired property's ID
-);
-
+  const targetProperty = data.listings.find((item: ItemType) => item.id === 1);
   
   const {
     id,
