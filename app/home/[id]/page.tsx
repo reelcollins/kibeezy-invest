@@ -80,7 +80,6 @@ export default async function PropertySingle() {
 
             <GridItem colSpan={{base: 6, sm: 3}}>
                 <PropertyThumbnailSlider main_photo={main_photo} photo_1={photo_1} photo_2={photo_2} photo_3={photo_3}/>
-                {/* <PropertyThumbnailSlider/> */}
                 
             </GridItem>
 

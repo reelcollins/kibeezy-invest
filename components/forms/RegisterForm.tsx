@@ -7,10 +7,7 @@ export default function RegisterForm() {
 	const {
 		first_name,
 		last_name,
-		email,
 		phone_number,
-		password,
-		re_password,
 		isLoading,
 		onChange,
 		onSubmit,
@@ -20,6 +17,7 @@ export default function RegisterForm() {
 		{
 			labelText: 'First name',
 			labelId: 'first_name',
+			placeholder: 'First name',
 			type: 'text',
 			value: first_name,
 			required: true,
@@ -27,36 +25,17 @@ export default function RegisterForm() {
 		{
 			labelText: 'Last name',
 			labelId: 'last_name',
+			placeholder: 'Last name',
 			type: 'text',
 			value: last_name,
 			required: true,
 		},
 		{
-			labelText: 'Email address',
-			labelId: 'email',
-			type: 'email',
-			value: email,
-			required: true,
-		},
-		{
 			labelText: 'Phone Number',
 			labelId: 'phone_number',
+			placeholder: '07******84 / 01******84',
 			type: 'text',
 			value: phone_number,
-			required: true,
-		},
-		{
-			labelText: 'Password',
-			labelId: 'password',
-			type: 'password',
-			value: password,
-			required: true,
-		},
-		{
-			labelText: 'Confirm password',
-			labelId: 're_password',
-			type: 'password',
-			value: re_password,
 			required: true,
 		},
 	];

@@ -5,6 +5,7 @@ import { Spinner } from '@/components/common';
 interface Config {
 	labelText: string;
 	labelId: string;
+	placeholder: string;
 	type: string;
 	value: string;
 	link?: {
@@ -35,6 +36,7 @@ export default function Form({
 				<Input
 					key={input.labelId}
 					labelId={input.labelId}
+					placeholder={input.placeholder}
 					type={input.type}
 					onChange={onChange}
 					value={input.value}
