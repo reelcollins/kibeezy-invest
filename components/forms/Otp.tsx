@@ -17,6 +17,7 @@ export default function OtpForm() {
 		{
 			labelText: 'OTP code',
 			labelId: 'otp',
+			placeholder: '****',
 			type: 'text',
 			onChange,
 			value: otp,
