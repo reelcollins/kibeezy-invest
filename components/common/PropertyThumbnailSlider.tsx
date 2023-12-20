@@ -12,10 +12,10 @@ import 'swiper/css/pagination'
 
 
 interface Props {
-    main_photo: String;
-    photo_1: String;
-    photo_2: String;
-    photo_3: String;
+    main_photo: string;
+    photo_1: string;
+    photo_2: string;
+    photo_3: string;
   }
   
 export default function PropertyThumbnailSlider({
@@ -39,7 +39,7 @@ export default function PropertyThumbnailSlider({
                     <SwiperSlide>
                         <div className='flex h-full w-full items-center justify-center'>
                             <Image
-                                src="https://vercel-app.s3.amazonaws.com/media/Screenshot_2023-12-18-03-36-45-510_com.google.android.youtube.jpg"
+                                src={main_photo}
                                 alt='photo'
                                 width={400}
                                 height={400}

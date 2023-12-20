@@ -22,6 +22,20 @@ async function fetchdetails() {
 
 interface ItemType {
   id: number;
+  address: string;
+  title: string;
+  slug: number;
+  bedrooms: number;
+  bathrooms: number;
+  price: number;
+  main_photo: string;
+  photo_1: string;
+  photo_2: string;
+  photo_3: string;
+  sale_type: string;
+  home_type: string;
+  description: string;
+
 }
 
 export default async function PropertySingle() {
