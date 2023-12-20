@@ -16,6 +16,7 @@ export default function PasswordResetConfirmForm({ uid, token }: Props) {
 		{
 			labelText: 'New password',
 			labelId: 'new_password',
+			placeholder: '****',
 			type: 'password',
 			onChange,
 			value: new_password,
@@ -24,6 +25,7 @@ export default function PasswordResetConfirmForm({ uid, token }: Props) {
 		{
 			labelText: 'Confirm new password',
 			labelId: 're_new_password',
+			placeholder: '****',
 			type: 'password',
 			onChange,
 			value: re_new_password,

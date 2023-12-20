@@ -10,6 +10,7 @@ export default function PasswordResetForm() {
 		{
 			labelText: 'Email address',
 			labelId: 'email',
+			placeholder: 'abc@gmail.com',
 			type: 'email',
 			onChange,
 			value: email,
