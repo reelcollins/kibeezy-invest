@@ -3,7 +3,6 @@ import { apiSlice } from '../services/apiSlice';
 interface User {
 	first_name: string;
 	last_name: string;
-	otp: number;
 	phone_number: number;
 }
 
@@ -77,10 +76,10 @@ const authApiSlice = apiSlice.injectEndpoints({
 			}),
 		}),
 		verifyUser: builder.mutation({
-			query: ({ uid, otp }) => ({
+			query: ({ uid, token , otp}) => ({
 				url: '/user/verify/',
 				method: 'POST',
-				body: { uid, otp },
+				body: { uid, token, otp },
 			}),
 		}),
 		resetPassword: builder.mutation({

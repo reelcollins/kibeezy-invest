@@ -1,14 +1,14 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { useConfirmOtpMutation } from '@/redux/features/authApiSlice';
+import { useVerifyUserMutation } from '@/redux/features/authApiSlice';
 import { toast } from 'react-toastify';
 
-// export default function useConfirmOtp(uid: string, token: string) {
-export default function useConfirmOtp() {
+
+export default function useConfirmOtp(uid: string, token: string) {
 	const router = useRouter();
 
 	const [confirmOtp, { isLoading }] =
-		useConfirmOtpMutation();
+	useVerifyUserMutation();
 
 	const [formData, setFormData] = useState({
 		otp: '',
@@ -25,7 +25,7 @@ export default function useConfirmOtp() {
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		confirmOtp({ otp})
+		confirmOtp({ uid, token, otp})
 			.unwrap()
 			.then(() => {
 				toast.success('Phone number verified');

@@ -16,8 +16,8 @@ export default function Page() {
 			value: user?.last_name,
 		},
 		{
-			label: 'Email',
-			value: user?.email, 
+			label: 'Phone Number',
+			value: user?.phone_number, 
 		},
 	];
 
