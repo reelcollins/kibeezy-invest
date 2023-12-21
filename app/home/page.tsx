@@ -130,8 +130,6 @@ export default async function Home() {
             </Box>
 
 
-
-
         </div>
     )
 }
