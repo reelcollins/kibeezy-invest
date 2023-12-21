@@ -23,21 +23,21 @@ const authApiSlice = apiSlice.injectEndpoints({
 		retrieveUser: builder.query<User, void>({
 			query: () => '/users/me/',
 		}),
-		socialAuthenticate: builder.mutation<
-			CreateUserResponse,
-			SocialAuthArgs
-		>({
-			query: ({ provider, state, code }) => ({
-				url: `/o/${provider}/?state=${encodeURIComponent(
-					state
-				)}&code=${encodeURIComponent(code)}`,
-				method: 'POST',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/x-www-form-urlencoded',
-				},
-			}),
-		}),
+		// socialAuthenticate: builder.mutation<
+		// 	CreateUserResponse,
+		// 	SocialAuthArgs
+		// >({
+		// 	query: ({ provider, state, code }) => ({
+		// 		url: `/o/${provider}/?state=${encodeURIComponent(
+		// 			state
+		// 		)}&code=${encodeURIComponent(code)}`,
+		// 		method: 'POST',
+		// 		headers: {
+		// 			Accept: 'application/json',
+		// 			'Content-Type': 'application/x-www-form-urlencoded',
+		// 		},
+		// 	}),
+		// }),
 		login: builder.mutation({
 			query: ({ email, password }) => ({
 				url: '/jwt/create/',
@@ -49,14 +49,11 @@ const authApiSlice = apiSlice.injectEndpoints({
 			query: ({
 				first_name,
 				last_name,
-				email,
 				phone_number,
-				password,
-				re_password,
 			}) => ({
-				url: '/users/',
+				url: '/auth/user/register/',
 				method: 'POST',
-				body: { first_name, last_name, email, phone_number, password, re_password },
+				body: { first_name, last_name, phone_number},
 			}),
 		}),
 		verify: builder.mutation({
@@ -104,7 +101,7 @@ const authApiSlice = apiSlice.injectEndpoints({
 
 export const {
 	useRetrieveUserQuery,
-	useSocialAuthenticateMutation,
+	// useSocialAuthenticateMutation,
 	useLoginMutation,
 	useRegisterMutation,
 	useVerifyMutation,
