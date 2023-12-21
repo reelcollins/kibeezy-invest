@@ -51,7 +51,7 @@ const authApiSlice = apiSlice.injectEndpoints({
 				phone_number,
 			}) => ({
 				// SHOULD THERE BE A TRAILING SLASH??????????
-				url: '/user/register/',
+				url: '/user/register',
 				method: 'POST',
 				body: { first_name, last_name, phone_number},
 			}),
