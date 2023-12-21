@@ -23,21 +23,21 @@ const authApiSlice = apiSlice.injectEndpoints({
 		retrieveUser: builder.query<User, void>({
 			query: () => '/users/me/',
 		}),
-		// socialAuthenticate: builder.mutation<
-		// 	CreateUserResponse,
-		// 	SocialAuthArgs
-		// >({
-		// 	query: ({ provider, state, code }) => ({
-		// 		url: `/o/${provider}/?state=${encodeURIComponent(
-		// 			state
-		// 		)}&code=${encodeURIComponent(code)}`,
-		// 		method: 'POST',
-		// 		headers: {
-		// 			Accept: 'application/json',
-		// 			'Content-Type': 'application/x-www-form-urlencoded',
-		// 		},
-		// 	}),
-		// }),
+		socialAuthenticate: builder.mutation<
+			CreateUserResponse,
+			SocialAuthArgs
+		>({
+			query: ({ provider, state, code }) => ({
+				url: `/o/${provider}/?state=${encodeURIComponent(
+					state
+				)}&code=${encodeURIComponent(code)}`,
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+			}),
+		}),
 		login: builder.mutation({
 			query: ({ email, password }) => ({
 				url: '/jwt/create/',
