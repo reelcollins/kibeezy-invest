@@ -6,7 +6,14 @@ export const metadata: Metadata = {
 	description: 'NYUMBANI Confirm Phone Number page',
 };
 
-export default function Page() {
+interface Props {
+	params: {
+		uid: string;
+		token: string;
+	};
+}
+
+export default function Page({ params: { uid, token } }: Props) {
 	return (
 		<div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
 			<div className='sm:mx-auto sm:w-full sm:max-w-sm'>
@@ -21,7 +28,7 @@ export default function Page() {
 			</div>
 
 			<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
-				<OtpForm />
+				<OtpForm uid={uid} token={token} />
 			</div>
 		</div>
 	);

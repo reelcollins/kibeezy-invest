@@ -29,7 +29,7 @@ export default function useRegister() {
 			.unwrap()
 			.then(() => {
 				toast.success('Account registered');
-				router.push('/auth/phone');
+				// router.push('/auth/phone');
 			})
 			.catch(() => {
 				toast.error('Failed to register');
