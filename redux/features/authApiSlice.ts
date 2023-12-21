@@ -3,8 +3,8 @@ import { apiSlice } from '../services/apiSlice';
 interface User {
 	first_name: string;
 	last_name: string;
-	email: string;
-	phone_number: string;
+	otp: number;
+	phone_number: number;
 }
 
 interface SocialAuthArgs {
@@ -21,7 +21,7 @@ interface CreateUserResponse {
 const authApiSlice = apiSlice.injectEndpoints({
 	endpoints: builder => ({
 		retrieveUser: builder.query<User, void>({
-			query: () => '/users/me/',
+			query: () => '/user/me/',
 		}),
 		socialAuthenticate: builder.mutation<
 			CreateUserResponse,
@@ -39,10 +39,10 @@ const authApiSlice = apiSlice.injectEndpoints({
 			}),
 		}),
 		login: builder.mutation({
-			query: ({ email, password }) => ({
-				url: '/jwt/create/',
+			query: ({ phone_number, otp }) => ({
+				url: '/user/jwt/create/',
 				method: 'POST',
-				body: { email, password },
+				body: { phone_number, otp },
 			}),
 		}),
 		register: builder.mutation({
@@ -51,20 +51,21 @@ const authApiSlice = apiSlice.injectEndpoints({
 				last_name,
 				phone_number,
 			}) => ({
-				url: '/auth/user/register/',
+				// SHOULD THERE BE A TRAILING SLASH??????????
+				url: '/user/register/',
 				method: 'POST',
 				body: { first_name, last_name, phone_number},
 			}),
 		}),
 		verify: builder.mutation({
 			query: () => ({
-				url: '/jwt/verify/',
+				url: '/user/jwt/verify/',
 				method: 'POST',
 			}),
 		}),
 		logout: builder.mutation({
 			query: () => ({
-				url: '/logout/',
+				url: '/user/logout/',
 				method: 'POST',
 			}),
 		}),
@@ -73,6 +74,13 @@ const authApiSlice = apiSlice.injectEndpoints({
 				url: '/users/activation/',
 				method: 'POST',
 				body: { uid, token },
+			}),
+		}),
+		verifyUser: builder.mutation({
+			query: ({ uid, otp }) => ({
+				url: '/user/verify/',
+				method: 'POST',
+				body: { uid, otp },
 			}),
 		}),
 		resetPassword: builder.mutation({
@@ -89,13 +97,7 @@ const authApiSlice = apiSlice.injectEndpoints({
 				body: { uid, token, new_password, re_new_password },
 			}),
 		}),
-		confirmOtp: builder.mutation({
-			query: ({ otp }) => ({
-				url: 'users/otp/',
-				method: 'POST',
-				body: { otp },
-			}),
-		}),
+		
 	}),
 });
 
@@ -105,9 +107,9 @@ export const {
 	useLoginMutation,
 	useRegisterMutation,
 	useVerifyMutation,
+	useVerifyUserMutation,
 	useLogoutMutation,
 	useActivationMutation,
 	useResetPasswordMutation,
 	useResetPasswordConfirmMutation,
-	useConfirmOtpMutation,
 } = authApiSlice;

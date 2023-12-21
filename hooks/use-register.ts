@@ -28,7 +28,7 @@ export default function useRegister() {
 		register({ first_name, last_name, phone_number })
 			.unwrap()
 			.then(() => {
-				toast.success('Please confirm your number');
+				toast.success('Account registered');
 				router.push('/auth/phone');
 			})
 			.catch(() => {

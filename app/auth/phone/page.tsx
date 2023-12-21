@@ -16,7 +16,7 @@ export default function Page() {
 					alt='NYUMBANI'
 				/>
 				<h2 className='mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>
-					Enter OTP
+					Enter OTP otp sent to: +254 712345678
 				</h2>
 			</div>
 
