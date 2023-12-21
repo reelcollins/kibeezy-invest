@@ -32,8 +32,7 @@ export default function useRegister() {
 				router.push('/auth/phone');
 			})
 			.catch(() => {
-				toast.error('Failed to register account');
-				router.push('/auth/phone');
+				toast.error('Failed to register');
 			});
 	};
 
