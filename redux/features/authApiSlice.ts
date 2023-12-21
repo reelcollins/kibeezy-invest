@@ -101,7 +101,7 @@ const authApiSlice = apiSlice.injectEndpoints({
 
 export const {
 	useRetrieveUserQuery,
-	// useSocialAuthenticateMutation,
+	useSocialAuthenticateMutation,
 	useLoginMutation,
 	useRegisterMutation,
 	useVerifyMutation,
