@@ -104,7 +104,7 @@ export default function Navbar() {
 							</div>
 							<div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
 								<div className='flex flex-shrink-0 items-center'>
-									<NavLink href='/' isBanner>
+									<NavLink href='/home' isBanner>
 										<span className='flex items-center text-lg font-bold ml-1'>
 											NYUMB<FaHouse className='h-4 w-4 text-primary ml-2' />NI
 										</span>
