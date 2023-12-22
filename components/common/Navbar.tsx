@@ -44,13 +44,18 @@ export default function Navbar() {
 			>
 				Dashboard
 			</NavLink> */}
-			<NavLink
+			<NavLink href='/home' isBanner>
+										<span className='flex items-center text-lg font-bold ml-1'>
+											NYUMB<FaHouse className='h-4 w-4 text-primary ml-2' />NI
+										</span>
+			</NavLink>
+			{/* <NavLink
 				isSelected={isSelected('/home')}
 				isMobile={isMobile}
 				href='/home'
 			>
 				Home
-			</NavLink>
+			</NavLink> */}
 			{/* <NavLink isMobile={isMobile} onClick={handleLogout}>
 				Logout
 			</NavLink> */}
@@ -102,11 +107,7 @@ export default function Navbar() {
 							</div>
 							<div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
 								<div className='flex flex-shrink-0 items-center'>
-									<NavLink href='/home' isBanner>
-										<span className='flex items-center text-lg font-bold ml-1'>
-											NYUMB<FaHouse className='h-4 w-4 text-primary ml-2' />NI
-										</span>
-									</NavLink>
+									
 								</div>
 								<div className='hidden sm:ml-6 sm:block'>
 									<div className='flex space-x-4'>
