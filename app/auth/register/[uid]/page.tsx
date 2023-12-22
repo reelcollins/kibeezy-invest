@@ -1,6 +1,6 @@
 import { OtpForm } from '@/components/forms';
 import type { Metadata } from 'next';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ interface Props {
 
 export default function Page({ params: { uid } }: Props) {
 // export default function Page() {
-	const router = useRouter();
+	// const router = useRouter();
 	// const query: Query = router.query;
 	// const { uid } = query;
 	return (

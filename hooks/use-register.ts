@@ -39,7 +39,7 @@ export default function useRegister() {
 				toast.success('Account registered');
 			
 				// Pass the UID to the OTP page
-				router.push(`/auth/otp/?uid=${uid}/`);
+				router.push(`/auth/register/?uid=${uid}/`);
 			  })
 			  .catch(() => {
 				toast.error('Failed to register');
