@@ -3,13 +3,6 @@
 
 import { Fragment } from 'react'
 
-const navigation = [
-	{ name: 'Dashboard', href: '#', current: true },
-	{ name: 'Team', href: '#', current: false },
-	{ name: 'Projects', href: '#', current: false },
-	{ name: 'Calendar', href: '#', current: false },
-  ]
-
 
 function classNames(...classes: string[]): string {
 	return classes.filter(Boolean).join(' ')
@@ -109,7 +102,7 @@ export default function Navbar() {
 							</div>
 							<div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
 								<div className='flex flex-shrink-0 items-center'>
-									<NavLink href='/' isBanner>
+									<NavLink href='/home' isBanner>
 										<span className='flex items-center text-lg font-bold ml-1'>
 											NYUMB<FaHouse className='h-4 w-4 text-primary ml-2' />NI
 										</span>
