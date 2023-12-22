@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 
 
 export const metadata: Metadata = {
-	title: 'NYUMBANI | Register',
-	description: 'NYUMBANI register page',
+	title: 'NYUMBANI | Sign Up',
+	description: 'NYUMBANI Sign Up page',
 };
 
 export default function Page() {
