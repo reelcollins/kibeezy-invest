@@ -4,7 +4,7 @@ import { useLogin } from '@/hooks';
 import { Form } from '@/components/forms';
 
 export default function LoginForm() {
-	const { phone_number, OTP, isLoading, onChange, onSubmit } = useLogin();
+	const { phone_number, password, isLoading, onChange, onSubmit } = useLogin();
 
 	const config = [
 		{
@@ -16,13 +16,13 @@ export default function LoginForm() {
 			required: true,
 		},
 		{
-			labelText: 'Enter Last OTP sent',
-			labelId: 'OTP',
-			placeholder: '****',
-			type: 'text',
-			value: OTP,
+			labelText: 'Password',
+			labelId: 'password',
+			placeholder: '********',
+			type: 'password',
+			value: password,
 			link: {
-				linkText: 'Resend OTP',
+				linkText: 'Forgot password?',
 				linkUrl: '/password-reset',
 			},
 			required: true,

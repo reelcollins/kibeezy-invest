@@ -12,10 +12,10 @@ export default function useLogin() {
 
 	const [formData, setFormData] = useState({
 		phone_number: '',
-		OTP: '',
+		password: '',
 	});
 
-	const { phone_number, OTP } = formData;
+	const { phone_number, password } = formData;
 
 	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target;
@@ -26,7 +26,7 @@ export default function useLogin() {
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		login({ phone_number, OTP })
+		login({ phone_number, password })
 			.unwrap()
 			.then(() => {
 				dispatch(setAuth());
@@ -40,7 +40,7 @@ export default function useLogin() {
 
 	return {
 		phone_number,
-		OTP,
+		password,
 		isLoading,
 		onChange,
 		onSubmit,

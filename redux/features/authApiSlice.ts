@@ -38,10 +38,10 @@ const authApiSlice = apiSlice.injectEndpoints({
 			}),
 		}),
 		login: builder.mutation({
-			query: ({ phone_number, otp }) => ({
+			query: ({ phone_number, password }) => ({
 				url: '/user/jwt/create/',
 				method: 'POST',
-				body: { phone_number, otp },
+				body: { phone_number, password },
 			}),
 		}),
 		register: builder.mutation({
@@ -49,11 +49,13 @@ const authApiSlice = apiSlice.injectEndpoints({
 				first_name,
 				last_name,
 				phone_number,
+				password,
+				re_password,
 			}) => ({
 				// SHOULD THERE BE A TRAILING SLASH??????????
 				url: '/user/register/',
 				method: 'POST',
-				body: { first_name, last_name, phone_number},
+				body: { first_name, last_name, phone_number, password, re_password},
 			}),
 		}),
 		verify: builder.mutation({
@@ -83,10 +85,10 @@ const authApiSlice = apiSlice.injectEndpoints({
 			}),
 		}),
 		resetPassword: builder.mutation({
-			query: email => ({
+			query: phone_number => ({
 				url: '/users/reset_password/',
 				method: 'POST',
-				body: { email },
+				body: { phone_number },
 			}),
 		}),
 		resetPasswordConfirm: builder.mutation({
