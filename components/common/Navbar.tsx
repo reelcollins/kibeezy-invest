@@ -44,16 +44,23 @@ export default function Navbar() {
 
 	const authLinks = (isMobile: boolean) => (
 		<>
-			<NavLink
+			{/* <NavLink
 				isSelected={isSelected('/dashboard')}
 				isMobile={isMobile}
 				href='/dashboard'
 			>
 				Dashboard
+			</NavLink> */}
+			<NavLink
+				isSelected={isSelected('/home')}
+				isMobile={isMobile}
+				href='/home'
+			>
+				Home
 			</NavLink>
-			<NavLink isMobile={isMobile} onClick={handleLogout}>
+			{/* <NavLink isMobile={isMobile} onClick={handleLogout}>
 				Logout
-			</NavLink>
+			</NavLink> */}
 		</>
 	);
 
@@ -72,13 +79,6 @@ export default function Navbar() {
 				href='/auth/register'
 			>
 				Register
-			</NavLink>
-			<NavLink
-				isSelected={isSelected('/home')}
-				isMobile={isMobile}
-				href='/home'
-			>
-				Home
 			</NavLink>
 		</>
 	);
@@ -150,30 +150,32 @@ export default function Navbar() {
 										<Menu.Item>
 											{({ active }) => (
 											<a
-												href="#"
+												href="/profile"
 												className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 											>
 												Your Profile
 											</a>
 											)}
 										</Menu.Item>
-										<Menu.Item>
+										{/* <Menu.Item>
 											{({ active }) => (
 											<a
-												href="#"
+												href='/'
 												className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 											>
 												Settings
 											</a>
 											)}
-										</Menu.Item>
+										</Menu.Item>      */}
 										<Menu.Item>
 											{({ active }) => (
 											<a
-												href="#"
+												href="/"
+												onClick={handleLogout}
 												className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 											>
-												Sign out
+												Sign Out
+												
 											</a>
 											)}
 										</Menu.Item>
