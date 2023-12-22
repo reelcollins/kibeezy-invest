@@ -1,10 +1,6 @@
 'use client';
 
-
 import { Fragment } from 'react'
-
-
-
 
 function classNames(...classes: string[]): string {
 	return classes.filter(Boolean).join(' ')

@@ -4,7 +4,7 @@ import { useVerifyUserMutation } from '@/redux/features/authApiSlice';
 import { toast } from 'react-toastify';
 
 
-export default function useConfirmOtp(uid: string, token: string) {
+export default function useConfirmOtp(uid: string) {
 	const router = useRouter();
 
 	const [confirmOtp, { isLoading }] =
@@ -25,7 +25,7 @@ export default function useConfirmOtp(uid: string, token: string) {
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		confirmOtp({ uid, token, otp})
+		confirmOtp({ uid, otp})
 			.unwrap()
 			.then(() => {
 				toast.success('Phone number verified');

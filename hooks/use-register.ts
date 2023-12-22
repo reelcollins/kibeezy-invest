@@ -3,6 +3,10 @@ import { useRouter } from 'next/navigation';
 import { useRegisterMutation } from '@/redux/features/authApiSlice';
 import { toast } from 'react-toastify';
 
+interface Query {
+	uid: string; // Assuming 'uid' is a string type
+  }
+
 export default function useRegister() {
 	const router = useRouter();
 	const [register, { isLoading }] = useRegisterMutation();
@@ -30,13 +34,16 @@ export default function useRegister() {
 
 		register({ first_name, last_name, phone_number, otp_method, password, re_password })
 			.unwrap()
-			.then(() => {
+			.then((response) => {
+				const uid = response.data.uid; // Assuming the UID is in the 'data.uid' property
 				toast.success('Account registered');
-				// router.push('/auth/phone');
-			})
-			.catch(() => {
+			
+				// Pass the UID to the OTP page
+				router.push(`/register/?uid=${uid}`);
+			  })
+			  .catch(() => {
 				toast.error('Failed to register');
-			});
+			  });
 	};
 
 	return {

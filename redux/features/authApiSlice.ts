@@ -79,10 +79,10 @@ const authApiSlice = apiSlice.injectEndpoints({
 			}),
 		}),
 		verifyUser: builder.mutation({
-			query: ({ uid, token , otp}) => ({
-				url: '/user/verify/',
+			query: otp => ({
+				url: '/user/verify/<uid>/',
 				method: 'POST',
-				body: { uid, token, otp },
+				body: { otp },
 			}),
 		}),
 		resetPassword: builder.mutation({
