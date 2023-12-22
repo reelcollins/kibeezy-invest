@@ -1,6 +1,6 @@
 import { OtpForm } from '@/components/forms';
 import type { Metadata } from 'next';
-import { useRouter, Query } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 
 export const metadata: Metadata = {
@@ -8,18 +8,18 @@ export const metadata: Metadata = {
 	description: 'NYUMBANI Confirm Phone Number page',
 };
 
-// interface Props {
-// 	params: {
-// 		uid: string;
-// 		token: string;
-// 	};
-// }
+interface Props {
+	params: {
+		uid: string;
+		// token: string;
+	};
+}
 
-// export default function Page({ params: { uid, token } }: Props) {
-export default function Page() {
+export default function Page({ params: { uid } }: Props) {
+// export default function Page() {
 	const router = useRouter();
-	const query: Query = router.query;
-	const { uid } = query;
+	// const query: Query = router.query;
+	// const { uid } = query;
 	return (
 		<div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
 			<div className='sm:mx-auto sm:w-full sm:max-w-sm'>
