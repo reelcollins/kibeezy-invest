@@ -11,12 +11,13 @@ export default function useRegister() {
 		first_name: '',
 		last_name: '',
 		phone_number: '',
+		otp_method: '',
 		password: '',
 		re_password: '',
 
 	});
 
-	const { first_name, last_name, phone_number, password, re_password } = formData;
+	const { first_name, last_name, phone_number, otp_method, password, re_password } = formData;
 
 	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target;
@@ -27,7 +28,7 @@ export default function useRegister() {
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		register({ first_name, last_name, phone_number, password, re_password })
+		register({ first_name, last_name, phone_number, otp_method, password, re_password })
 			.unwrap()
 			.then(() => {
 				toast.success('Account registered');
@@ -42,6 +43,7 @@ export default function useRegister() {
 		first_name,
 		last_name,
 		phone_number,
+		otp_method,
 		password,
 		re_password,
 		isLoading,

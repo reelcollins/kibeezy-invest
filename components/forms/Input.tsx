@@ -13,6 +13,7 @@ interface Props {
 		linkUrl: string;
 	};
 	required?: boolean;
+	options?: { value: string; label: string }[];
 }
 
 export default function Input({
@@ -24,7 +25,34 @@ export default function Input({
 	children,
 	link,
 	required = false,
+	options,
 }: Props) {
+	if (type === 'radio') {
+		return (
+		  <div className="mt-2">
+			<label
+					htmlFor={labelId}
+					className='block text-sm font-medium leading-6 text-gray-900'
+			>
+				{children}
+			</label>
+			{options?.map((option) => (
+			  <div key={option.value} className="flex items-center">
+				<input
+				  type="radio"
+				//   className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+				  id={`${labelId}-${option.value}`}
+				  name={labelId} // Ensure all radio buttons have the same name
+				  value={option.value}
+				  checked={value === option.value}
+				  onChange={onChange}
+				/>
+				<label htmlFor={`${labelId}-${option.value}`} className="ml-2">{option.label}</label>
+			  </div>
+			))}
+		  </div>
+		);
+	  }
 	return (
 		<div>
 			<div className='flex justify-between align-center'>

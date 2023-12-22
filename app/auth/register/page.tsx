@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { RegisterForm } from '@/components/forms';
 import { SocialButtons } from '@/components/common';
 import type { Metadata } from 'next';
+import { RadioButton } from '@/components/inputs';
+
 
 export const metadata: Metadata = {
 	title: 'NYUMBANI | Register',
@@ -25,6 +27,8 @@ export default function Page() {
 			<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
 				<RegisterForm />
 				{/* <SocialButtons /> */}
+				<RadioButton/>
+				
 
 				<p className='mt-10 text-center text-sm text-gray-500'>
 					Already have an account?{' '}
