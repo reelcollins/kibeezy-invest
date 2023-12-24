@@ -7,9 +7,16 @@ import { useMemo, useState } from 'react';
 import styles from '@/styles/Map.module.css';
 // -1.1012990914383662, 37.010998481591166
 
-export default function Page() {
-    const [lat, setLat] = useState(-1.1012990914383662);
-    const [lng, setLng] = useState(37.010998481591166);
+
+interface PropertiesMapProps {
+    lat: number;
+    lng: number;
+      
+    }
+
+export default function Page({lat, lng}: PropertiesMapProps) {
+    // const [lat, setLat] = useState(-1.1012990914383662);
+    // const [lng, setLng] = useState(37.010998481591166);
 
     const libraries = useMemo(() => ['places'], []);
     const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
@@ -36,7 +43,7 @@ export default function Page() {
             <div className={styles.homeWrapper}>
                 <GoogleMap
                     options={mapOptions}
-                    zoom={14}
+                    zoom={50}
                     center={mapCenter}
                     mapTypeId={google.maps.MapTypeId.ROADMAP}
                     mapContainerStyle={{ width: '800px', height: '360px' }}
