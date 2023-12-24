@@ -35,6 +35,7 @@ interface ItemType {
   sale_type: string;
   home_type: string;
   description: string;
+  youtube: string;
 
 }
 
@@ -103,7 +104,7 @@ export default async function PropertySingle({ params }: { params: { id: number 
             <GridItem colSpan={{ base: 6, sm: 3 }}>
               <Text>YouTube</Text>
                 <TextContentBox title="Video Walkthrough">
-                    <PropertyYoutubeEmbed coverVideo={youtube}/>
+                    <PropertyYoutubeEmbed youtube={youtube}/>
                 </TextContentBox>
                 
             </GridItem>
