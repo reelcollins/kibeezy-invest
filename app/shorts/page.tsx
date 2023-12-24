@@ -28,7 +28,7 @@ const Shorts = () => {
         youtube,
     } = property;
 
-    const ratio = (315 / 560) * 100;
+    const ratio = (382 / 678) * 100;
     return (
         <div>
             <TextField.Root>
