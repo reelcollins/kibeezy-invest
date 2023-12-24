@@ -38,9 +38,9 @@ interface ItemType {
 
 }
 
-export default async function PropertySingle() {
+export default async function PropertySingle({ params }: { params: { id: number } }) {
   const data = await fetchdetails();
-  const targetProperty = data.listings.find((item: ItemType) => item.id );
+  const targetProperty = data.listings.find((item: ItemType) => item.id === params.id);
   
   const {
     id,
