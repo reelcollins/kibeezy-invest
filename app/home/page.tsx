@@ -136,15 +136,3 @@ export default async function Home() {
 
 
 
-
-   
-
-
-
-
-// export async function getServerSideProps() {
-//     const properties = await getProperties();
-//     return (
-//         { properties: properties }
-//     )
-// }

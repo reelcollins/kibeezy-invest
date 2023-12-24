@@ -9,7 +9,7 @@ import { TbMapPin } from "react-icons/tb"
 
 async function fetchdetails() {
   const response = await fetch(
-    "https://abc.nyumbani.xyz/api/listing/get-listings"
+    "https://abc.nyumbani.xyz/api/listing/get-listings", { cache: 'no-store'}
   );
   if (response.ok) {
     const responseBody = await response.json();
