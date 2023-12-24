@@ -14,18 +14,19 @@ const PropertyYoutubeEmbed = ({ coverVideo }: PropertyYoutubeEmbedProps) => {
     return (
         // <Box paddingTop={`${ratio}%`} position="relative" height="0" overflow="hidden" frameBorder="0">
         <Box paddingTop={`${ratio}%`} position="relative" height="0" overflow="hidden">
-            <iframe 
+            // <iframe 
             style={{position:"absolute", top: 0, bottom: 0}}
             width="100%"
             height="100%"
-            src={`https://www.youtube.com/embed/${coverVideo}`}
+            src={`https://www.youtube.com/embed/${coverVideo}`}           
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoplay=1; muted=1"/>
 
-            
-
+           
         </Box>
       
   )
 }
 
 export default PropertyYoutubeEmbed
+
+

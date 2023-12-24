@@ -19,13 +19,13 @@ import { FaListAlt, FaSearchLocation  } from "react-icons/fa";
 const Shorts = () => {
     const property = {
         externalID: "ABC123",
-        coverVideo: "1Kb6kYUCEWo?si=pol1LELZXbaehWiT",
+        youtube: "4SoXO9YWYBg",
     };
     
     
     const { 
         externalID,  
-        coverVideo,
+        youtube,
     } = property;
 
     const ratio = (315 / 560) * 100;
@@ -44,7 +44,7 @@ const Shorts = () => {
                 style={{position:"absolute", top: 0, bottom: 0}}
                 width="100%"
                 height="100%"
-                src={`https://www.youtube.com/embed/${coverVideo}`}
+                src={`https://www.youtube.com/embed/${youtube}`}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoplay=1; muted=1"/>
 
             </Box>

@@ -57,7 +57,7 @@ export default async function PropertySingle({ params }: { params: { id: number 
     sale_type,
     home_type,
     description,
-    // ...other properties
+    youtube,
   } = targetProperty;
 
   return (
@@ -102,9 +102,9 @@ export default async function PropertySingle({ params }: { params: { id: number 
             </GridItem>
             <GridItem colSpan={{ base: 6, sm: 3 }}>
               <Text>YouTube</Text>
-                {/* <TextContentBox title="Video Walkthrough">
-                    <PropertyYoutubeEmbed coverVideo={coverVideo}/>
-                </TextContentBox> */}
+                <TextContentBox title="Video Walkthrough">
+                    <PropertyYoutubeEmbed coverVideo={youtube}/>
+                </TextContentBox>
                 
             </GridItem>
 
