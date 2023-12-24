@@ -5,11 +5,11 @@ import { useLoadScript, GoogleMap, MarkerF, CircleF } from '@react-google-maps/a
 import type { NextPage } from 'next';
 import { useMemo, useState } from 'react';
 import styles from '@/styles/Map.module.css';
-
+// -1.1012990914383662, 37.010998481591166
 
 export default function Page() {
-    const [lat, setLat] = useState(-1.101811785859803);
-    const [lng, setLng] = useState(37.014391469570306);
+    const [lat, setLat] = useState(-1.1012990914383662);
+    const [lng, setLng] = useState(37.010998481591166);
 
     const libraries = useMemo(() => ['places'], []);
     const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
