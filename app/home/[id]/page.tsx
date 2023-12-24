@@ -39,9 +39,9 @@ interface ItemType {
 
 }
 
-export default async function PropertySingle({ params }: { params: { slug: string } }) {
+export default async function PropertySingle({ params }: { params: { id: string } }) {
   const data = await fetchdetails();
-  const targetProperty = data.listings.find((item: ItemType) => item.slug === 5678 );
+  const targetProperty = data.listings.find((item: ItemType) => item.slug === parseInt(params.id) );
   
   const {
     id,

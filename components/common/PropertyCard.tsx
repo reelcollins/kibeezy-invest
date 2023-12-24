@@ -47,7 +47,7 @@ export default function PropertyCard({
   
 	return (
         <Box marginBottom="4rem" backgroundColor="#fff">
-            <Link href={`/home/${slug}`}>
+            <Link href={`/home/${id}`}>
                 <Box
                 backgroundImage = {`url("${main_photo}")`}
                 height="250px"
