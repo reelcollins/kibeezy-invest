@@ -8,15 +8,16 @@ import styles from '@/styles/Map.module.css';
 // -1.1012990914383662, 37.010998481591166
 
 
-interface PropertiesMapProps {
-    lat: number;
-    lng: number;
+// interface PropertiesMapProps {
+//     lat: number;
+//     lng: number;
       
-    }
+//     }
 
-export default function Page({lat, lng}: PropertiesMapProps) {
-    // const [lat, setLat] = useState(-1.1012990914383662);
-    // const [lng, setLng] = useState(37.010998481591166);
+// export default function Page({lat, lng}: PropertiesMapProps) {
+export default function Page() {
+    const [lat, setLat] = useState(-1.1012990914383662);
+    const [lng, setLng] = useState(37.010998481591166);
     // const [storedLat, setStoredLat] = useState<number>(lat);
     // const [storedLng, setStoredLng] = useState<number>(lng);
     // console.log(storedLat)

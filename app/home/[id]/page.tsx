@@ -122,7 +122,8 @@ export default async function PropertySingle({ params }: { params: { id: number 
 
             <GridItem colSpan={{ base: 6, sm: 3 }}>
                 <TextContentBox title="Map">
-                    <PropertiesMap lat={lat} lng={lng}/>
+                  <PropertiesMap />
+                    {/* <PropertiesMap lat={lat} lng={lng}/> */}
                 </TextContentBox>
                 
             </GridItem>
