@@ -37,7 +37,7 @@ export const usePropertyFormat = () => {
     const externalID = 'ABC123';
     const photos = ['url/to/photo1.jpg', 'url/to/photo2.jpg'];
     const description = 'This is a stunning apartment with great amenities.';
-    const coverVideo = 'url/to/cover/video.mp4';
+    const youtube = 'url/to/cover/video.mp4';
     const panorama = 'url/to/panorama/photo.jpg';
     const amenities = ['Swimming Pool', 'Gym', 'Parking'];
     const furnished = true;
@@ -56,7 +56,7 @@ export const usePropertyFormat = () => {
         externalID,
         photos,
         description,
-        coverVideo,
+        youtube,
         panorama,
         amenities,
         furnished
