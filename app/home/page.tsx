@@ -33,7 +33,7 @@ import { MdSmartDisplay } from "react-icons/md";
 
 async function fetchdetails() {
     const response = await fetch(
-      "https://abc.nyumbani.xyz/api/listing/get-listings", { cache: 'no-store'}
+      "https://abc.nyumbani.xyz/api/listing/get-listings"
     );
     if (response.ok) {
       const responseBody = await response.json();
