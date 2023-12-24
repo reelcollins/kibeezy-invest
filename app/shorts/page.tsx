@@ -42,8 +42,8 @@ const Shorts = () => {
             <Box paddingTop={`${ratio}%`} position="relative" height="0" overflow="hidden" >
                 <iframe 
                 style={{position:"absolute", top: 0, bottom: 0}}
-                width="100%"
-                height="100%"
+                width="382"
+                height="678"
                 src={`https://www.youtube.com/embed/${youtube}`}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoplay=1; muted=1"/>
 
