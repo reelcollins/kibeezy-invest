@@ -17,9 +17,15 @@ interface PropertiesMapProps {
 export default function Page({lat, lng}: PropertiesMapProps) {
     // const [lat, setLat] = useState(-1.1012990914383662);
     // const [lng, setLng] = useState(37.010998481591166);
+    const [storedLat, setStoredLat] = useState<number>(lat);
+    const [storedLng, setStoredLng] = useState<number>(lng);
+  
 
     const libraries = useMemo(() => ['places'], []);
-    const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
+    // const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
+
+    const mapCenter = useMemo(() => ({ lat: storedLat, lng: storedLng }), [storedLat, storedLng]);
+
 
     const mapOptions = useMemo<google.maps.MapOptions>(
         () => ({
