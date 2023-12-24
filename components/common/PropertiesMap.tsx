@@ -43,7 +43,7 @@ export default function Page({lat, lng}: PropertiesMapProps) {
             <div className={styles.homeWrapper}>
                 <GoogleMap
                     options={mapOptions}
-                    zoom={50}
+                    zoom={14}
                     center={mapCenter}
                     mapTypeId={google.maps.MapTypeId.ROADMAP}
                     mapContainerStyle={{ width: '800px', height: '360px' }}
