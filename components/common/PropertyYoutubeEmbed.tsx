@@ -19,7 +19,7 @@ const PropertyYoutubeEmbed = ({ youtube }: PropertyYoutubeEmbedProps) => {
             width="382"
             height="678"
             src={`https://www.youtube.com/embed/${youtube}`}           
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoplay=1; muted=1"/>
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"/>
 
            {/* <iframe width="382" height="678" src="https://www.youtube.com/embed/4SoXO9YWYBg" title="Blessed Courts Ground Floor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
         </Box>
