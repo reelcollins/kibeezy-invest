@@ -3,11 +3,11 @@
 import { Box, Text } from "@chakra-ui/react"
 
 interface PropertyYoutubeEmbedProps {
-    coverVideo: string;
+  youtube: string;
     
   }
   
-const PropertyYoutubeEmbed = ({ coverVideo }: PropertyYoutubeEmbedProps) => {
+const PropertyYoutubeEmbed = ({ youtube }: PropertyYoutubeEmbedProps) => {
 // const PropertyYoutubeEmbed = () => {
 
     const ratio = (315 / 560) * 100;
@@ -18,7 +18,7 @@ const PropertyYoutubeEmbed = ({ coverVideo }: PropertyYoutubeEmbedProps) => {
             style={{position:"absolute", top: 0, bottom: 0}}
             width="100%"
             height="100%"
-            src={`https://www.youtube.com/embed/${coverVideo}`}           
+            src={`https://www.youtube.com/embed/${youtube}`}           
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoplay=1; muted=1"/>
 
            
