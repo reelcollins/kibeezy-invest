@@ -36,8 +36,8 @@ interface ItemType {
   home_type: string;
   description: string;
   youtube: string;
-  lat: number;
-  lng: number;
+  latt: number;
+  lngg: number;
 
 }
 
@@ -61,8 +61,8 @@ export default async function PropertySingle({ params }: { params: { id: number 
     home_type,
     description,
     youtube,
-    lat,
-    lng,
+    latt,
+    lngg,
   } = targetProperty;
 
   return (
@@ -122,8 +122,8 @@ export default async function PropertySingle({ params }: { params: { id: number 
 
             <GridItem colSpan={{ base: 6, sm: 3 }}>
                 <TextContentBox title="Map">
-                  <PropertiesMap />
-                    {/* <PropertiesMap lat={lat} lng={lng}/> */}
+
+                    <PropertiesMap latt={latt} lngg={lngg}/>
                 </TextContentBox>
                 
             </GridItem>
