@@ -5,7 +5,7 @@ import { PropertyMatterPortEmbed, PropertyStats, PropertyThumbnailSlider, Proper
 import { Badge, Box, Flex, Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/react"
 import React from "react"
 import { TbMapPin } from "react-icons/tb"
-
+import { useSearchParams } from 'next/navigation'
 
 async function fetchdetails() {
   const response = await fetch(
@@ -41,9 +41,14 @@ interface ItemType {
 
 }
 
-export default async function PropertySingle({ params }: { params: { id: number } }) {
+// export default async function PropertySingle({ params }: { params: { id: number } }) {
+export default async function PropertySingle() {
+  const searchParams = useSearchParams()
+  console.log(searchParams.get('id'))
+
   const data = await fetchdetails();
-  const targetProperty = data.listings.find((item: ItemType) => item.id = params.id);
+  // const targetProperty = data.listings.find((item: ItemType) => item.id = params.id);
+  const targetProperty = data.listings.find((item: ItemType) => item.id);
   
   const {
     id,
