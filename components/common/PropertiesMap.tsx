@@ -25,7 +25,7 @@ export default function Page({latt, lngg}: PropertiesMapProps) {
   
 
     const libraries = useMemo(() => ['places'], []);
-    const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
+    const mapCenter = useMemo(() => ({ lat: +lat, lng: +lng }), [lat, lng]);
 
     // const mapCenter = useMemo(() => ({ lat: storedLat, lng: storedLng }), [storedLat, storedLng]);
 
