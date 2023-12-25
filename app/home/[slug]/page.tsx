@@ -71,7 +71,7 @@ export default async function PropertySingle() {
     youtube,
     latt,
     lngg,
-  } = data;
+  } = data.listing;
 
   return (
     <div>
