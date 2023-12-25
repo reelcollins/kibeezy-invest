@@ -7,9 +7,9 @@ import React from "react"
 import { TbMapPin } from "react-icons/tb"
 import { useSearchParams } from 'next/navigation'
 
-async function fetchdetails() {
+async function fetchdetails(slugg : number) {
   const response = await fetch(
-    "https://abc.nyumbani.xyz/api/listing/get-listings"
+    `https://abc.nyumbani.xyz/api/listing/get-listings?slug=${slugg}`
   );
   if (response.ok) {
     const responseBody = await response.json();
@@ -44,11 +44,14 @@ interface ItemType {
 // export default async function PropertySingle({ params }: { params: { id: number } }) {
 export default async function PropertySingle() {
   const searchParams = useSearchParams()
-  console.log(searchParams.get('id'))
+  console.log(searchParams.get('slug'));
+  const slugg = searchParams.get('slug') ?? '';
 
-  const data = await fetchdetails();
+  const data = await fetchdetails(slugg);
+
+  // const targetProperty = data.listings.find((item: ItemType) => item.slug === slug);
   // const targetProperty = data.listings.find((item: ItemType) => item.id = params.id);
-  const targetProperty = data.listings.find((item: ItemType) => item.id);
+  // const targetProperty = data.listings.find((item: ItemType) => item.id);
   
   const {
     id,
@@ -68,7 +71,7 @@ export default async function PropertySingle() {
     youtube,
     latt,
     lngg,
-  } = targetProperty;
+  } = data;
 
   return (
     <div>
