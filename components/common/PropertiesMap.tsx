@@ -16,8 +16,8 @@ interface PropertiesMapProps {
 
 export default function Page({latt, lngg}: PropertiesMapProps) {
 // export default function Page() {
-    const [lat, setLat] = useState(latt);
-    const [lng, setLng] = useState(lngg);
+    const [lat, setLat] = useState<number>(latt);
+    const [lng, setLng] = useState<number>(lngg);
     // const [storedLat, setStoredLat] = useState<number>(lat);
     // const [storedLng, setStoredLng] = useState<number>(lng);
     // console.log(storedLat)
