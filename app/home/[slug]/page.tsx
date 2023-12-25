@@ -9,7 +9,7 @@ import { useSearchParams } from 'next/navigation'
 
 async function fetchdetails(slugg : string) {
   const response = await fetch(
-    `https://abc.nyumbani.xyz/api/listing/get-listings/${slugg}`
+    `https://abc.nyumbani.xyz/api/listing/detail?slug=${slugg}`
   );
   if (response.ok) {
     const responseBody = await response.json();
