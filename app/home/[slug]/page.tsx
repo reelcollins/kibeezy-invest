@@ -7,9 +7,9 @@ import React from "react"
 import { TbMapPin } from "react-icons/tb"
 import { useSearchParams } from 'next/navigation'
 
-async function fetchdetails(slugg : number) {
+async function fetchdetails(slugg : string) {
   const response = await fetch(
-    `https://abc.nyumbani.xyz/api/listing/get-listings?slug=${slugg}`
+    `https://abc.nyumbani.xyz/api/listing/get-listings/${slugg}`
   );
   if (response.ok) {
     const responseBody = await response.json();
