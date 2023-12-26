@@ -2,18 +2,18 @@
 
 import { Box, Center, Divider, Flex, Text } from "@chakra-ui/react";
 import React from "react";
-import { TbBath, TbBed, TbRuler } from "react-icons/tb";
-
+import { TbBath, TbBed } from "react-icons/tb";
+import {  CiLineHeight } from "react-icons/ci";
 interface PropertyStatsProps {
     bedrooms: number; // Number of rooms
     bathrooms: number; // Number of bathrooms
     price: string | number; // Price of the property (string for formatted values)
-    slug: string | number; // Square footage of the property (string for formatted values)
+    floor: string | number; // Square footage of the property (string for formatted values)
   }
   
     
 
-const PropertyStats = ({ bedrooms, bathrooms, price, slug }: PropertyStatsProps ) => {
+const PropertyStats = ({ bedrooms, bathrooms, price, floor }: PropertyStatsProps ) => {
     return (
         <>
             <Box backgroundColor="white" padding="1.5rem" marginBottom="1rem">
@@ -21,7 +21,7 @@ const PropertyStats = ({ bedrooms, bathrooms, price, slug }: PropertyStatsProps 
                 fontSize="xl" color="gray.500" fontWeight="light" gap="1rem" justifyContent="space-around" alignItems="center">
 
                     <Flex flexDirection="column" justifyContent="center" alignItems="center" gap="0.3rem">
-                        <Text>BEDS</Text>
+                        <Text>BEDROOMS</Text>
                         <Flex alignItems="center" gap="0.5rem">
                             <TbBed/>
                             {bedrooms}
@@ -35,7 +35,7 @@ const PropertyStats = ({ bedrooms, bathrooms, price, slug }: PropertyStatsProps 
 
 
                     <Flex flexDirection="column" justifyContent="center" alignItems="center" gap="0.3rem">
-                        <Text>BATHS</Text>
+                        <Text>BATHROOMS</Text>
                         <Flex alignItems="center" gap="0.5rem">
                             <TbBath/>
                             {bathrooms}
@@ -49,11 +49,11 @@ const PropertyStats = ({ bedrooms, bathrooms, price, slug }: PropertyStatsProps 
 
 
                     <Flex flexDirection="column" justifyContent="center" alignItems="center" gap="0.3rem">
-                        <Text>SIZE</Text>
+                        <Text>FLOOR</Text>
                         <Flex alignItems="center" gap="0.5rem">
-                            <TbRuler/>
-                            {slug}
-                            <sup>m2</sup>
+                            <CiLineHeight/>
+                            {floor}
+                            
                         </Flex>
                     </Flex>
 

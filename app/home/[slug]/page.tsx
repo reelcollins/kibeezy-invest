@@ -1,7 +1,6 @@
 "use client";
 
 import { PropertyMatterPortEmbed, PropertyStats, PropertyThumbnailSlider, PropertyYoutubeEmbed, TextContentBox, PropertiesMap } from "@/components/common"
-// import { usePropertyFormat } from "@/hooks/use-property-format"
 import { Badge, Box, Flex, Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/react"
 import React from "react"
 import { TbMapPin } from "react-icons/tb"
@@ -38,20 +37,15 @@ interface ItemType {
   youtube: string;
   latt: number;
   lngg: number;
-
+  amenities: string[];
 }
 
-// export default async function PropertySingle({ params }: { params: { id: number } }) {
 export default async function PropertySingle() {
   const searchParams = useSearchParams()
   console.log(searchParams.get('slug'));
   const slugg = searchParams.get('slug') ?? '';
 
   const data = await fetchdetails(slugg);
-
-  // const targetProperty = data.listings.find((item: ItemType) => item.slug === slug);
-  // const targetProperty = data.listings.find((item: ItemType) => item.id = params.id);
-  // const targetProperty = data.listings.find((item: ItemType) => item.id);
   
   const {
     id,
@@ -71,6 +65,8 @@ export default async function PropertySingle() {
     youtube,
     latt,
     lngg,
+    floor,
+    amenities,
   } = data.listing;
 
   return (
@@ -97,19 +93,18 @@ export default async function PropertySingle() {
             </GridItem>
 
             <GridItem colSpan={{ base: 6, sm: 3}}>
-                <PropertyStats bedrooms={bedrooms} bathrooms={bathrooms} price={price} slug={slug}/>
+                <PropertyStats bedrooms={bedrooms} bathrooms={bathrooms} price={price} floor={floor}/>
                 
                 <TextContentBox title="Description">
                     {/*<Text fontWeight="light" color="gray.600" fontSize="1rem" noOfLines="4">{description}</Text>*/}
                     <Text fontWeight="light" color="gray.600" fontSize="1rem">{description}</Text>
                 </TextContentBox>
                 <TextContentBox title="Amenities">
-                    {/* <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
+                    <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
                     {amenities.length ? amenities.map((item) => (
                         <Text key={item}>{item}</Text>
                     )) : "Please contact us for more info"}
-                    </SimpleGrid> */}
-                    <Text>Amenities</Text>
+                    </SimpleGrid>
 
                 </TextContentBox>
             </GridItem>
