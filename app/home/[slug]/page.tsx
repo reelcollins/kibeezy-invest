@@ -114,7 +114,6 @@ export default async function PropertySingle() {
                 </TextContentBox>
             </GridItem>
             <GridItem colSpan={{ base: 6, sm: 3 }}>
-              <Text>YouTube</Text>
                 <TextContentBox title="Video Walkthrough">
                     <PropertyYoutubeEmbed youtube={youtube}/>
                 </TextContentBox>
