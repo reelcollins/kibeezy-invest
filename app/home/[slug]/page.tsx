@@ -125,12 +125,6 @@ export default async function PropertySingle() {
                 </TextContentBox>
                 
             </GridItem>
-            <GridItem colSpan={{ base: 6, sm: 3 }}>
-                <TextContentBox title="Get In Touch">
-                    <Text>{contacts}</Text>
-                </TextContentBox>
-                
-            </GridItem>
 
             {/* <GridItem colSpan={{ base: 6, sm: 3 }}>
                 <TextContentBox title="3D Virtual Walkthrough">

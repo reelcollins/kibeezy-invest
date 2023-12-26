@@ -10,7 +10,7 @@ const TextContentBox = ({ title, children }: TextContentBoxProps) => {
     return(
         <>
             <Box backgroundColor="white" padding="1.5" marginBottom="1rem">
-                <Text fontSize="1.5" fontWeight="light" color="gray.600" marginBottom="0.5rem">
+                <Text fontSize="10" fontWeight="light" color="gray.600" marginBottom="0.5rem">
                     {title}
                 </Text>
 
