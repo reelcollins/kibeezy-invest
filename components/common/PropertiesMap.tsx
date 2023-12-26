@@ -2,10 +2,9 @@
 
 import React from 'react'
 import { useLoadScript, GoogleMap, MarkerF, CircleF } from '@react-google-maps/api';
-import type { NextPage } from 'next';
 import { useMemo, useState } from 'react';
 import styles from '@/styles/Map.module.css';
-// -1.1012990914383662, 37.010998481591166
+
 
 
 interface PropertiesMapProps {
@@ -15,21 +14,12 @@ interface PropertiesMapProps {
     }
 
 export default function Page({latt, lngg}: PropertiesMapProps) {
-// export default function Page() {
     const [lat, setLat] = useState<number>(latt);
     const [lng, setLng] = useState<number>(lngg);
-    // const [storedLat, setStoredLat] = useState<number>(lat);
-    // const [storedLng, setStoredLng] = useState<number>(lng);
-    // console.log(storedLat)
-    // console.log(storedLng)
-  
+
 
     const libraries = useMemo(() => ['places'], []);
     const mapCenter = useMemo(() => ({ lat: +lat, lng: +lng }), [lat, lng]);
-
-    // const mapCenter = useMemo(() => ({ lat: storedLat, lng: storedLng }), [storedLat, storedLng]);
-
-
 
     const mapOptions = useMemo<google.maps.MapOptions>(
         () => ({
@@ -69,8 +59,8 @@ export default function Page({latt, lngg}: PropertiesMapProps) {
                             radius={radius}
                             onLoad={() => console.log('Circle Load...')}
                             options={{
-                            fillColor: radius > 1000 ? 'red' : 'green',
-                            strokeColor: radius > 1000 ? 'red' : 'green',
+                            fillColor: radius > 100 ? 'red' : 'green',
+                            strokeColor: radius > 100 ? 'red' : 'green',
                             strokeOpacity: 0.8,
                             }}
                         />

@@ -38,7 +38,7 @@ export default function Navbar() {
 		<>
 			<NavLink
 				isSelected={isSelected('/home')}
-				// isMobile={isMobile}
+				isMobile={isMobile}
 				href='/home'
 			>
 				Home
@@ -51,14 +51,14 @@ export default function Navbar() {
 		<>
 			<NavLink
 				isSelected={isSelected('/auth/login')}
-				// isMobile={isMobile}
+				isMobile={isMobile}
 				href='/auth/login'
 			>
 				Login
 			</NavLink>
 			<NavLink
 				isSelected={isSelected('/auth/register')}
-				// isMobile={isMobile}
+				isMobile={isMobile}
 				href='/auth/register'
 			>
 				Register
