@@ -43,7 +43,7 @@ export default function Page({latt, lngg}: PropertiesMapProps) {
             <div className={styles.homeWrapper}>
                 <GoogleMap
                     options={mapOptions}
-                    zoom={25}
+                    zoom={20}
                     center={mapCenter}
                     mapTypeId={google.maps.MapTypeId.ROADMAP}
                     mapContainerStyle={{ width: '800px', height: '360px' }}
@@ -51,7 +51,7 @@ export default function Page({latt, lngg}: PropertiesMapProps) {
                 >
                     <MarkerF position={mapCenter} onLoad={() => console.log('Marker Loaded')} />
 
-                    {[1000, 2500].map((radius, idx) => {
+                    {[100, 2500].map((radius, idx) => {
                         return (
                         <CircleF
                             key={idx}
