@@ -38,6 +38,7 @@ interface ItemType {
   latt: number;
   lngg: number;
   amenities: string[];
+  contacts: string;
 }
 
 export default async function PropertySingle() {
@@ -67,6 +68,7 @@ export default async function PropertySingle() {
     lngg,
     floor,
     amenities,
+    contacts,
   } = data.listing;
 
   return (
@@ -94,6 +96,9 @@ export default async function PropertySingle() {
 
             <GridItem colSpan={{ base: 6, sm: 3}}>
                 <PropertyStats bedrooms={bedrooms} bathrooms={bathrooms} price={price} floor={floor}/>
+                <TextContentBox title="Get In Touch">
+                    <Text>{contacts}</Text>
+                </TextContentBox>
                 
                 <TextContentBox title="Description">
                     {/*<Text fontWeight="light" color="gray.600" fontSize="1rem" noOfLines="4">{description}</Text>*/}
@@ -119,6 +124,12 @@ export default async function PropertySingle() {
                 </TextContentBox>
                 
             </GridItem>
+            <GridItem colSpan={{ base: 6, sm: 3 }}>
+                <TextContentBox title="Get In Touch">
+                    <Text>{contacts}</Text>
+                </TextContentBox>
+                
+            </GridItem>
 
             {/* <GridItem colSpan={{ base: 6, sm: 3 }}>
                 <TextContentBox title="3D Virtual Walkthrough">
@@ -126,6 +137,7 @@ export default async function PropertySingle() {
                 </TextContentBox>
                 
             </GridItem> */}
+            
 
             <GridItem colSpan={{ base: 6, sm: 3 }}>
                 <TextContentBox title="Map">

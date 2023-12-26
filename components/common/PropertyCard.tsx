@@ -5,6 +5,7 @@ import { Badge, Box, Flex, HStack, Text } from "@chakra-ui/react";
 import {TbBed, TbBath, TbRuler} from "react-icons/tb";
 import Link from 'next/link';
 import Image from "next/image";
+import {  CiLineHeight } from "react-icons/ci";
 
 interface Props {
     id: number;
@@ -27,6 +28,7 @@ interface Props {
     // photo_3: string;
     // is_published: string;
     // date_created: number;
+    floor: string | number;
   }
 
 
@@ -42,6 +44,8 @@ export default function PropertyCard({
     sale_type,
     slug,
     id,
+    floor,
+
 
     }: Props) {
   
@@ -93,8 +97,8 @@ export default function PropertyCard({
                             {bathrooms}
                         </Flex>
                         <Flex alignItems='center' gap="0.3rem">
-                            <TbRuler/>
-                            {slug}
+                            <CiLineHeight/>
+                            {floor}
                         </Flex>
                     </HStack>
                 </Box>
