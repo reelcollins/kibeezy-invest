@@ -15,13 +15,14 @@ export default function useRegister() {
 		first_name: '',
 		last_name: '',
 		phone_number: '',
-		otp_method: '',
+		// otp_method: '',
 		password: '',
 		re_password: '',
 
 	});
 
-	const { first_name, last_name, phone_number, otp_method, password, re_password } = formData;
+	// const { first_name, last_name, phone_number, otp_method, password, re_password } = formData;
+	const { first_name, last_name, phone_number, password, re_password } = formData;
 
 	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target;
@@ -31,17 +32,18 @@ export default function useRegister() {
 
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-
-		register({ first_name, last_name, phone_number, otp_method, password, re_password })
+			register({ first_name, last_name, phone_number, password, re_password })	
+		// register({ first_name, last_name, phone_number, otp_method, password, re_password })
 			.unwrap()
-			.then((response) => {
+			.then(() => {
 				// const uid = response.data.uid; // Assuming the UID is in the 'data.uid' property
 				const uid = 123;
 				toast.success('Account registered');
+				router.push(`/home`);
 				
 			
 				// Pass the UID to the OTP page
-				router.push(`/auth/register/{uid}`);
+				// router.push(`/auth/register/{uid}`);
 			  })
 			  .catch(() => {
 				toast.error('Failed to register');
@@ -52,7 +54,7 @@ export default function useRegister() {
 		first_name,
 		last_name,
 		phone_number,
-		otp_method,
+		// otp_method,
 		password,
 		re_password,
 		isLoading,

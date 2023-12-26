@@ -10,7 +10,7 @@ export default function RegisterForm() {
 		phone_number,
 		password,
 		re_password,
-		otp_method,
+		// otp_method,
 		isLoading,
 		onChange,
 		onSubmit,
@@ -41,19 +41,19 @@ export default function RegisterForm() {
 			value: phone_number,
 			required: true,
 		},
-		{
-			labelText: 'Verify Number',
-			labelId: 'otp_method',
-			type: 'radio',
-			options: [
-				{ value: 'whatsapp', label: 'WhatsApp' },
-				{ value: 'text', label: 'Text' },
-			  ],
-			  placeholder: '',
+		// {
+		// 	labelText: 'Verify Number',
+		// 	labelId: 'otp_method',
+		// 	type: 'radio',
+		// 	options: [
+		// 		{ value: 'whatsapp', label: 'WhatsApp' },
+		// 		{ value: 'text', label: 'Text' },
+		// 	  ],
+		// 	  placeholder: '',
 			
-			value: otp_method,
-			required: true,
-		},
+		// 	value: otp_method,
+		// 	required: true,
+		// },
 		{
 			labelText: 'Password',
 			labelId: 'password',

@@ -54,14 +54,15 @@ const authApiSlice = apiSlice.injectEndpoints({
 				first_name,
 				last_name,
 				phone_number,
-				otp_method,
+				// otp_method,
 				password,
 				re_password,
 			}) => ({
 				// SHOULD THERE BE A TRAILING SLASH??????????
 				url: '/user/register/',
 				method: 'POST',
-				body: { first_name, last_name, phone_number, otp_method, password, re_password},
+				// body: { first_name, last_name, phone_number, otp_method, password, re_password},
+				body: { first_name, last_name, phone_number, password, re_password},
 			}),
 		}),
 		verify: builder.mutation({
