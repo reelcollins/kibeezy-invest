@@ -113,7 +113,7 @@ export default async function Home() {
                 </Box>
             </Box>
 
-            <Box
+            {/* <Box
                 className="fixed left-0 right-0 flex justify-center bottom-5"
                 >
                 <Box className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-2">
@@ -127,7 +127,7 @@ export default async function Home() {
                     <MdSmartDisplay />
                     </Link>
                 </Box>
-            </Box>
+            </Box> */}
 
 
         </div>
