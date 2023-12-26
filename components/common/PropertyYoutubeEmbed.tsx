@@ -10,7 +10,7 @@ interface PropertyYoutubeEmbedProps {
 const PropertyYoutubeEmbed = ({ youtube }: PropertyYoutubeEmbedProps) => {
 // const PropertyYoutubeEmbed = () => {
 
-    const ratio = (678 / 382);
+    const ratio = (678 / 382) * 50;
     return (
         // <Box paddingTop={`${ratio}%`} position="relative" height="0" overflow="hidden" frameBorder="0">
         <Box paddingTop={`${ratio}%`} position="relative" height="0" overflow="hidden">
