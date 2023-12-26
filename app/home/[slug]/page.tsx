@@ -81,7 +81,7 @@ export default async function PropertySingle() {
             <Flex fontSize="xl" color="blue.600" textAlign="center" flexDirection={{ base: "column", sm: "row" }} gap="0.5rem" marginY={{ base: "1rem", sm: "0" }}>
               <TbMapPin />
               <Text fontWeight="light">
-                {address} - ID:{id}
+                {address}
               </Text>
               <Badge colorScheme="green">{sale_type}</Badge>
             </Flex>
@@ -100,11 +100,6 @@ export default async function PropertySingle() {
                     <Text fontWeight="light" color="gray.600" fontSize="1rem">{description}</Text>
                 </TextContentBox>
                 <TextContentBox title="Amenities">
-                    {/* <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
-                    {amenities.length ? amenities.map((item) => (
-                        <Text key={item}>{item}</Text>
-                    )) : "Please contact us for more info"}
-                    </SimpleGrid> */}
                     {amenities.length > 0 ? (
                       <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
                         {amenities.map((item: string, index: number) => ( // Add ": number" for index
