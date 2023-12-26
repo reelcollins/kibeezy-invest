@@ -108,7 +108,7 @@ export default async function PropertySingle() {
                     {amenities.length > 0 ? (
                       <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
                         {amenities.map((item: string) => ( // Add ": string" here
-                          <Text>{item}</Text> // Use index as key
+                          <Text key={index}>{item}</Text> // Use index as key
                         ))}
                       </SimpleGrid>
                     ) : (
