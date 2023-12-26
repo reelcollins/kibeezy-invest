@@ -39,6 +39,7 @@ interface ItemType {
   lngg: number;
   amenities: string[];
   contacts: string;
+  floor: string | number;
 }
 
 export default async function PropertySingle() {

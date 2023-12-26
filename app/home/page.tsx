@@ -68,6 +68,8 @@ export default async function Home() {
         photo_3: string;
         is_published: string;
         date_created: number;
+        floor: string | number;
+
       }
     
     return (
@@ -101,6 +103,7 @@ export default async function Home() {
                             sale_type={item.sale_type}
                             slug={item.slug}
                             id={item.id}
+                            floor={item.floor}
                         />
                         
                         );
