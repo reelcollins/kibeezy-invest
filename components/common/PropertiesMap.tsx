@@ -51,7 +51,7 @@ export default function Page({latt, lngg}: PropertiesMapProps) {
                 >
                     <MarkerF position={mapCenter} onLoad={() => console.log('Marker Loaded')} />
 
-                    {[100, 2500].map((radius, idx) => {
+                    {[100, 250].map((radius, idx) => {
                         return (
                         <CircleF
                             key={idx}
