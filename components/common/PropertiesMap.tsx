@@ -51,7 +51,7 @@ export default function Page({latt, lngg}: PropertiesMapProps) {
                 >
                     <MarkerF position={mapCenter} onLoad={() => console.log('Marker Loaded')} />
 
-                    {[100, 250].map((radius, idx) => {
+                    {/* {[100, 250].map((radius, idx) => {
                         return (
                         <CircleF
                             key={idx}
@@ -65,7 +65,7 @@ export default function Page({latt, lngg}: PropertiesMapProps) {
                             }}
                         />
                         );
-                    })}
+                    })} */}
                 </GoogleMap>
             </div>
 
