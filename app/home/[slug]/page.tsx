@@ -100,11 +100,21 @@ export default async function PropertySingle() {
                     <Text fontWeight="light" color="gray.600" fontSize="1rem">{description}</Text>
                 </TextContentBox>
                 <TextContentBox title="Amenities">
-                    <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
+                    {/* <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
                     {amenities.length ? amenities.map((item) => (
                         <Text key={item}>{item}</Text>
                     )) : "Please contact us for more info"}
-                    </SimpleGrid>
+                    </SimpleGrid> */}
+                    {amenities.length > 0 ? (
+                      <SimpleGrid columns={{ base: 1, sm: 2 }} fontWeight="light" color="gray.600" fontSize="1rem">
+                        {amenities.map((item: string) => ( // Add ": string" here
+                          <Text>{item}</Text> // Use index as key
+                        ))}
+                      </SimpleGrid>
+                    ) : (
+                      <Text>Please contact us for more info</Text>
+                    )}
+
 
                 </TextContentBox>
             </GridItem>
