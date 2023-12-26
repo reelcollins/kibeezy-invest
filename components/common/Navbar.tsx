@@ -124,7 +124,8 @@ export default function Navbar() {
 										<span className="sr-only">Open user menu</span>
 										<img
 											className="h-8 w-8 rounded-full"
-											src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-zlrqq&psig=AOvVaw1xaHAaOtgjrw-8XP85259C&ust=1703642745738000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCJi1n_mBrIMDFQAAAAAdAAAAABAE"
+											// src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+											src="https://vercel-app.s3.amazonaws.com/media/Profile_Pic-01.png"
 											alt=""
 										/>
 										{/* <CgProfile /> */}
