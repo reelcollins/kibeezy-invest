@@ -35,6 +35,11 @@ export default function Page({latt, lngg}: PropertiesMapProps) {
         libraries: libraries as any,
     });
 
+    const handleMarkerClick = () => {
+        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+        window.open(url, '_blank');
+      };
+
     if (!isLoaded) {
         return <p>Loading...</p>;
     }
@@ -49,7 +54,7 @@ export default function Page({latt, lngg}: PropertiesMapProps) {
                     mapContainerStyle={{ width: '800px', height: '360px' }}
                     onLoad={() => console.log('Map Component Loaded...')}
                 >
-                    <MarkerF position={mapCenter} onLoad={() => console.log('Marker Loaded')} />
+                    <MarkerF position={mapCenter} onClick={handleMarkerClick} onLoad={() => console.log('Marker Loaded')} />
 
                     {/* {[100, 250].map((radius, idx) => {
                         return (
