@@ -8,7 +8,7 @@ function classNames(...classes: string[]): string {
 
 import { usePathname } from 'next/navigation';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 import { useLogoutMutation } from '@/redux/features/authApiSlice';
 import { logout as setLogout } from '@/redux/features/authSlice';
@@ -36,13 +36,6 @@ export default function Navbar() {
 
 	const authLinks = (isMobile: boolean) => (
 		<>
-			{/* <NavLink
-				isSelected={isSelected('/dashboard')}
-				isMobile={isMobile}
-				href='/dashboard'
-			>
-				Dashboard
-			</NavLink> */}
 			<NavLink
 				isSelected={isSelected('/home')}
 				isMobile={isMobile}
@@ -50,9 +43,7 @@ export default function Navbar() {
 			>
 				Home
 			</NavLink>
-			{/* <NavLink isMobile={isMobile} onClick={handleLogout}>
-				Logout
-			</NavLink> */}
+
 		</>
 	);
 
@@ -101,7 +92,7 @@ export default function Navbar() {
 							</div>
 							<div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
 								<div className='flex flex-shrink-0 items-center'>
-									<NavLink href='/home' isBanner>
+									<NavLink href='/' isBanner>
 										<span className='flex items-center text-lg font-bold ml-1'>
 											NYUMB<FaHouse className='h-4 w-4 text-primary ml-2' />NI
 										</span>
@@ -116,17 +107,8 @@ export default function Navbar() {
 								</div>
 								<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
-									<button
-									type="button"
-									className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-									>
-										<span className="absolute -inset-1.5" />
-										<span className="sr-only">View notifications</span>
-										<BellIcon className="h-6 w-6" aria-hidden="true" />
-									</button>
-
 									{/* Profile dropdown */}
-									<Menu as="div" className="relative ml-3">
+									<Menu as="div" className="relative">
 										<div>
 											<Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
 											<span className="absolute -inset-1.5" />
