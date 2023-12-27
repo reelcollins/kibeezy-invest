@@ -42,7 +42,7 @@ export default function PropertyThumbnailSlider({
                                 src={main_photo}
                                 alt='photo'
                                 width={600}
-                                height={1200}
+                                height={800}
                                 className='block h-full w-full object-cover'
                                 />
                         </div>
@@ -54,8 +54,8 @@ export default function PropertyThumbnailSlider({
                             <Image
                                 src={photo_1}
                                 alt='photo'
-                                width={1500}
-                                height={2000}
+                                width={600}
+                                height={800}
                                 className='block h-full w-full object-cover'
                                 />
                         </div>
@@ -68,7 +68,7 @@ export default function PropertyThumbnailSlider({
                                 src={photo_2}
                                 alt='photo'
                                 width={600}
-                                height={1200}
+                                height={800}
                                 className='block h-full w-full object-cover'
                                 />
                         </div>
@@ -81,7 +81,7 @@ export default function PropertyThumbnailSlider({
                                 src={photo_3}
                                 alt='photo'
                                 width={600}
-                                height={1200}
+                                height={800}
                                 className='block h-full w-full object-cover'
                                 />
                         </div>
