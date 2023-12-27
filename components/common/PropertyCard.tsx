@@ -54,7 +54,7 @@ export default function PropertyCard({
             <Link href={{ pathname: `/home/${slug}`, query: { slug: slug }}}>
                 <Box
                 backgroundImage = {`url("${main_photo}")`}
-                height="250px"
+                height="500px"
                 backgroundPosition="center center"
                 backgroundSize="cover"
                 position="relative"
