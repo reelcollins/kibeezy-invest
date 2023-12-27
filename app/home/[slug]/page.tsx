@@ -97,7 +97,7 @@ export default async function PropertySingle() {
 
             <GridItem colSpan={{ base: 6, sm: 3}}>
                 <PropertyStats bedrooms={bedrooms} bathrooms={bathrooms} price={price} floor={floor}/>
-                <TextContentBox title="Get In Touch">
+                <TextContentBox title="Get In Touch * Call before visit">
                     <Text>{contacts}</Text>
                 </TextContentBox>
                 
@@ -135,7 +135,7 @@ export default async function PropertySingle() {
             
 
             <GridItem colSpan={{ base: 6, sm: 3 }}>
-                <TextContentBox title="Map">
+                <TextContentBox title="Map  * Tap the red marker to get directions">
 
                     <PropertiesMap latt={latt} lngg={lngg}/>
                 </TextContentBox>
