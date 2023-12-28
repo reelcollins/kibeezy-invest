@@ -183,13 +183,21 @@ export default function UploadForm() {
 			value: phone_number,
 			required: true,
 		},
+        {
+			labelText: 'Is Published',
+			labelId: 'published',
+			placeholder: 'Yes/No',
+			type: 'text',
+			value: phone_number,
+			required: true,
+		},
 	];
 
 	return (
 		<Form
 			config={config}
 			isLoading={isLoading}
-			btnText='Login'
+			btnText='Upload'
 			onChange={onChange}
 			onSubmit={onSubmit}
 		/>

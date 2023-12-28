@@ -55,7 +55,7 @@ export default function UploadMap() {
                     mapContainerStyle={{ width: '800px', height: '360px' }}
                     onLoad={() => console.log('Map Component Loaded...')}
                 >
-                    <MarkerF position={mapCenter} onClick={handleMarkerClick} onLoad={() => console.log('Marker Loaded')} />
+                    <MarkerF position={mapCenter} draggable={true} onClick={handleMarkerClick} onLoad={() => console.log('Marker Loaded')} />
 
                     {/* {[100, 250].map((radius, idx) => {
                         return (
