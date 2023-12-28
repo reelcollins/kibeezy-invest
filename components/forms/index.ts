@@ -5,3 +5,4 @@ export { default as PasswordResetConfirmForm } from './PasswordResetConfirmForm'
 export { default as PasswordResetForm } from './PasswordResetForm';
 export { default as RegisterForm } from './RegisterForm';
 export { default as OtpForm } from './Otp';
+export { default as UploadForm } from './UploadForm';
