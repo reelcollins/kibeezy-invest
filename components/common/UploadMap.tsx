@@ -7,15 +7,16 @@ import styles from '@/styles/Map.module.css';
 
 
 
-interface PropertiesMapProps {
-    latt: number;
-    lngg: number;
+// interface PropertiesMapProps {
+//     latt: number;
+//     lngg: number;
       
-    }
+//     }
 
-export default function PropertiesMap({latt, lngg}: PropertiesMapProps) {
-    const [lat, setLat] = useState<number>(latt);
-    const [lng, setLng] = useState<number>(lngg);
+// export default function UploadMap({latt, lngg}: PropertiesMapProps) {
+export default function UploadMap() {
+    const [lat, setLat] = useState(-1.1008204900530465);
+    const [lng, setLng] = useState(37.010441055197546);
 
 
     const libraries = useMemo(() => ['places'], []);
