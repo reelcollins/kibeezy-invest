@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react'
-import { useLoadScript, GoogleMap, MarkerF, CircleF } from '@react-google-maps/api';
+import React, { useRef }  from 'react'
+import { useLoadScript, GoogleMap, MarkerF, CircleF, Marker } from '@react-google-maps/api';
 import { useMemo, useState } from 'react';
 import styles from '@/styles/Map.module.css';
 
@@ -17,7 +17,13 @@ import styles from '@/styles/Map.module.css';
 export default function UploadMap() {
     const [lat, setLat] = useState(-1.1008204900530465);
     const [lng, setLng] = useState(37.010441055197546);
-    // const markerRef = useRef<MarkerF>();
+    // const markerRef = useRef();
+    // const markerRef = useRef<Marker | null>(null); // Use Marker or any compatible type
+
+    const markerRef = useRef<any>(null); // Use any, but be cautious
+    // ...
+    // (markerRef.current as Marker).panTo({ lat: 10, lng: 20 });
+
 
 
     const libraries = useMemo(() => ['places'], []);
@@ -69,12 +75,11 @@ export default function UploadMap() {
                         draggable={true}
                         onDragEnd={handleMarkerDragEnd}
                         onClick={handleMarkerClick}
-                        onLoad={() => console.log('Marker Loaded')} />
-                         {/* onLoad={() => { 
-                             markerRef.current = marker; // Assign marker reference
-                           }} />
-                        */}
-
+                        // onLoad={() => console.log('Marker Loaded')} />
+                        onLoad={() => {
+                            markerRef.current = Marker; // Assign marker reference here
+                        }}
+                        />
                     {/* {[100, 250].map((radius, idx) => {
                         return (
                         <CircleF
@@ -90,6 +95,7 @@ export default function UploadMap() {
                         />
                         );
                     })} */}
+
                 </GoogleMap>
             </div>
 
