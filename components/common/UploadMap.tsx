@@ -17,6 +17,7 @@ import styles from '@/styles/Map.module.css';
 export default function UploadMap() {
     const [lat, setLat] = useState(-1.1008204900530465);
     const [lng, setLng] = useState(37.010441055197546);
+    // const markerRef = useRef<MarkerF>();
 
 
     const libraries = useMemo(() => ['places'], []);
@@ -41,6 +42,14 @@ export default function UploadMap() {
         window.open(url, '_blank');
       };
 
+    const handleMarkerDragEnd = (marker: any) => {
+        const newPosition = marker.getPosition();
+        setLat(newPosition.lat());
+        setLng(newPosition.lng());
+    
+        console.log('Marker dragged to:', newPosition.lat(), newPosition.lng());
+      };
+      
     if (!isLoaded) {
         return <p>Loading...</p>;
     }
@@ -55,7 +64,16 @@ export default function UploadMap() {
                     mapContainerStyle={{ width: '800px', height: '360px' }}
                     onLoad={() => console.log('Map Component Loaded...')}
                 >
-                    <MarkerF position={mapCenter} draggable={true} onClick={handleMarkerClick} onLoad={() => console.log('Marker Loaded')} />
+                    <MarkerF
+                        position={mapCenter}
+                        draggable={true}
+                        onDragEnd={handleMarkerDragEnd}
+                        onClick={handleMarkerClick}
+                        onLoad={() => console.log('Marker Loaded')} />
+                         {/* onLoad={() => { 
+                             markerRef.current = marker; // Assign marker reference
+                           }} />
+                        */}
 
                     {/* {[100, 250].map((radius, idx) => {
                         return (
