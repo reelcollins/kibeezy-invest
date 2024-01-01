@@ -118,6 +118,18 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			value: phone_number,
 			required: true,
 		},
+		{
+			labelText: 'Sale Type',
+			labelId: 'saletype',
+			type: 'select',
+			placeholder: 'Select Sale Type',
+			value: phone_number,
+			required: true,
+			options: [
+				{ value: 'For Rent', label: 'For Rent' },
+				{ value: 'For Sale', label: 'For Sale' },
+			],
+		},
         {
 			labelText: 'Home Type',
 			labelId: 'hometype',
