@@ -5,12 +5,7 @@ import { UploadMap } from '@/components/common';
 import { UploadForm } from '@/components/forms';
 import type { Metadata } from 'next';
 
-// interface UploadMapProps {
-//     lat: string;
-// 	lng: string;
 
-
-// }
 
 
 export default function Page() {
@@ -18,7 +13,7 @@ export default function Page() {
     const [lng, setLng] = useState(37.014391469570306);
 
 	// Callback function to update lat and lng in the parent component
-	const handleLatLngChange = (newLat: string, newLng: string) => {
+	const handleLatLngChange = (newLat: number, newLng: number) => {
 		setLat(newLat);
 		setLng(newLng);
 	  };

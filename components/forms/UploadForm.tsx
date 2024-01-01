@@ -4,8 +4,8 @@ import React from 'react';
 import { useLogin } from '@/hooks';
 import { Form } from '@/components/forms';
 interface UploadMapProps {
-    lat: string;
-	lng: string;
+    lat: number;
+	lng: number;
 
 
 }

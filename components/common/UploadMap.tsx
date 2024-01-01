@@ -9,7 +9,7 @@ import usePlacesAutocomplete, {
   } from 'use-places-autocomplete';
 
 interface UploadMapProps {
-    onLatLngChange: (lat: string, lng: string) => void;
+    onLatLngChange: (lat: number, lng: number) => void;
 }
 
 export default function UploadMap({ onLatLngChange }: UploadMapProps) {
