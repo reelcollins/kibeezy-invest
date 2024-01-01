@@ -13,9 +13,10 @@ export default function useUpload() {
 	const [formData, setFormData] = useState({
 		phone_number: '',
 		password: '',
+		isPublished: '',
 	});
 
-	const { phone_number, password } = formData;
+	const { phone_number, password, isPublished} = formData;
 
 	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target;
@@ -26,7 +27,7 @@ export default function useUpload() {
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		login({ phone_number, password })
+		login({ phone_number, password, isPublished })
 			.unwrap()
 			.then(() => {
 				dispatch(setAuth());

@@ -53,6 +53,25 @@ export default function Input({
 		  </div>
 		);
 	  }
+
+	  if (type === 'checkbox') {
+		return (
+		  <div className="mt-2">
+			<div className="flex items-center">
+			  <input
+				type="checkbox"
+				id={labelId}
+				name={labelId}
+				checked={value === 'true'} // Assuming 'true' or 'false' values for checkboxes
+				onChange={(e) => onChange({ ...e, target: { ...e.target, value: e.target.checked.toString() } })}
+			  />
+			  <label htmlFor={labelId} className="ml-2">
+				{children}
+			  </label>
+			</div>
+		  </div>
+		);
+	  }
 	return (
 		<div>
 			<div className='flex justify-between align-center'>

@@ -190,14 +190,6 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			value: phone_number,
 			required: true,
 		},
-        {
-			labelText: 'Is Published',
-			labelId: 'published',
-			placeholder: 'Yes/No',
-			type: 'text',
-			value: phone_number,
-			required: true,
-		},
 		{
 			labelText: 'Is Published',
 			labelId: 'published',
