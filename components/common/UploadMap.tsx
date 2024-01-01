@@ -37,11 +37,6 @@ export default function UploadMap({ onLatLngChange }: UploadMapProps) {
         libraries: libraries as any,
     });
 
-    const handleMarkerClick = () => {
-        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-        window.open(url, '_blank');
-    };
-
     // Call the callback function to update lat and lng in the parent component
     // const handleDragEnd = (e: CustomMouseEvent) => {
     //     if (e.latLng) {
@@ -88,7 +83,6 @@ export default function UploadMap({ onLatLngChange }: UploadMapProps) {
                                 onLatLngChange(newLat, newLng);
                             }
                         }}
-                        onClick={handleMarkerClick}
                         onLoad={() => console.log('Marker Loaded')}
                     />
                 </GoogleMap>

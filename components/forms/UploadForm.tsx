@@ -198,6 +198,15 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			value: phone_number,
 			required: true,
 		},
+		{
+			labelText: 'Is Published',
+			labelId: 'published',
+			type: 'checkbox', // Change the type to 'checkbox'
+			placeholder: 'Yes/No',
+			value: phone_number, // You might want to use a different state variable for this
+			required: true,
+			checkboxLabel: 'Published', // Label for the checkbox
+		},
 	];
 
 	return (
