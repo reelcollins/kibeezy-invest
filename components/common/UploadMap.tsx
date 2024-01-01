@@ -66,7 +66,9 @@ export default function UploadMap() {
                         position={mapCenter}
                         draggable={true}
                         onDragEnd={(e) => {
-                            console.log('Drag End', e.latLng.lat(), e.latLng.lng());
+                            if (e.latLng) {
+                                console.log('Drag End', e.latLng.lat(), e.latLng.lng());
+                            }
                         }}
                         onClick={handleMarkerClick}
                         onLoad={() => console.log('Marker Loaded')}
