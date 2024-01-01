@@ -8,7 +8,11 @@ import usePlacesAutocomplete, {
     getLatLng,
   } from 'use-places-autocomplete';
 
-export default function UploadMap() {
+interface UploadMapProps {
+    onLatLngChange: (lat: string, lng: string) => void;
+}
+
+export default function UploadMap({ onLatLngChange }: UploadMapProps) {
     const [lat, setLat] = useState(-1.1008204900530465);
     const [lng, setLng] = useState(37.010441055197546);
 
@@ -34,6 +38,14 @@ export default function UploadMap() {
         window.open(url, '_blank');
     };
 
+    // Call the callback function to update lat and lng in the parent component
+    const handleDragEnd = (e: google.maps.MouseEvent) => {
+        if (e.latLng) {
+            const newLat = e.latLng.lat().toString();
+            const newLng = e.latLng.lng().toString();
+            onLatLngChange(newLat, newLng);
+        }
+    };
     if (!isLoaded) {
         return <p>Loading...</p>;
     }
@@ -65,11 +77,7 @@ export default function UploadMap() {
                     <Marker
                         position={mapCenter}
                         draggable={true}
-                        onDragEnd={(e) => {
-                            if (e.latLng) {
-                                console.log('Drag End', e.latLng.lat(), e.latLng.lng());
-                            }
-                        }}
+                        onDragEnd={handleDragEnd}
                         onClick={handleMarkerClick}
                         onLoad={() => console.log('Marker Loaded')}
                     />

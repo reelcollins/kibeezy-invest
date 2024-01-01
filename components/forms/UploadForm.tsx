@@ -1,9 +1,16 @@
 'use client';
 
+import React from 'react';
 import { useLogin } from '@/hooks';
 import { Form } from '@/components/forms';
+interface UploadMapProps {
+    lat: string;
+	lng: string;
 
-export default function UploadForm() {
+
+}
+
+export default function UploadForm({ lat, lng }: UploadMapProps) {
 	const { phone_number, password, isLoading, onChange, onSubmit } = useLogin();
 
 	const config = [
@@ -164,7 +171,7 @@ export default function UploadForm() {
 			labelId: 'latt',
 			placeholder: '2',
 			type: 'text',
-			value: phone_number,
+			value: lat.toString(),
 			required: true,
 		},
         {
@@ -172,7 +179,7 @@ export default function UploadForm() {
 			labelId: 'lngg',
 			placeholder: '2',
 			type: 'text',
-			value: phone_number,
+			value: lng.toString(),
 			required: true,
 		},
         {
