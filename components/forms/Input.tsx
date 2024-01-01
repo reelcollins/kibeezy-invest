@@ -88,7 +88,7 @@ export default function Input({
 				id={labelId}
 				name={labelId}
 				value={value}
-				onChange={(e) => onChange(e as ChangeEvent<HTMLInputElement | HTMLSelectElement>)}
+				// onChange={onChange}
 				className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 			  >
 				<option value="" disabled>
@@ -101,6 +101,23 @@ export default function Input({
 				))}
 			  </select>
 			</div>
+		  </div>
+		);
+	  }
+	  if (type === 'file') {
+		return (
+		  <div className="mt-2">
+			<label htmlFor={labelId} className="block text-sm font-medium leading-6 text-gray-900">
+			  {children}
+			</label>
+			<input
+			  type="file"
+			  id={labelId}
+			  name={labelId}
+			  onChange={onChange}
+			  accept="image/*" // Specify the accepted file types
+			  required={required}
+			/>
 		  </div>
 		);
 	  }
