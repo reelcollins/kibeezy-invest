@@ -121,10 +121,16 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
         {
 			labelText: 'Home Type',
 			labelId: 'hometype',
-			placeholder: '1 Bedroom',
-			type: 'text',
-			value: phone_number,
+			type: 'select', // Change the type to 'select'
+			placeholder: 'Select Home Type',
+			value: phone_number, // You might want to use a different state variable for this
 			required: true,
+			options: [
+				{ value: 'Bedsitter', label: 'Bedsitter' },
+				{ value: '1 Bedroom', label: '1 Bedroom' },
+				{ value: '2 Bedrooms', label: '2 Bedrooms' },
+				// Add more options as needed
+			],
 		},
         {
 			labelText: 'Amenities',
