@@ -1,39 +1,25 @@
 'use client';
 
-import React, { useRef }  from 'react'
-import { useLoadScript, GoogleMap, MarkerF, CircleF, Marker } from '@react-google-maps/api';
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 import styles from '@/styles/Map.module.css';
+import usePlacesAutocomplete, {
+    getGeocode,
+    getLatLng,
+  } from 'use-places-autocomplete';
 
-
-
-// interface PropertiesMapProps {
-//     latt: number;
-//     lngg: number;
-      
-//     }
-
-// export default function UploadMap({latt, lngg}: PropertiesMapProps) {
 export default function UploadMap() {
     const [lat, setLat] = useState(-1.1008204900530465);
     const [lng, setLng] = useState(37.010441055197546);
-    // const markerRef = useRef();
-    // const markerRef = useRef<Marker | null>(null); // Use Marker or any compatible type
-
-    const markerRef = useRef<any>(null); // Use any, but be cautious
-    // ...
-    // (markerRef.current as Marker).panTo({ lat: 10, lng: 20 });
-
-
 
     const libraries = useMemo(() => ['places'], []);
     const mapCenter = useMemo(() => ({ lat: +lat, lng: +lng }), [lat, lng]);
 
     const mapOptions = useMemo<google.maps.MapOptions>(
         () => ({
-        disableDefaultUI: true,
-        clickableIcons: true,
-        scrollwheel: false,
+            disableDefaultUI: true,
+            clickableIcons: true,
+            scrollwheel: false,
         }),
         []
     );
@@ -46,22 +32,28 @@ export default function UploadMap() {
     const handleMarkerClick = () => {
         const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
         window.open(url, '_blank');
-      };
+    };
 
-    const handleMarkerDragEnd = (marker: any) => {
-        const newPosition = marker.getPosition();
-        setLat(newPosition.lat());
-        setLng(newPosition.lng());
-    
-        console.log('Marker dragged to:', newPosition.lat(), newPosition.lng());
-      };
-      
     if (!isLoaded) {
         return <p>Loading...</p>;
     }
+
     return (
         <div>
             <div className={styles.homeWrapper}>
+                {/* <div className={styles.sidebar}>
+                    <PlacesAutocomplete 
+                    onAddressSelect={(address) => {
+                        getGeocode({ address: address }).then((results) => {
+                        const { lat, lng } = getLatLng(results[0]);
+
+                        setLat(lat);
+                        setLng(lng);
+                        });
+                    }}
+                    />
+                </div>
+                */}
                 <GoogleMap
                     options={mapOptions}
                     zoom={19}
@@ -70,37 +62,77 @@ export default function UploadMap() {
                     mapContainerStyle={{ width: '800px', height: '360px' }}
                     onLoad={() => console.log('Map Component Loaded...')}
                 >
-                    <MarkerF
+                    <Marker
                         position={mapCenter}
                         draggable={true}
-                        onDragEnd={handleMarkerDragEnd}
-                        onClick={handleMarkerClick}
-                        // onLoad={() => console.log('Marker Loaded')} />
-                        onLoad={() => {
-                            markerRef.current = Marker; // Assign marker reference here
+                        onDragEnd={(e) => {
+                            console.log('Drag End', e.latLng.lat(), e.latLng.lng());
                         }}
-                        />
-                    {/* {[100, 250].map((radius, idx) => {
-                        return (
-                        <CircleF
-                            key={idx}
-                            center={mapCenter}
-                            radius={radius}
-                            onLoad={() => console.log('Circle Load...')}
-                            options={{
-                            fillColor: radius > 100 ? 'red' : 'green',
-                            strokeColor: radius > 100 ? 'red' : 'green',
-                            strokeOpacity: 0.8,
-                            }}
-                        />
-                        );
-                    })} */}
-
+                        onClick={handleMarkerClick}
+                        onLoad={() => console.log('Marker Loaded')}
+                    />
                 </GoogleMap>
             </div>
-
         </div>
-
-    )
+    );
 }
 
+
+
+const PlacesAutocomplete = ({
+    onAddressSelect,
+  }: {
+    onAddressSelect?: (address: string) => void;
+  }) => {
+    const {
+      ready,
+      value,
+      suggestions: { status, data },
+      setValue,
+      clearSuggestions,
+    } = usePlacesAutocomplete({
+        requestOptions: { componentRestrictions: { country: 'ke' } },
+        debounce: 300,
+        cache: 86400,
+    });
+  
+    const renderSuggestions = () => {
+      return data.map((suggestion) => {
+        const {
+          place_id,
+          structured_formatting: { main_text, secondary_text },
+          description,
+        } = suggestion;
+  
+        return (
+          <li
+            key={place_id}
+            onClick={() => {
+              setValue(description, false);
+              clearSuggestions();
+              onAddressSelect && onAddressSelect(description);
+            }}
+          >
+            <strong>{main_text}</strong> <small>{secondary_text}</small>
+          </li>
+        );
+      });
+    };
+  
+    return (
+      <div className={styles.autocompleteWrapper}>
+        <input
+          value={value}
+          className={styles.autocompleteInput}
+          disabled={!ready}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="Search on map..."
+        />
+  
+        {status === 'OK' && (
+          <ul className={styles.suggestionWrapper}>{renderSuggestions()}</ul>
+        )}
+      </div>
+    );
+  };
+  
