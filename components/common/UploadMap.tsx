@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
+import { useLoadScript, GoogleMap, Marker  } from '@react-google-maps/api';
 import styles from '@/styles/Map.module.css';
 import usePlacesAutocomplete, {
     getGeocode,
@@ -12,9 +12,9 @@ interface UploadMapProps {
     onLatLngChange: (lat: number, lng: number) => void;
 }
 
-interface CustomMouseEvent extends React.MouseEvent<HTMLDivElement> {
-    latLng: google.maps.LatLng;
-  }
+// interface CustomMouseEvent extends MapMouseEvent {
+//     latLng: google.maps.LatLng;
+//   }
 
 export default function UploadMap({ onLatLngChange }: UploadMapProps) {
     const [lat, setLat] = useState(-1.1008204900530465);
@@ -43,13 +43,13 @@ export default function UploadMap({ onLatLngChange }: UploadMapProps) {
     };
 
     // Call the callback function to update lat and lng in the parent component
-    const handleDragEnd = (e: CustomMouseEvent) => {
-        if (e.latLng) {
-            const newLat = e.latLng.lat();
-            const newLng = e.latLng.lng();
-            onLatLngChange(newLat, newLng);
-        }
-    };
+    // const handleDragEnd = (e: CustomMouseEvent) => {
+    //     if (e.latLng) {
+    //         const newLat = e.latLng.lat();
+    //         const newLng = e.latLng.lng();
+    //         onLatLngChange(newLat, newLng);
+    //     }
+    // };
     if (!isLoaded) {
         return <p>Loading...</p>;
     }
@@ -81,7 +81,13 @@ export default function UploadMap({ onLatLngChange }: UploadMapProps) {
                     <Marker
                         position={mapCenter}
                         draggable={true}
-                        onDragEnd={handleDragEnd}
+                        onDragEnd={(e) => {
+                            if (e.latLng) {
+                                const newLat = e.latLng.lat();
+                                const newLng = e.latLng.lng();
+                                onLatLngChange(newLat, newLng);
+                            }
+                        }}
                         onClick={handleMarkerClick}
                         onLoad={() => console.log('Marker Loaded')}
                     />
