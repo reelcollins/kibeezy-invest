@@ -9,6 +9,9 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@aws-sdk/client-s3": "^3.451.0",
+		"@aws-sdk/s3-presigned-post": "^3.451.0",
+		"@aws-sdk/signature-v4-crt": "^3.451.0",
 		"@chakra-ui/next-js": "^2.2.0",
 		"@chakra-ui/react": "^2.8.2",
 		"@emotion/react": "^11.11.1",
@@ -23,8 +26,11 @@
 		"@types/react-dom": "18.2.4",
 		"async-mutex": "^0.4.0",
 		"autoprefixer": "10.4.14",
+		"aws-crt": "^1.19.0",
+		"aws-sdk": "^2.1497.0",
 		"axios": "^1.6.2",
 		"classnames": "^2.3.2",
+		"encoding": "^0.1.13",
 		"eslint": "8.41.0",
 		"eslint-config-next": "^14.0.4",
 		"framer-motion": "^10.16.16",
@@ -38,17 +44,12 @@
 		"swiper": "^11.0.5",
 		"tailwindcss": "3.3.2",
 		"use-places-autocomplete": "^4.0.1",
-		"uuid": "^9.0.1",
-		"aws-crt": "^1.19.0",
-		"aws-sdk": "^2.1497.0",
-		"encoding": "^0.1.13",
-		"@aws-sdk/client-s3": "^3.451.0",
-		"@aws-sdk/s3-presigned-post": "^3.451.0",
-		"@aws-sdk/signature-v4-crt": "^3.451.0"
+		"uuid": "^9.0.1"
 	},
 	"devDependencies": {
 		"@types/next": "^9.0.0",
 		"@types/node": "20.10.0",
+		"@types/uuid": "^9.0.7",
 		"typescript": "5.3.2"
 	}
 }
