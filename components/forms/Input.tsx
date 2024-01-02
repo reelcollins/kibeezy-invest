@@ -1,5 +1,7 @@
-import { ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 import Link from 'next/link';
+import { ImageUpload } from '../common';
+
 
 interface Props {
 	labelId: string;
@@ -27,6 +29,29 @@ export default function Input({
 	required = false,
 	options,
 }: Props) {
+	if (type === 'file') {
+		const isImageUrl = typeof value === 'string' && value.startsWith('http');
+	
+		return (
+		  <div className="mt-2">
+			<label htmlFor={labelId} className="block text-sm font-medium leading-6 text-gray-900">
+			  {children}
+			</label>
+			{isImageUrl ? (
+			  <img src={value as string} alt="Uploaded" className="mt-2" style={{ maxWidth: '100px' }} />
+			) : (
+			  <input
+				type="file"
+				id={labelId}
+				name={labelId}
+				onChange={onChange}
+				accept="image/*"
+				required={required}
+			  />
+			)}
+		  </div>
+		);
+	  }
 	if (type === 'radio') {
 		return (
 		  <div className="mt-2">

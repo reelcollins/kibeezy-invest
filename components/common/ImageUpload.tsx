@@ -1,71 +1,65 @@
-'use client'
+import { useState } from 'react';
 
-import { useState } from 'react'
-// import styles from '@/styles/uploadimage.css';
+interface ImageUploadProps {
+  onImageUploaded: (objectUrl: string) => void;
+}
 
-export default function ImageUpload() {
-  const [file, setFile] = useState<File | null>(null)
-  const [uploading, setUploading] = useState(false)
+export default function ImageUpload({ onImageUploaded }: ImageUploadProps) {
+  const [file, setFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!file) {
-      alert('Please select a file to upload.')
-      return
+      alert('Please select a file to upload.');
+      return;
     }
 
-    setUploading(true)
+    setUploading(true);
 
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_BASE_URL + '/api/upload',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ filename: file.name, contentType: file.type }),
-      }
-    )
+    const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/upload', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ filename: file.name, contentType: file.type }),
+    });
 
     if (response.ok) {
-      const { url, fields } = await response.json()
-      console.log(url)
+      const { url, fields } = await response.json();
 
-      const formData = new FormData()
+      const formData = new FormData();
       Object.entries(fields).forEach(([key, value]) => {
-        formData.append(key, value as string)
-      })
-      formData.append('file', file)
-      console.log(formData)
+        formData.append(key, value as string);
+      });
+      formData.append('file', file);
 
       const uploadResponse = await fetch(url, {
         method: 'POST',
         body: formData,
-      })
+      });
 
-      // Inside the if (uploadResponse.ok) block
       if (uploadResponse.ok) {
         alert('Upload successful!');
-        
+
         // Construct the object URL based on your S3 URL format
-        const objectKey = fields.key; // Assuming 'key' is the field returned by S3
+        const objectKey = fields.key;
         const objectUrl = `${url}${objectKey}`;
         console.log('Object URL:', objectUrl);
-        
-        // Now you can use the 'objectUrl' as needed (e.g., store it in state, display it, etc.).
+
+        // Pass the object URL to the parent component
+        onImageUploaded(objectUrl);
       } else {
         console.error('S3 Upload Error:', uploadResponse);
         alert('Upload failed.');
       }
-
-      
     } else {
-      alert('Failed to get pre-signed URL.')
+      alert('Failed to get pre-signed URL.');
     }
 
-    setUploading(false)
-  }
+    setUploading(false);
+  };
 
   return (
     <main>
@@ -75,9 +69,9 @@ export default function ImageUpload() {
           id="file"
           type="file"
           onChange={(e) => {
-            const files = e.target.files
+            const files = e.target.files;
             if (files) {
-              setFile(files[0])
+              setFile(files[0]);
             }
           }}
           accept="image/png, image/jpeg"
@@ -87,5 +81,5 @@ export default function ImageUpload() {
         </button>
       </form>
     </main>
-  )
+  );
 }

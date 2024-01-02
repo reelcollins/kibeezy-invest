@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useLogin } from '@/hooks';
 import { Form } from '@/components/forms';
 interface UploadMapProps {
@@ -12,6 +13,12 @@ interface UploadMapProps {
 
 export default function UploadForm({ lat, lng }: UploadMapProps) {
 	const { phone_number, password, isLoading, onChange, onSubmit } = useLogin();
+	const [uploadedImageUrl, setUploadedImageUrl] = useState<string>('');
+
+	const handleImageUpload = (objectUrl: string) => {
+		// Set the uploaded image URL in the state
+		setUploadedImageUrl(objectUrl);
+	  };
 
 	const config = [
 		{
@@ -144,14 +151,22 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			value: phone_number,
 			required: true,
 		},
-        {
+        // {
+		// 	labelText: 'Main Photo',
+		// 	labelId: 'main_photo',
+		// 	placeholder: '2',
+		// 	type: 'file',
+		// 	value: phone_number,
+		// 	required: true,
+		// },
+		{
 			labelText: 'Main Photo',
 			labelId: 'main_photo',
 			placeholder: '2',
 			type: 'file',
-			value: phone_number,
+			value: uploadedImageUrl, // Pass the URL to the file input value
 			required: true,
-		},
+		  },
         {
 			labelText: 'Photo 1',
 			labelId: 'photo_1',
