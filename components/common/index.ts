@@ -13,4 +13,4 @@ export { default as PropertyYoutubeEmbed } from './PropertyYoutubeEmbed';
 export { default as PropertyMatterPortEmbed } from './PropertyMatterPortEmbed';
 export { default as PropertiesMap } from './PropertiesMap';
 export { default as UploadMap } from './UploadMap';
-export { default as ImageUpload } from './ImageUpload';
+// export { default as ImageUpload } from './ImageUpload';
