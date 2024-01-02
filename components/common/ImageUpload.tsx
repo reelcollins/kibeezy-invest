@@ -3,7 +3,7 @@
 import { useState } from 'react'
 // import styles from '@/styles/uploadimage.css';
 
-export default function Page() {
+export default function ImageUpload() {
   const [file, setFile] = useState<File | null>(null)
   const [uploading, setUploading] = useState(false)
 

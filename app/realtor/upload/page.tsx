@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { UploadMap } from '@/components/common';
+import { UploadMap, ImageUpload } from '@/components/common';
 import { UploadForm } from '@/components/forms';
 import type { Metadata } from 'next';
 
@@ -24,6 +24,7 @@ export default function Page() {
 
 			<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
                 <UploadForm lat={lat} lng={lng} />
+				<ImageUpload/>
                 <UploadMap onLatLngChange={handleLatLngChange} />
 
 				{/* <SocialButtons /> */}
