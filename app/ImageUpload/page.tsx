@@ -1,14 +1,20 @@
 'use client'
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 
 export default function Page() {
   const [mainPhoto, setMainPhoto] = useState<File | null>(null);
   const [additionalPhotos, setAdditionalPhotos] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
   const [objectUrls, setObjectUrls] = useState<string[]>([]);
+  const router = useRouter();
+  
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    
     e.preventDefault();
 
     if (!mainPhoto) {
@@ -18,17 +24,30 @@ export default function Page() {
 
     setUploading(true);
 
-    // Upload main photo
-    const mainPhotoUrl = await uploadFile(mainPhoto);
-    setObjectUrls([mainPhotoUrl]);
+    try {
+      // Upload main photo
+      const mainPhotoUrl = await uploadFile(mainPhoto);
+      setObjectUrls([mainPhotoUrl]);
 
-    // Upload additional photos
-    const additionalPhotoUrls = await Promise.all(
-      additionalPhotos.map(async (file) => uploadFile(file))
-    );
-    setObjectUrls((prevUrls) => [...prevUrls, ...additionalPhotoUrls]);
+      // Upload additional photos
+      const additionalPhotoUrls = await Promise.all(
+        additionalPhotos.map(async (file) => uploadFile(file))
+      );
+      setObjectUrls((prevUrls) => [...prevUrls, ...additionalPhotoUrls]);
 
-    setUploading(false);
+      alert('All uploads successful!');
+
+      const objectUrls = [mainPhotoUrl, ...additionalPhotoUrls];
+      console.log(objectUrls)
+      router.push('/realtor/upload');
+
+
+    } catch (error) {
+      console.error('Upload error:', error);
+      alert('Upload failed.');
+    } finally {
+      setUploading(false);
+    }
   };
 
   const uploadFile = async (file: File): Promise<string> => {
@@ -58,8 +77,12 @@ export default function Page() {
       });
 
       if (uploadResponse.ok) {
+        // alert('Upload successful!');
+
         const objectKey = fields.key;
-        return `${url}${objectKey}`;
+        const objectUrl = `${url}${objectKey}`;
+        return objectUrl
+
       } else {
         console.error('S3 Upload Error:', uploadResponse);
         alert('Upload failed.');
@@ -102,3 +125,4 @@ export default function Page() {
     </main>
   );
 }
+
