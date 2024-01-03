@@ -9,13 +9,17 @@ import { useSelector } from 'react-redux';
 interface UploadMapProps {
     lat: number;
 	lng: number;
-
-
 }
+
+interface RootState {
+	objectUrls: string[];
+  }
+  
 
 export default function UploadForm({ lat, lng }: UploadMapProps) {
 	const { phone_number, password, isLoading, onChange, onSubmit } = useLogin();
-	const objectUrls = useSelector((state) => state.objectUrls);
+	const objectUrls = useSelector((state: RootState) => state.objectUrls);
+
 
 	// Ensure objectUrls has at least 4 elements
 	const mappedUrls = useMemo(() => {
