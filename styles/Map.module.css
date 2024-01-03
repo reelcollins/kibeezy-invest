@@ -66,10 +66,8 @@
   width: 100%;
   font-weight: 600;
 }
-
 .button,
-input[type='submit'],
-input[type='reset'] {
+input[type='submit'] {
   background: none;
   color: inherit;
   border: none;
