@@ -66,6 +66,9 @@
   width: 100%;
   font-weight: 600;
 }
+/* .button,
+  input[type='submit'],
+  input[type='reset'] { */
 .button {
   background: none;
   color: inherit;
@@ -84,6 +87,7 @@
   border-radius: 0.5rem;
   font-size: 0.875rem;
 }
+
 
 .button {
   border-radius: 4rem;

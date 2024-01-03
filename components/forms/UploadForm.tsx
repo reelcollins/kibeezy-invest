@@ -1,8 +1,11 @@
 'use client';
 
 import React from 'react';
+import { useMemo, useState } from 'react';
 import { useLogin } from '@/hooks';
 import { Form } from '@/components/forms';
+import { useSelector } from 'react-redux';
+
 interface UploadMapProps {
     lat: number;
 	lng: number;
@@ -12,6 +15,14 @@ interface UploadMapProps {
 
 export default function UploadForm({ lat, lng }: UploadMapProps) {
 	const { phone_number, password, isLoading, onChange, onSubmit } = useLogin();
+	const objectUrls = useSelector((state) => state.objectUrls);
+
+	// Ensure objectUrls has at least 4 elements
+	const mappedUrls = useMemo(() => {
+		// Handle cases where objectUrls might have fewer elements
+		const paddedUrls = [...objectUrls, ...Array(4 - objectUrls.length).fill('')];
+		return paddedUrls.slice(0, 4); // Get only the first 4 elements
+	  }, [objectUrls]);
 
 	const config = [
 		{
@@ -147,35 +158,35 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
         {
 			labelText: 'Main Photo',
 			labelId: 'main_photo',
-			placeholder: '2',
-			type: 'file',
-			value: phone_number,
+			placeholder: 'URL for main photo',
+			type: 'text', // Change to text
+			value: mappedUrls[0], // Use the first URL
 			required: true,
-		},
-        {
+		  },
+		  {
 			labelText: 'Photo 1',
 			labelId: 'photo_1',
-			placeholder: '2',
-			type: 'file',
-			value: phone_number,
+			placeholder: 'URL for photo 1',
+			type: 'text',
+			value: mappedUrls[1],
 			required: true,
-		},
-        {
+		  },
+		  {
 			labelText: 'Photo 2',
 			labelId: 'photo_2',
-			placeholder: '2',
-			type: 'file',
-			value: phone_number,
+			placeholder: 'URL for photo 2',
+			type: 'text',
+			value: mappedUrls[2],
 			required: true,
-		},
-        {
+		  },
+		  {
 			labelText: 'Photo 3',
 			labelId: 'photo_3',
-			placeholder: '2',
-			type: 'file',
-			value: phone_number,
+			placeholder: 'URL for photo 3',
+			type: 'text',
+			value: mappedUrls[3],
 			required: true,
-		},
+		  },
         {
 			labelText: 'Latt',
 			labelId: 'latt',

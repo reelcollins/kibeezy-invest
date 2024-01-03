@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { addObjectUrls } from '@/redux/features/objectUrlsSlice';
 
 import styles from '@/styles/Map.module.css';
 export default function Page() {
@@ -10,6 +12,8 @@ export default function Page() {
   const [uploading, setUploading] = useState(false);
   const [objectUrls, setObjectUrls] = useState<string[]>([]);
   const router = useRouter();
+  const dispatch = useDispatch();
+
   
   
 
@@ -37,8 +41,13 @@ export default function Page() {
 
       alert('All uploads successful!');
 
+      
+      
       const objectUrls = [mainPhotoUrl, ...additionalPhotoUrls];
+      
+      dispatch(addObjectUrls(objectUrls));
       console.log(objectUrls)
+      
       router.push('/realtor/upload');
 
 
