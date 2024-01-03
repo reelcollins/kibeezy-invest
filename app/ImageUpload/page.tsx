@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-
+import styles from '@/styles/Map.module.css';
 export default function Page() {
   const [mainPhoto, setMainPhoto] = useState<File | null>(null);
   const [additionalPhotos, setAdditionalPhotos] = useState<File[]>([]);
@@ -98,11 +98,12 @@ export default function Page() {
   // Pass objectUrls to Property upload page or use them as needed
 
   return (
-    <main>
-      <h1>Upload Photos to S3</h1>
-      <form onSubmit={handleSubmit}>
+    <main className={styles.main}>
+      <h1 className={styles.h1}>Upload Photos to S3</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="mainPhoto">Main Photo:</label>
         <input
+          className={styles.input}
           id="mainPhoto"
           type="file"
           onChange={(e) => setMainPhoto(e.target.files?.[0] || null)}
@@ -111,6 +112,7 @@ export default function Page() {
 
         <label htmlFor="additionalPhotos">Additional Photos:</label>
         <input
+          className={styles.input}
           id="additionalPhotos"
           type="file"
           onChange={(e) => setAdditionalPhotos(Array.from(e.target.files || []))}
@@ -118,7 +120,7 @@ export default function Page() {
           multiple
         />
 
-        <button type="submit" disabled={uploading}>
+        <button className={styles.button} type="submit" disabled={uploading}>
           Upload
         </button>
       </form>
