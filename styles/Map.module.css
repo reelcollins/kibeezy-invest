@@ -66,8 +66,7 @@
   width: 100%;
   font-weight: 600;
 }
-.button,
-input[type='submit'] {
+.button {
   background: none;
   color: inherit;
   border: none;
