@@ -1,6 +1,6 @@
 'use client';
 
-import React , { useMemo, useState } from 'react';
+import React , { useMemo } from 'react';
 import { useUpload } from '@/hooks';
 import { Form } from '@/components/forms';
 import { useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ interface RootState {
   
 
 export default function UploadForm({ lat, lng }: UploadMapProps) {
-	const { realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished isLoading, onChange, onSubmit } = useUpload();
+	const { realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished ,isLoading, onChange, onSubmit } = useUpload();
 	const objectUrls = useSelector((state: RootState) => state.objectUrls);
 
 
