@@ -8,7 +8,7 @@ interface Props {
   placeholder: string;
   type: string;
   onChange: (event: ChangeEvent<any>) => void;
-  value: string;
+  value: string | boolean;
   children: React.ReactNode;
   link?: {
     linkText: string;
@@ -58,27 +58,27 @@ export default function Input({
 
 	if (type === 'checkbox') {
 		return (
-			<div className="mt-2">
+		  <div className="mt-2">
 			<label htmlFor={labelId} className="block text-sm font-medium leading-6 text-gray-900">
-				{children}
+			  {children}
 			</label>
 			<div className="flex items-center">
-				<input
+			  <input
 				type="checkbox"
 				id={labelId}
 				name={labelId}
-				checked={value === 'true'} // Assuming 'true' or 'false' values for checkboxes
+				checked={value === true} // Directly check against boolean value
 				onChange={(e) =>
-					onChange({
+				  onChange({
 					...e,
 					target: { ...e.target, value: e.target.checked.toString() },
-					})
+				  })
 				}
-				/>
+			  />
 			</div>
-			</div>
+		  </div>
 		);
-	}
+	  }
 
 	if (type === 'select') {
 		return (
