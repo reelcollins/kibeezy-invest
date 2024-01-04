@@ -11,6 +11,8 @@ import type { Metadata } from 'next';
 export default function Page() {
 	const [lat, setLat] = useState(-1.101811785859803);
     const [lng, setLng] = useState(37.014391469570306);
+	const [isPublished, setIsPublished] = useState(false); // Initial value is false
+
 
 	// Callback function to update lat and lng in the parent component
 	const handleLatLngChange = (newLat: number, newLng: number) => {
@@ -24,6 +26,14 @@ export default function Page() {
 
 			<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
                 <UploadForm lat={lat} lng={lng} />
+				<input
+				type="checkbox"
+				id="isPublishedCheckbox"
+				checked={isPublished}
+				onChange={() => setIsPublished((prevState) => !prevState)}
+				/>
+				<label htmlFor="isPublishedCheckbox">Is Published</label>
+
                 <UploadMap onLatLngChange={handleLatLngChange} />
 
 				{/* <SocialButtons /> */}
