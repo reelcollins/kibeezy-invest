@@ -109,7 +109,7 @@ const authApiSlice = apiSlice.injectEndpoints({
 			}),
 			onQueryStarted: (queryConfig) => {
 			  // Access the request body and log it
-			  console.log("Data being sent:", queryConfig.body);
+			  console.log("Data:", queryConfig.body);
 			},
 		  }),
 		  
