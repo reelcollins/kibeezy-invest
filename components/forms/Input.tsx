@@ -7,7 +7,7 @@ interface Props {
   labelId: string;
   placeholder: string;
   type: string;
-  onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onChange: (event: ChangeEvent<any>) => void;
   value: string;
   children: React.ReactNode;
   link?: {
