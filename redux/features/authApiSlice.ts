@@ -21,12 +21,7 @@ const authApiSlice = apiSlice.injectEndpoints({
 	endpoints: builder => ({
 		retrieveUser: builder.query<User, void>({
 			query: () => '/user/me/',
-		}),
-
-
-
-
-		
+		}),		
 		socialAuthenticate: builder.mutation<
 			CreateUserResponse,
 			SocialAuthArgs
@@ -107,12 +102,17 @@ const authApiSlice = apiSlice.injectEndpoints({
 		}),
 
 		upload: builder.mutation({
-			query: ({ realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished }) => ({
-				url: '/listing/manage/',
-				method: 'POST',
-				body: { realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished },
+			query: ({ realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube, isPublished }) => ({
+			  url: '/listing/manage/',
+			  method: 'POST',
+			  body: { realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube, isPublished },
 			}),
-		}),
+			onQueryStarted: (queryConfig) => {
+			  // Access the request body and log it
+			  console.log("Data being sent:", queryConfig.body);
+			},
+		  }),
+		  
 		
 	}),
 });
