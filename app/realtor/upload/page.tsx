@@ -26,14 +26,6 @@ export default function Page() {
 
 			<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
                 <UploadForm lat={lat} lng={lng} />
-				<input
-				type="checkbox"
-				id="isPublishedCheckbox"
-				checked={isPublished}
-				onChange={() => setIsPublished((prevState) => !prevState)}
-				/>
-				<label htmlFor="isPublishedCheckbox">Is Published</label>
-
                 <UploadMap onLatLngChange={handleLatLngChange} />
 
 				{/* <SocialButtons /> */}
