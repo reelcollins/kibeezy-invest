@@ -1,22 +1,37 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch } from '@/redux/hooks';
-import { useLoginMutation } from '@/redux/features/authApiSlice';
+import { useUploadMutation } from '@/redux/features/authApiSlice';
 import { setAuth } from '@/redux/features/authSlice';
 import { toast } from 'react-toastify';
 
 export default function useUpload() {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
-	const [login, { isLoading }] = useLoginMutation();
+	const [ upload, { isLoading }] = useUploadMutation();
 
 	const [formData, setFormData] = useState({
-		phone_number: '',
-		password: '',
+		realtor: '',
+		contacts: '',
+		title: '',
+		slug: '',
+		address: '',
+		floor: '',
+		county: '',
+		town: '',
+		description: '',
+		price: '',
+		bedrooms: '',
+		bathrooms: '',
+		sale_type: '',
+		home_type: '',
+		amenities: '',
+		youtube: '',
 		isPublished: '',
+
 	});
 
-	const { phone_number, password, isPublished} = formData;
+	const { realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished} = formData;
 
 	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target;
@@ -27,21 +42,20 @@ export default function useUpload() {
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		login({ phone_number, password, isPublished })
+		upload({  realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished})
 			.unwrap()
 			.then(() => {
 				dispatch(setAuth());
-				toast.success('Logged in');
-				router.push('/home');
+				toast.success('Uploaded');
+				router.push('/realtor');
 			})
 			.catch(() => {
-				toast.error('Failed to log in');
+				toast.error('Failed to upload');
 			});
 	};
 
 	return {
-		phone_number,
-		password,
+		realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished,
 		isLoading,
 		onChange,
 		onSubmit,

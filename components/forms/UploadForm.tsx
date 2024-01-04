@@ -1,8 +1,7 @@
 'use client';
 
-import React from 'react';
-import { useMemo, useState } from 'react';
-import { useLogin } from '@/hooks';
+import React , { useMemo, useState } from 'react';
+import { useUpload } from '@/hooks';
 import { Form } from '@/components/forms';
 import { useSelector } from 'react-redux';
 
@@ -17,7 +16,7 @@ interface RootState {
   
 
 export default function UploadForm({ lat, lng }: UploadMapProps) {
-	const { phone_number, password, isLoading, onChange, onSubmit } = useLogin();
+	const { realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished isLoading, onChange, onSubmit } = useUpload();
 	const objectUrls = useSelector((state: RootState) => state.objectUrls);
 
 
@@ -34,7 +33,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'realtor',
 			placeholder: '07******84 / 01******84',
 			type: 'text',
-			value: phone_number,
+			value: realtor,
 			required: true,
 		},
         {
@@ -42,7 +41,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'contacts',
 			placeholder: '07******84 / 01******84',
 			type: 'text',
-			value: phone_number,
+			value: contacts,
 			required: true,
 		},
         {
@@ -50,7 +49,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'title',
 			placeholder: 'Nyumbani Apartments',
 			type: 'text',
-			value: phone_number,
+			value: title,
 			required: true,
 		},
         {
@@ -58,7 +57,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'slug',
 			placeholder: '1234',
 			type: 'text',
-			value: phone_number,
+			value: slug,
 			required: true,
 		},
         {
@@ -66,7 +65,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'address',
 			placeholder: 'Gate C Juja',
 			type: 'text',
-			value: phone_number,
+			value: address,
 			required: true,
 		},
         {
@@ -74,7 +73,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'floor',
 			placeholder: '2nd',
 			type: 'text',
-			value: phone_number,
+			value: floor,
 			required: true,
 		},
         {
@@ -82,7 +81,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'county',
 			placeholder: 'Kiambu',
 			type: 'text',
-			value: phone_number,
+			value: county,
 			required: true,
 		},
         {
@@ -90,7 +89,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'town',
 			placeholder: 'Juja',
 			type: 'text',
-			value: phone_number,
+			value: town,
 			required: true,
 		},
         {
@@ -98,7 +97,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'description',
 			placeholder: 'Spacious, well lit',
 			type: 'text',
-			value: phone_number,
+			value: description,
 			required: true,
 		},
         {
@@ -106,7 +105,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'price',
 			placeholder: '5000',
 			type: 'text',
-			value: phone_number,
+			value: price,
 			required: true,
 		},
 		{
@@ -114,7 +113,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'bedrooms',
 			placeholder: '2',
 			type: 'text',
-			value: phone_number,
+			value: bedrooms,
 			required: true,
 		},
         {
@@ -122,7 +121,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'bathrooms',
 			placeholder: '1.0',
 			type: 'text',
-			value: phone_number,
+			value: bathrooms,
 			required: true,
 		},
 		{
@@ -130,7 +129,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'saletype',
 			type: 'select',
 			placeholder: 'Select Sale Type',
-			value: phone_number,
+			value: sale_type,
 			required: true,
 			options: [
 				{ value: 'For Rent', label: 'For Rent' },
@@ -142,7 +141,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'hometype',
 			type: 'select', // Change the type to 'select'
 			placeholder: 'Select Home Type',
-			value: phone_number, // You might want to use a different state variable for this
+			value: home_type, // You might want to use a different state variable for this
 			required: true,
 			options: [
 				{ value: 'Bedsitter', label: 'Bedsitter' },
@@ -156,7 +155,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'amenities',
 			placeholder: 'Tap Water',
 			type: 'text',
-			value: phone_number,
+			value: amenities,
 			required: true,
 		},
         {
@@ -212,7 +211,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'youtube',
 			placeholder: 'didhgnghlslekeh',
 			type: 'text',
-			value: phone_number,
+			value: youtube,
 			required: true,
 		},
 		{
@@ -220,7 +219,7 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
 			labelId: 'published',
 			type: 'checkbox', // Change the type to 'checkbox'
 			placeholder: 'Yes/No',
-			value: phone_number, // You might want to use a different state variable for this
+			value: isPublished, // You might want to use a different state variable for this
 			required: true,
 			checkboxLabel: 'Published', // Label for the checkbox
 		},

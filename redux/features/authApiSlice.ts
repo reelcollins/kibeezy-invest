@@ -105,6 +105,14 @@ const authApiSlice = apiSlice.injectEndpoints({
 				body: { uid, token, new_password, re_new_password },
 			}),
 		}),
+
+		upload: builder.mutation({
+			query: ({ realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished }) => ({
+				url: '/listing/manage/',
+				method: 'POST',
+				body: { realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished },
+			}),
+		}),
 		
 	}),
 });
@@ -120,4 +128,5 @@ export const {
 	useActivationMutation,
 	useResetPasswordMutation,
 	useResetPasswordConfirmMutation,
+	useUploadMutation,
 } = authApiSlice;
