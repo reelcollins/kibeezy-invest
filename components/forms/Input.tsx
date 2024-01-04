@@ -29,6 +29,8 @@ export default function Input({
   required = false,
   options,
 }: Props) {
+	const [isPublished, setIsPublished] = useState(false);
+
 	const [selectedOptionLabel, setSelectedOptionLabel] = useState<string | undefined>(undefined);
 
 	if (type === 'radio') {
@@ -67,13 +69,8 @@ export default function Input({
 				type="checkbox"
 				id={labelId}
 				name={labelId}
-				checked={value === true} // Directly check against boolean value
-				onChange={(e) =>
-				  onChange({
-					...e,
-					target: { ...e.target, value: e.target.checked.toString() },
-				  })
-				}
+				checked={isPublished} // Directly check against boolean value
+				onChange={() => setIsPublished((prevState) => !prevState)}
 			  />
 			</div>
 		  </div>
