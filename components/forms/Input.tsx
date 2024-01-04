@@ -90,7 +90,7 @@ export default function Input({
 				<select
 				id={labelId}
 				name={labelId}
-				value={value}
+				value={typeof value === 'string' ? value : ''}
 				onChange={(e) => {
 					onChange(e);
 					const selectedOption = options?.find((option) => option.value === e.target.value);
@@ -135,7 +135,7 @@ export default function Input({
           placeholder={placeholder}
           type={type}
           onChange={onChange}
-          value={value}
+          value={typeof value === 'string' ? value : ''}
           required={required}
         />
       </div>
