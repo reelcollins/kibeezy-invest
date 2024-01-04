@@ -58,27 +58,24 @@ export default function Input({
 
 	if (type === 'checkbox') {
 		return (
-			<div className="mt-2">
+		  <div className="mt-2">
 			<label htmlFor={labelId} className="block text-sm font-medium leading-6 text-gray-900">
-				{children}
+			  {children}
 			</label>
 			<div className="flex items-center">
-				<input
+			  <input
 				type="checkbox"
 				id={labelId}
 				name={labelId}
-				checked={value === 'true'} // Assuming 'true' or 'false' values for checkboxes
-				onChange={(e) =>
-					onChange({
-					...e,
-					target: { ...e.target, value: e.target.checked.toString() },
-					})
-				}
-				/>
+				checked={value}
+				onChange={onChange}
+			  />
 			</div>
-			</div>
+		  </div>
 		);
-	}
+	  }
+	  
+	  
 
 	if (type === 'select') {
 		return (
