@@ -67,8 +67,13 @@ export default function Input({
 				type="checkbox"
 				id={labelId}
 				name={labelId}
-				checked={value}
-				onChange={onChange}
+				checked={value === 'true'} // Assuming 'true' or 'false' values for checkboxes
+				onChange={(e) =>
+				  onChange({
+					...e,
+					target: { ...e.target, value: e.target.checked.toString() },
+				  })
+				}
 			  />
 			</div>
 		  </div>
