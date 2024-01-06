@@ -65,17 +65,20 @@ async function fetchdetails() {
       }
     const filteredData = data?.listings?.filter((item: Props) => {
         const lowerCaseSearchQuery = searchQuery.toLowerCase();
-        const priceFilterMatch = searchQuery.match(/p:(\d+)/i);
+        const searchTerms = lowerCaseSearchQuery.split(' ');
+
+
+        const priceFilterMatch = searchQuery.match(/p(\d+)/i);
         const priceFilter = priceFilterMatch ? parseInt(priceFilterMatch[1]) : null;
     
-        return (
-            (item.address && item.address.toLowerCase().includes(lowerCaseSearchQuery)) ||
-            (item.city && item.city.toLowerCase().includes(lowerCaseSearchQuery)) ||
-            (item.town && item.town.toLowerCase().includes(lowerCaseSearchQuery)) ||
-            (item.home_type && item.home_type.toLowerCase().includes(lowerCaseSearchQuery)) ||
-            (item.title && item.title.toLowerCase().includes(lowerCaseSearchQuery)) ||
-            (priceFilter && item.price && item.price < priceFilter)
-        );
+        return searchTerms.every(term =>
+            (item.address && item.address.toLowerCase().includes(term)) ||
+            (item.city && item.city.toLowerCase().includes(term)) ||
+            (item.town && item.town.toLowerCase().includes(term)) ||
+            (item.home_type && item.home_type.toLowerCase().includes(term)) ||
+            (item.title && item.title.toLowerCase().includes(term)) ||
+            (priceFilter !== null && item.price !== undefined && item.price <= priceFilter) // Adjusted condition for less than or equal to
+          );
     });
       
 
@@ -87,7 +90,7 @@ async function fetchdetails() {
               <FaSearchLocation height="16" width="16" />
             </TextField.Slot>
             <TextField.Input
-              placeholder="Juja p8000"
+              placeholder="Juja Bedsitter p8000"
               // Controlled input, value from state, onChange to update state
               value={searchQuery}
               onChange={handleSearchChange}
