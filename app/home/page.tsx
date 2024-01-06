@@ -47,8 +47,7 @@ async function fetchdetails() {
         slug: number;
         address: string;
         city: string;
-        state: string;
-        zipcode: number;
+        town: string;
         description: string;
         price: number;
         bedrooms: number;
@@ -70,6 +69,9 @@ async function fetchdetails() {
         return (
             (item.address && item.address.toLowerCase().includes(lowerCaseSearchQuery)) ||
             (item.city && item.city.toLowerCase().includes(lowerCaseSearchQuery)) ||
+            (item.town && item.town.toLowerCase().includes(lowerCaseSearchQuery)) ||
+            (item.price && item.price) ||
+            (item.home_type && item.home_type.toLowerCase().includes(lowerCaseSearchQuery)) ||
             (item.title && item.title.toLowerCase().includes(lowerCaseSearchQuery))
         );
     });
