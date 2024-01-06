@@ -64,13 +64,16 @@ async function fetchdetails() {
         floor: string | number;
 
       }
-    const filteredData = data?.listings?.filter((item: Props) =>
-        // Filter based on the search query and the properties you want to search
-        item.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.title.toLowerCase().includes(searchQuery.toLowerCase())
-        // Add more properties as needed
-    );
+    const filteredData = data?.listings?.filter((item: Props) => {
+        const lowerCaseSearchQuery = searchQuery.toLowerCase();
+    
+        return (
+            (item.address && item.address.toLowerCase().includes(lowerCaseSearchQuery)) ||
+            (item.city && item.city.toLowerCase().includes(lowerCaseSearchQuery)) ||
+            (item.title && item.title.toLowerCase().includes(lowerCaseSearchQuery))
+        );
+    });
+      
 
     
       return (
