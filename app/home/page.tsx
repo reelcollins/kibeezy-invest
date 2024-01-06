@@ -65,10 +65,8 @@ async function fetchdetails() {
       }
     const filteredData = data?.listings?.filter((item: Props) => {
         const lowerCaseSearchQuery = searchQuery.toLowerCase();
-        const priceFilterMatch = searchQuery.match(/price:(\d+)/i);
+        const priceFilterMatch = searchQuery.match(/p:(\d+)/i);
         const priceFilter = priceFilterMatch ? parseInt(priceFilterMatch[1]) : null;
-
-
     
         return (
             (item.address && item.address.toLowerCase().includes(lowerCaseSearchQuery)) ||
@@ -89,7 +87,7 @@ async function fetchdetails() {
               <FaSearchLocation height="16" width="16" />
             </TextField.Slot>
             <TextField.Input
-              placeholder="Search for a home…"
+              placeholder="Juja p8000"
               // Controlled input, value from state, onChange to update state
               value={searchQuery}
               onChange={handleSearchChange}
