@@ -22,21 +22,13 @@ async function fetchdetails() {
 
 export default async function Page() {
     const data = await fetchdetails();
-      // State to manage the search query
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
     };
 
-    const filteredData = data.listings.filter((item: Props) =>
-    // Filter based on the search query and the properties you want to search
-    item.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.title.toLowerCase().includes(searchQuery.toLowerCase())
-    // Add more properties as needed
-    );
-
+    
     interface Props {
         id: number;
         realtor: string;
@@ -61,6 +53,14 @@ export default async function Page() {
         floor: string | number;
 
       }
+    const filteredData = data.listings.filter((item: Props) =>
+        // Filter based on the search query and the properties you want to search
+        item.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+        // Add more properties as needed
+    );
+
     
       return (
         <div>
