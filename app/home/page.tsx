@@ -65,14 +65,18 @@ async function fetchdetails() {
       }
     const filteredData = data?.listings?.filter((item: Props) => {
         const lowerCaseSearchQuery = searchQuery.toLowerCase();
+        const priceFilterMatch = searchQuery.match(/price:(\d+)/i);
+        const priceFilter = priceFilterMatch ? parseInt(priceFilterMatch[1]) : null;
+
+
     
         return (
             (item.address && item.address.toLowerCase().includes(lowerCaseSearchQuery)) ||
             (item.city && item.city.toLowerCase().includes(lowerCaseSearchQuery)) ||
             (item.town && item.town.toLowerCase().includes(lowerCaseSearchQuery)) ||
-            // (item.price && item.price) ||
             (item.home_type && item.home_type.toLowerCase().includes(lowerCaseSearchQuery)) ||
-            (item.title && item.title.toLowerCase().includes(lowerCaseSearchQuery))
+            (item.title && item.title.toLowerCase().includes(lowerCaseSearchQuery)) ||
+            (priceFilter && item.price && item.price < priceFilter)
         );
     });
       
