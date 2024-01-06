@@ -70,7 +70,7 @@ async function fetchdetails() {
             (item.address && item.address.toLowerCase().includes(lowerCaseSearchQuery)) ||
             (item.city && item.city.toLowerCase().includes(lowerCaseSearchQuery)) ||
             (item.town && item.town.toLowerCase().includes(lowerCaseSearchQuery)) ||
-            (item.price && item.price) ||
+            // (item.price && item.price) ||
             (item.home_type && item.home_type.toLowerCase().includes(lowerCaseSearchQuery)) ||
             (item.title && item.title.toLowerCase().includes(lowerCaseSearchQuery))
         );
