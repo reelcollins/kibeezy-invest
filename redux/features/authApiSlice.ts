@@ -128,5 +128,5 @@ export const {
 	useActivationMutation,
 	useResetPasswordMutation,
 	useResetPasswordConfirmMutation,
-	useUploadMutation,
+	useUploadMutation
 } = authApiSlice;

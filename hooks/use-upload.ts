@@ -28,7 +28,6 @@ export default function useUpload() {
 		amenities: '',
 		youtube: '',
 		isPublished: '',
-
 	});
 
 	const { realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished} = formData;
@@ -53,9 +52,24 @@ export default function useUpload() {
 				toast.error('Failed to upload');
 			});
 	};
-
 	return {
-		realtor, contacts, title, slug, address, floor, county, town, description, price, bedrooms, bathrooms, sale_type, home_type, amenities, youtube,  isPublished,
+		realtor,
+		contacts,
+		title,
+		slug,
+		address,
+		floor,
+		county,
+		town,
+		description,
+		price,
+		bedrooms,
+		bathrooms,
+		sale_type,
+		home_type,
+		amenities,
+		youtube,
+		isPublished,
 		isLoading,
 		onChange,
 		onSubmit,
