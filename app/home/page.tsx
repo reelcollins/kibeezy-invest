@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField } from '@radix-ui/themes'
 import { Box, SimpleGrid, Text } from "@chakra-ui/react"
 import { PropertyCard } from '@/components/common';
@@ -20,9 +20,20 @@ async function fetchdetails() {
     }
   }
 
-export default async function Page() {
-    const data = await fetchdetails();
+  export default function Page() {
+    const [data, setData] = useState<{ listings: Props[] } | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        const fetchedData = await fetchdetails();
+        setData(fetchedData);
+        setIsLoading(false);
+      };
+  
+      fetchData();
+    }, []);
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -53,7 +64,7 @@ export default async function Page() {
         floor: string | number;
 
       }
-    const filteredData = data.listings.filter((item: Props) =>
+    const filteredData = data?.listings?.filter((item: Props) =>
         // Filter based on the search query and the properties you want to search
         item.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -75,33 +86,40 @@ export default async function Page() {
               onChange={handleSearchChange}
             />
           </TextField.Root>
-          <Box backgroundColor="#f7f8f9" padding="3rem">
-            <Box maxWidth="1280px" margin="0 auto">
-              <SimpleGrid
-                columns={{ base: 1, sm: 3 }}
-                gap={{ base: "0", sm: "2rem" }}
-              >
-                {filteredData.map(function (item: Props) {
-                  return (
-                    <PropertyCard
-                      key={item.id.toString()}
-                      address={item.address}
-                      main_photo={item.main_photo}
-                      home_type={item.home_type}
-                      price={item.price}
-                      title={item.title}
-                      bedrooms={item.bedrooms}
-                      bathrooms={item.bathrooms}
-                      sale_type={item.sale_type}
-                      slug={item.slug}
-                      id={item.id}
-                      floor={item.floor}
-                    />
-                  );
-                })}
-              </SimpleGrid>
-            </Box>
-          </Box>
+
+            <div>
+            {isLoading ? (
+                <div>Loading...</div>
+                ) : (
+                <Box backgroundColor="#f7f8f9" padding="3rem">
+                    <Box maxWidth="1280px" margin="0 auto">
+                    <SimpleGrid
+                        columns={{ base: 1, sm: 3 }}
+                        gap={{ base: "0", sm: "2rem" }}
+                    >
+                        {filteredData?.map(function (item: Props) {
+                        return (
+                            <PropertyCard
+                            key={item.id.toString()}
+                            address={item.address}
+                            main_photo={item.main_photo}
+                            home_type={item.home_type}
+                            price={item.price}
+                            title={item.title}
+                            bedrooms={item.bedrooms}
+                            bathrooms={item.bathrooms}
+                            sale_type={item.sale_type}
+                            slug={item.slug}
+                            id={item.id}
+                            floor={item.floor}
+                            />
+                        );
+                        })}
+                    </SimpleGrid>
+                    </Box>
+                </Box>
+                )}
+            </div>
         </div>
       );
 }
