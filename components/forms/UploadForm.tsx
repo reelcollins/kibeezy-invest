@@ -26,10 +26,6 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
   }, [objectUrls]);
 
   const {
-    main_photo,
-    photo_1,
-    photo_2,
-    photo_3,
     realtor,
     contacts,
     title,
@@ -51,6 +47,8 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
     onChange,
     onSubmit,
   } = useUpload({
+    lat,
+    lng,
     main_photo: mappedUrls[0],
     photo_1: mappedUrls[1],
     photo_2: mappedUrls[2],
@@ -221,16 +219,16 @@ export default function UploadForm({ lat, lng }: UploadMapProps) {
       required: true,
     },
     {
-      labelText: "Latt",
-      labelId: "latt",
+      labelText: "Lat",
+      labelId: "lat",
       placeholder: "2",
       type: "text",
       value: lat.toString(),
       required: true,
     },
     {
-      labelText: "Lngg",
-      labelId: "lngg",
+      labelText: "Lng",
+      labelId: "lng",
       placeholder: "2",
       type: "text",
       value: lng.toString(),

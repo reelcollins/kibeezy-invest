@@ -10,6 +10,8 @@ interface UploadHookParams {
   photo_1: string;
   photo_2: string;
   photo_3: string;
+  lat: number;
+  lng: number;
 }
 
 export default function useUpload({
@@ -17,12 +19,16 @@ export default function useUpload({
   photo_1,
   photo_2,
   photo_3,
+  lat,
+  lng,
 }: UploadHookParams) {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [upload, { isLoading }] = useUploadMutation();
 
   const [formData, setFormData] = useState({
+    lat,
+    lng,
     main_photo,
     photo_1,
     photo_2,
@@ -76,6 +82,8 @@ export default function useUpload({
     event.preventDefault();
 
     upload({
+      lat,
+      lng,
       main_photo,
       photo_1,
       photo_2,
@@ -109,6 +117,8 @@ export default function useUpload({
       });
   };
   return {
+    lat,
+    lng,
     main_photo,
     photo_1,
     photo_2,
