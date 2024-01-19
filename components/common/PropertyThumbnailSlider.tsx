@@ -35,7 +35,7 @@ export default function PropertyThumbnailSlider({
           <SwiperSlide>
             <div className="flex h-full w-full items-center justify-center">
               <Image
-                src={`https://www.nyumbani.xyz/_next/image?url=${main_photo}&w=1200&q=75`}
+                src={main_photo}
                 alt="photo"
                 width={600}
                 height={800}
@@ -47,7 +47,7 @@ export default function PropertyThumbnailSlider({
           <SwiperSlide>
             <div className="flex h-full w-full items-center justify-center">
               <Image
-                src={`https://www.nyumbani.xyz/_next/image?url=${photo_1}&w=1200&q=75`}
+                src={photo_1}
                 alt="photo"
                 width={600}
                 height={800}
@@ -59,7 +59,7 @@ export default function PropertyThumbnailSlider({
           <SwiperSlide>
             <div className="flex h-full w-full items-center justify-center">
               <Image
-                src={`https://www.nyumbani.xyz/_next/image?url=${photo_2}&w=1200&q=75`}
+                src={photo_2}
                 alt="photo"
                 width={600}
                 height={800}
@@ -71,7 +71,7 @@ export default function PropertyThumbnailSlider({
           <SwiperSlide>
             <div className="flex h-full w-full items-center justify-center">
               <Image
-                src={`https://www.nyumbani.xyz/_next/image?url=${photo_3}&w=1200&q=75`}
+                src={photo_3}
                 alt="photo"
                 width={600}
                 height={800}
