@@ -11,10 +11,8 @@ import type { Metadata } from 'next';
 export default function Page() {
 	const [lat, setLat] = useState(-1.101811785859803);
     const [lng, setLng] = useState(37.014391469570306);
-	const [isPublished, setIsPublished] = useState(false); // Initial value is false
 
 
-	// Callback function to update lat and lng in the parent component
 	const handleLatLngChange = (newLat: number, newLng: number) => {
 		setLat(newLat);
 		setLng(newLng);
