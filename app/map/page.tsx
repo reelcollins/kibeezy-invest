@@ -12,7 +12,7 @@ import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
-import styles from "../styles/Home.module.css";
+import styles from "@/styles/Home.module.css";
 import { Spinner } from "@/components/common";
 
 async function fetchdetails() {
