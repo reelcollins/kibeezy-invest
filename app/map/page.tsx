@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
+import Link from "next/link";
 import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 
 import usePlacesAutocomplete, {
@@ -62,6 +63,10 @@ export default function Page() {
     libraries: libraries as any,
   });
 
+  const handleMarkerClick = (item: Props) => {
+    router.push(`/home/${item.slug}`);
+  };
+
   if (!isLoaded) {
     return (
       <div className="flex justify-center my-8">
@@ -100,6 +105,7 @@ export default function Page() {
                 lat: parseFloat(item.latt),
                 lng: parseFloat(item.lngg),
               }}
+              onClick={() => handleMarkerClick(item)}
               onLoad={() => console.log("Marker Loaded")}
             />
           ))}

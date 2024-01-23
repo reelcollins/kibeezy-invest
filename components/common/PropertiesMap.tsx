@@ -56,21 +56,6 @@ export default function PropertiesMap({latt, lngg}: PropertiesMapProps) {
                 >
                     <MarkerF position={mapCenter} onClick={handleMarkerClick} onLoad={() => console.log('Marker Loaded')} />
 
-                    {/* {[100, 250].map((radius, idx) => {
-                        return (
-                        <CircleF
-                            key={idx}
-                            center={mapCenter}
-                            radius={radius}
-                            onLoad={() => console.log('Circle Load...')}
-                            options={{
-                            fillColor: radius > 100 ? 'red' : 'green',
-                            strokeColor: radius > 100 ? 'red' : 'green',
-                            strokeOpacity: 0.8,
-                            }}
-                        />
-                        );
-                    })} */}
                 </GoogleMap>
             </div>
 
