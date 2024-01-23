@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import {
-  useLoadScript,
-  GoogleMap,
-  MarkerF,
-} from "@react-google-maps/api";
+import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 
 import usePlacesAutocomplete, {
   getGeocode,
@@ -49,8 +45,8 @@ export default function Page() {
     date_created: number;
   }
 
-  const [lat, setLat] = useState(27.672932021393862);
-  const [lng, setLng] = useState(85.31184012689732);
+  const [lat, setLat] = useState(-1.101811785859803);
+  const [lng, setLng] = useState(37.014391469570306);
 
   const libraries = useMemo(() => ["places"], []);
   const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
