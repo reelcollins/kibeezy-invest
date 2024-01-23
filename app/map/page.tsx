@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 
 import usePlacesAutocomplete, {
@@ -24,6 +24,7 @@ async function fetchdetails() {
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<{ listings: Props[] } | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
