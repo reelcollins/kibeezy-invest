@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { TextField } from "@radix-ui/themes";
 import {
   useLoadScript,
@@ -8,17 +8,50 @@ import {
   MarkerF,
   CircleF,
 } from "@react-google-maps/api";
-import type { NextPage } from "next";
-import { useMemo, useState } from "react";
-import styles from "@/styles/Map.module.css";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
+import styles from "../styles/Home.module.css";
+import { Spinner } from "@/components/common";
+
+async function fetchdetails() {
+  const response = await fetch(
+    "https://abc.nyumbani.xyz/api/listing/get-listings"
+  );
+  if (response.ok) {
+    const responseBody = await response.json();
+    //   console.log(`data ${responseBody}`);
+    return responseBody;
+  }
+}
 
 export default function Page() {
-  const [lat, setLat] = useState(-1.101811785859803);
-  const [lng, setLng] = useState(37.014391469570306);
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState<{ stations: Props[] } | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedData = await fetchdetails();
+      setData(fetchedData);
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  interface Props {
+    id: number;
+    title: string;
+    slug: number;
+    description: string;
+    latt: string;
+    lngg: string;
+    date_created: number;
+  }
+
+  const [lat, setLat] = useState(27.672932021393862);
+  const [lng, setLng] = useState(85.31184012689732);
 
   const libraries = useMemo(() => ["places"], []);
   const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
@@ -38,60 +71,46 @@ export default function Page() {
   });
 
   if (!isLoaded) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex justify-center my-8">
+        <Spinner md />
+      </div>
+    );
   }
-  return (
-    <div>
-      {/* <TextField.Root>
-                
-                <TextField.Slot>
-                    <MagnifyingGlassIcon height="16" width="16" />
-                </TextField.Slot>
-                
-                <TextField.Input placeholder="Search for a home…" />
-            </TextField.Root> */}
-      <div className={styles.homeWrapper}>
-        <div className={styles.sidebar}>
-          {/* render Places Auto Complete and pass custom handler which updates the state */}
-          <PlacesAutocomplete
-            onAddressSelect={(address) => {
-              getGeocode({ address: address }).then((results) => {
-                const { lat, lng } = getLatLng(results[0]);
 
-                setLat(lat);
-                setLng(lng);
-              });
-            }}
-          />
-        </div>
+  return (
+    <div className={styles.homeWrapper}>
+      <div className={styles.sidebar}>
+        {/* render Places Auto Complete and pass custom handler which updates the state */}
+        <PlacesAutocomplete
+          onAddressSelect={(address) => {
+            getGeocode({ address: address }).then((results) => {
+              const { lat, lng } = getLatLng(results[0]);
+              setLat(lat);
+              setLng(lng);
+            });
+          }}
+        />
+      </div>
+      <div style={{ flex: 1, height: "100vh" }}>
         <GoogleMap
           options={mapOptions}
           zoom={14}
           center={mapCenter}
           mapTypeId={google.maps.MapTypeId.ROADMAP}
-          mapContainerStyle={{ width: "800px", height: "800px" }}
-          onLoad={() => console.log("Map Component Loaded...")}
+          mapContainerStyle={{ width: "100%", height: "100%" }}
+          onLoad={(map) => console.log("Map Loaded")}
         >
-          <MarkerF
-            position={mapCenter}
-            onLoad={() => console.log("Marker Loaded")}
-          />
-
-          {[1000, 2500].map((radius, idx) => {
-            return (
-              <CircleF
-                key={idx}
-                center={mapCenter}
-                radius={radius}
-                onLoad={() => console.log("Circle Load...")}
-                options={{
-                  fillColor: radius > 1000 ? "red" : "green",
-                  strokeColor: radius > 1000 ? "red" : "green",
-                  strokeOpacity: 0.8,
-                }}
-              />
-            );
-          })}
+          {data?.stations.map((item) => (
+            <MarkerF
+              key={item.id ?? item.slug}
+              position={{
+                lat: parseFloat(item.latt),
+                lng: parseFloat(item.lngg),
+              }}
+              onLoad={() => console.log("Marker Loaded")}
+            />
+          ))}
         </GoogleMap>
       </div>
     </div>

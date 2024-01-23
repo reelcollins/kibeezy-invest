@@ -1,0 +1,42 @@
+/* Add this style to remove the scrollbar from the body */
+
+.homeWrapper {
+  display: flex;
+  height: 100vh;
+  position: relative; /* Add this to create a stacking context */
+}
+
+.sidebar {
+  /* ... other styles */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Bring the sidebar and its contents to the front */
+}
+
+/* Update the style for .autocompleteWrapper */
+.autocompleteWrapper {
+  width: 100%;
+}
+
+/* Update the style for .autocompleteInput */
+.autocompleteInput {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid yellow;
+}
+
+/* Update the style for .suggestionWrapper */
+.suggestionWrapper {
+  margin: 0;
+  overflow-x: hidden;
+  list-style: none;
+  padding: 4px;
+}
+
+.suggestionWrapper > li {
+  padding: 8px 4px;
+  background-color: lightcoral;
+  margin: 4px 0;
+  cursor: pointer;
+}

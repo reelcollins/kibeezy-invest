@@ -126,34 +126,17 @@ export default function Page() {
           </Box>
         )}
       </div>
+
+      <Box className="fixed left-0 right-0 flex justify-center bottom-5">
+        <Box className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-2">
+          <Link href="/map" className="text-5xl mr-4 hover:bg-gray-200">
+            <FaMapMarkedAlt />
+          </Link>
+          <Link href="/shorts" className="text-5xl hover:bg-gray-200">
+            <MdSmartDisplay />
+          </Link>
+        </Box>
+      </Box>
     </div>
   );
-}
-
-{
-  /*
-             <Box
-                className="fixed left-0 right-0 flex justify-center bottom-5"
-                >
-                <Box className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-2">
-                    <Link
-                    href="/map"
-                    className="text-5xl mr-4 hover:bg-gray-200"
-                    >
-                    <FaMapMarkedAlt />
-                    </Link>
-                    <Link href="/shorts" className="text-5xl hover:bg-gray-200">
-                    <MdSmartDisplay />
-                    </Link>
-                </Box>
-            </Box> 
-
-
-        </div>
-    )
-}
-
-
-
-*/
 }
