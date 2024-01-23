@@ -21,16 +21,6 @@ async function fetchdetails() {
   }
 }
 
-interface Props {
-  id: number;
-  title: string;
-  slug: number;
-  description: string;
-  latt: string;
-  lngg: string;
-  date_created: number;
-}
-
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<{ listings: Props[] } | null>(null);
@@ -45,6 +35,16 @@ export default function Page() {
 
     fetchData();
   }, []);
+
+  interface Props {
+    id: number;
+    title: string;
+    slug: number;
+    description: string;
+    latt: string;
+    lngg: string;
+    date_created: number;
+  }
 
   const [lat, setLat] = useState(-1.101811785859803);
   const [lng, setLng] = useState(37.014391469570306);
@@ -65,7 +65,7 @@ export default function Page() {
   });
 
   const handleMarkerClick = (item: Props) => {
-    router.push(`/home/${item.slug}`);
+    router.push(`/home/?slug=${item.slug}`);
   };
 
   if (!isLoaded) {
