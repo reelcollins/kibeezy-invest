@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 
 import usePlacesAutocomplete, {
@@ -64,11 +64,9 @@ export default function Page() {
     libraries: libraries as any,
   });
 
-  useEffect(() => {
-    const handleMarkerClick = (item: Props) => {
-      router.push(`/home/${item.slug}`);
-    };
-  }, []);
+  const handleMarkerClick = (item: Props) => {
+    router.push(`/home/${item.slug}`);
+  };
 
   if (!isLoaded) {
     return (
