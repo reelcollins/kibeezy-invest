@@ -64,9 +64,11 @@ export default function Page() {
     libraries: libraries as any,
   });
 
-  const handleMarkerClick = (item: Props) => {
-    router.push(`/home/${item.slug}`);
-  };
+  useEffect(() => {
+    const handleMarkerClick = (item: Props) => {
+      router.push(`/home/${item.slug}`);
+    };
+  }, []);
 
   if (!isLoaded) {
     return (
@@ -105,7 +107,7 @@ export default function Page() {
                 lat: parseFloat(item.latt),
                 lng: parseFloat(item.lngg),
               }}
-              onClick={() => handleMarkerClick(item)}
+              onClick={() => (isLoaded ? handleMarkerClick(item) : null)}
               onLoad={() => console.log("Marker Loaded")}
             />
           ))}
