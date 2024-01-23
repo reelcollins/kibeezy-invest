@@ -1,18 +1,17 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { TextField } from "@radix-ui/themes";
 import {
   useLoadScript,
   GoogleMap,
   MarkerF,
-  CircleF,
 } from "@react-google-maps/api";
+
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
-import styles from "@/styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 import { Spinner } from "@/components/common";
 
 async function fetchdetails() {
@@ -28,7 +27,7 @@ async function fetchdetails() {
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState<{ stations: Props[] } | null>(null);
+  const [data, setData] = useState<{ listings: Props[] } | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,7 +100,7 @@ export default function Page() {
           mapContainerStyle={{ width: "100%", height: "100%" }}
           onLoad={(map) => console.log("Map Loaded")}
         >
-          {data?.stations.map((item) => (
+          {data?.listings?.map((item: Props) => (
             <MarkerF
               key={item.id ?? item.slug}
               position={{
@@ -129,7 +128,7 @@ const PlacesAutocomplete = ({
     setValue,
     clearSuggestions,
   } = usePlacesAutocomplete({
-    requestOptions: { componentRestrictions: { country: "ke" } },
+    requestOptions: { componentRestrictions: { country: "us" } },
     debounce: 300,
     cache: 86400,
   });
@@ -164,7 +163,7 @@ const PlacesAutocomplete = ({
         className={styles.autocompleteInput}
         disabled={!ready}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Search on map..."
+        placeholder="123 Stariway To Heaven"
       />
 
       {status === "OK" && (
