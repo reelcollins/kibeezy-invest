@@ -65,7 +65,7 @@ export default function Page() {
   });
 
   const handleMarkerClick = (item: Props) => {
-    router.push(`/home/?slug=${item.slug}`);
+    router.push(`/home/${item.slug}?slug=${item.slug}`);
   };
 
   if (!isLoaded) {
