@@ -21,6 +21,16 @@ async function fetchdetails() {
   }
 }
 
+interface Props {
+  id: number;
+  title: string;
+  slug: number;
+  description: string;
+  latt: string;
+  lngg: string;
+  date_created: number;
+}
+
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<{ listings: Props[] } | null>(null);
@@ -35,16 +45,6 @@ export default function Page() {
 
     fetchData();
   }, []);
-
-  interface Props {
-    id: number;
-    title: string;
-    slug: number;
-    description: string;
-    latt: string;
-    lngg: string;
-    date_created: number;
-  }
 
   const [lat, setLat] = useState(-1.101811785859803);
   const [lng, setLng] = useState(37.014391469570306);
@@ -79,7 +79,6 @@ export default function Page() {
   return (
     <div className={styles.homeWrapper}>
       <div className={styles.sidebar}>
-        {/* render Places Auto Complete and pass custom handler which updates the state */}
         <PlacesAutocomplete
           onAddressSelect={(address) => {
             getGeocode({ address: address }).then((results) => {
