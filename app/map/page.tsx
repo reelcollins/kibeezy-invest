@@ -46,10 +46,8 @@ export default function Page() {
 
   const [lat, setLat] = useState(-1.101811785859803);
   const [lng, setLng] = useState(37.014391469570306);
-
   const libraries = useMemo(() => ["places"], []);
   const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
-
   const mapOptions = useMemo<google.maps.MapOptions>(
     () => ({
       disableDefaultUI: true,
@@ -123,7 +121,7 @@ const PlacesAutocomplete = ({
     setValue,
     clearSuggestions,
   } = usePlacesAutocomplete({
-    requestOptions: { componentRestrictions: { country: "us" } },
+    requestOptions: { componentRestrictions: { country: "ke" } },
     debounce: 300,
     cache: 86400,
   });
