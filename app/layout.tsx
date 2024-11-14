@@ -14,9 +14,9 @@ const inter = Inter({
 	subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Kibeezy',
-	description: 'Free WiFi',
-};
+	title: 'Kibeezy & Co | Welcome',
+	description: 'Kibeezy & Co Welcome page',
+	};
 
 export default function RootLayout({
 	children,

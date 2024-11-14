@@ -23,8 +23,7 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/styles/*": ["styles/*"],
-      "@/redux/*": ["redux/*"]
+      "@/*": ["*"]
     }
   },
   "include": [

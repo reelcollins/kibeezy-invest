@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { GiBee } from 'react-icons/gi';
-import { NavLink } from '@/components/common';
+import { NavLink } from '../common';
 
 export default function Navbar() {
 	// State to track gradient background position
