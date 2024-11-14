@@ -14,8 +14,8 @@ const inter = Inter({
 	subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Nyumbani.xyz',
-	description: 'Karibu Nyumbani',
+	title: 'Kibeezy',
+	description: 'Free WiFi',
 };
 
 export default function RootLayout({
