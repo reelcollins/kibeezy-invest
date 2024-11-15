@@ -6,11 +6,11 @@ import { GiBee } from 'react-icons/gi';
 // Add this mapping for the amounts corresponding to each package
 const packageAmounts = {
   '5 for 30min': 5,          // 5 shillings for Basic
-  '10 for 1hr': 10,         // 10 shillings for Standard
+  '10 for 1.5hr': 10,         // 10 shillings for Standard
   '20 for 3hrs': 20,        // 20 shillings for Premium
-  '30 for 6hrs': 30,        // 30 shillings for Ultimate
+  '30 for 6.5hrs': 30,        // 30 shillings for Ultimate
   '50 for 12hrs': 50,       // 50 shillings for Economy
-  '100 for 24hrs': 100,     // 100 shillings for Business
+  '80 for 24hrs': 80,     // 100 shillings for Business
 };
 
 export default function Page() {
