@@ -87,11 +87,11 @@ export default function Page() {
       <div className='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
         {[ 
           { name: 'Basic', description: '5 for 30min', color: 'blue' },
-          { name: 'Standard', description: '10 for 1hr', color: 'green' },
+          { name: 'Standard', description: '10 for 1.5hr', color: 'green' },
           { name: 'Premium', description: '20 for 3hrs', color: 'purple' },
-          { name: 'Ultimate', description: '30 for 6hrs', color: 'red' },
+          { name: 'Ultimate', description: '30 for 6.5hrs', color: 'red' },
           { name: 'Economy', description: '50 for 12hrs', color: 'yellow' },
-          { name: 'Business', description: '100 for 24hrs', color: 'indigo' },
+          { name: 'Business', description: '80 for 24hrs', color: 'indigo' },
         ].map((pkg) => (
           <div
             key={pkg.name}
