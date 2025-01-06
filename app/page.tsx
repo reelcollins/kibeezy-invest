@@ -54,7 +54,7 @@ export default function Page() {
       const data = await response.json();
 
       if (response.ok) {
-        alert('Payment initiated successfully! Check your phone.');
+        alert('STK Push initiated successfully! Check your phone.');
       } else {
         alert(`Error: ${data.error || 'Failed to initiate STK Push.'}`);
       }
@@ -77,7 +77,7 @@ export default function Page() {
           <input
             type='tel'
             id='phone-number'
-            placeholder='0712345678'
+            placeholder='+254712345678'
             className='block w-full rounded-full border-2 shadow-lg focus:border-blue-700 focus:ring-blue-700 sm:text-lg px-4 py-3 text-gray-900 placeholder-gray-400'
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
