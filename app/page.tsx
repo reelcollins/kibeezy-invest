@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { useState } from 'react';
 import { GiBee } from 'react-icons/gi';
 
+// Package amounts mapping
 const packageAmounts = {
   '5 for 30min': 5,
   '10 for 1.5hr': 10,
@@ -17,7 +18,7 @@ export default function Page() {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [selectedPackage, setSelectedPackage] = useState<string>('');
 
-  // ✅ Function to format the phone number
+  // ✅ Function to format phone number invisibly
   const formatPhoneNumber = (input: string) => {
     if (input.startsWith('0')) {
       return '254' + input.slice(1);
@@ -31,6 +32,7 @@ export default function Page() {
       return;
     }
 
+    // ✅ Format the phone number before sending
     const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
 
     // Get the amount for the selected package
@@ -63,7 +65,7 @@ export default function Page() {
       const data = await response.json();
 
       if (response.ok) {
-        alert('Payment initiated successfully! Check your phone.');
+        alert('STK Push initiated successfully! Check your phone.');
       } else {
         alert(`Error: ${data.error || 'Failed to initiate STK Push.'}`);
       }
@@ -90,7 +92,6 @@ export default function Page() {
             className='block w-full rounded-full border-2 shadow-lg focus:border-blue-700 focus:ring-blue-700 sm:text-lg px-4 py-3 text-gray-900 placeholder-gray-400'
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
-            onBlur={() => setPhoneNumber(formatPhoneNumber(phoneNumber))} // Format on blur
           />
         </div>
       </div>
