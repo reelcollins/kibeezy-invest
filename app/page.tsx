@@ -38,7 +38,7 @@ export default function Page() {
     });
 
     try {
-      const response = await fetch('https://abc.nyumbani.xyz/api/stkpush/', {
+      const response = await fetch('https://api.kibeezy.com//api/stkpush/', {
       // const response = await fetch('http://localhost:8000/api/stkpush/', {
         method: 'POST',
         headers: {
