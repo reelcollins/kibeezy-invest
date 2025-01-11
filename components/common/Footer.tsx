@@ -4,7 +4,7 @@ export default function Footer() {
 			<div className='h-full px-2'>
 				<div className='flex items-center justify-center h-full'>
 					<p className='text-gray-400 text-xs'>
-						&copy; 2024 KIBEEZY TECHNOLOGIES LLC. All rights reserved.
+						&copy; 2025 KIBEEZY TECHNOLOGIES LLC. All rights reserved.
 					</p>
 				</div>
 			</div>

@@ -6,12 +6,13 @@ import { GiBee } from 'react-icons/gi';
 
 // Package amounts mapping
 const packageAmounts = {
-  '5 for 30min': 5,
-  '10 for 1.5hr': 10,
+  // '10 for 30min': 5,
+  '10 for 1': 10,
   '20 for 3hrs': 20,
   '30 for 6.5hrs': 30,
   '50 for 12hrs': 50,
   '80 for 24hrs': 80,
+  '100 for 2days': 100,
 };
 
 export default function Page() {
