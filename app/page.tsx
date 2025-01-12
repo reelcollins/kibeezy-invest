@@ -98,29 +98,28 @@ export default function Page() {
       </div>
       <div className='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
         {[
-          
-          { name: 'Standard', description: '10 for 1', color: 'green' },
-          { name: 'Premium', description: '20 for 3hrs', color: 'purple' },
-          { name: 'Ultimate', description: '30 for 6.5hrs', color: 'red' },
-          { name: 'Economy', description: '50 for 12hrs', color: 'yellow' },
-          { name: 'Business', description: '80 for 24hrs', color: 'indigo' },
-          { name: 'Elite', description: '100 for 2 days', color: 'midnight-blue' },
+          { name: 'Basic', description: '10 for 1hr', color: 'blue' },
+          { name: 'Standard', description: '20 for 3hrs', color: 'green' },
+          { name: 'Premium', description: '30 for 6.5hrs', color: 'purple' },
+          { name: 'Ultimate', description: '50 for 12hrs', color: 'red' },
+          { name: 'Economy', description: '80 for 24hrs', color: 'yellow' },
+          // { name: 'Business', description: '80 for 24hrs', color: 'indigo' },
+          // { name: 'Elite', description: '100 for 2 days', color: 'blue' },
 
         ].map((pkg) => (
           <div
-  key={pkg.name}
-  className={`bg-${pkg.color}-500 text-white rounded-full shadow-xl p-8 flex flex-col items-center`}
->
-  <h3 className='text-xl font-semibold'>{pkg.name}</h3>
-  <p className='mt-2 text-lg text-center'>{pkg.description}</p>
-  <button
-    className={`mt-4 w-3/4 bg-${pkg.color}-600 hover:bg-${pkg.color}-700 text-white py-2 rounded-md`}
-    onClick={() => handleBuy(pkg.description)}
-  >
-    Buy
-  </button>
-</div>
-
+            key={pkg.name}
+            className={`bg-${pkg.color}-500 text-white rounded-full shadow-xl p-8 flex flex-col items-center`}
+          >
+            <h3 className='text-xl font-semibold'>{pkg.name}</h3>
+            <p className='mt-2 text-lg text-center'>{pkg.description}</p>
+            <button
+              className={`mt-4 w-3/4 bg-${pkg.color}-600 hover:bg-${pkg.color}-700 text-white py-2 rounded-md`}
+              onClick={() => handleBuy(pkg.description)}
+            >
+              Buy
+            </button>
+          </div>
         ))}
       </div>
     </div>
