@@ -20,7 +20,7 @@ export default function Navbar() {
 	const gradientStyle = {
 		background: `linear-gradient(${gradientPosition}deg, #3b82f6, #22c55e, #a855f7, #ef4444, #facc15, #6366f1)`,
 		backgroundSize: '200% 200%',
-		transition: 'background-position 0.1s ease-in-out',
+		transition: 'background-position 0.1s ',
 	};
 
 	return (
