@@ -103,7 +103,7 @@ export default function Page() {
           { name: 'Premium', description: '30 for 6.5hrs', color: 'purple' },
           { name: 'Ultimate', description: '50 for 12hrs', color: 'red' },
           { name: 'Economy', description: '80 for 24hrs', color: 'yellow' },
-          // { name: 'Business', description: '80 for 24hrs', color: 'indigo' },
+          { name: 'Business', description: '100 for 2 days', color: 'indigo' },
           // { name: 'Elite', description: '100 for 2 days', color: 'blue' },
 
         ].map((pkg) => (
