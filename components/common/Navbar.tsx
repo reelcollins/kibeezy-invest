@@ -30,7 +30,7 @@ export default function Navbar() {
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 						<div className="flex flex-shrink-0 items-center">
 							<NavLink href="/" isBanner>
-								<span className="flex items-center text-lg font-bold ml-1 text-white">
+								<span className="flex items-center text-xl font-bold ml-1 text-white">
 									<GiBee className="h-4 w-4 text-white ml-2" />
 									Kibeezy WiFi
 								</span>

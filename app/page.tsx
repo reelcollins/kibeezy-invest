@@ -111,8 +111,8 @@ export default function Page() {
             key={pkg.name}
             className={`bg-${pkg.color}-500 text-white rounded-full shadow-xl p-8 flex flex-col items-center`}
           >
-            <h3 className='text-xl font-semibold'>{pkg.name}</h3>
-            <p className='mt-2 text-lg text-center'>{pkg.description}</p>
+            <h1 className='text-xl font-semibold'>{pkg.name}</h1>
+            <p className='mt-2 text-xl text-center'>{pkg.description}</p>
             <button
               className={`mt-4 w-3/4 bg-${pkg.color}-600 hover:bg-${pkg.color}-700 text-white py-2 rounded-md`}
               onClick={() => handleBuy(pkg.description)}
