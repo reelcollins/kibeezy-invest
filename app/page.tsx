@@ -47,7 +47,7 @@ export default function Page() {
           clearInterval(pollInterval);
           setPolling(false);
           toast.success("Payment successful!");
-          router.push("/order");
+          router.push("/about");
         } else if (response.ok && data.ResultCode !== "0") {
           clearInterval(pollInterval);
           setPolling(false);
