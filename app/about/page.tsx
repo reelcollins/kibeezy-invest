@@ -1,11 +1,25 @@
 'use client';
 
+import type { Metadata } from 'next';
 import { useState } from 'react';
+import { GiBee } from 'react-icons/gi';
+
+// Package amounts mapping
+const packageAmounts = {
+  // '10 for 30min': 5,
+  '10 for 1hr': 10,
+  '20 for 3hrs': 20,
+  '30 for 6.5hrs': 30,
+  '50 for 12hrs': 50,
+  '80 for 24hrs': 80,
+  '100 for 2days': 100,
+};
 
 export default function Page() {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [amount, setAmount] = useState<string>('');
+  const [selectedPackage, setSelectedPackage] = useState<string>('');
 
+  // ✅ Function to format phone number invisibly
   const formatPhoneNumber = (input: string) => {
     if (input.startsWith('0')) {
       return '254' + input.slice(1);
@@ -13,29 +27,27 @@ export default function Page() {
     return input;
   };
 
-  const handleAddAmount = (value: number) => {
-    const currentAmount = parseFloat(amount) || 0;
-    setAmount((currentAmount + value).toString());
-  };
-
-  const handleBuy = async () => {
-    if (!phoneNumber || !amount) {
-      alert('Please enter both a valid phone number and amount.');
+  const handleBuy = async (pkg: string) => {
+    if (!phoneNumber) {
+      alert('Please enter a valid phone number.');
       return;
     }
 
+    // ✅ Format the phone number before sending
     const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
 
-    // Validate amount as a number
-    const parsedAmount = parseFloat(amount);
-    if (isNaN(parsedAmount) || parsedAmount < 10) {
-      alert('Please enter a valid amount (minimum KES 10).');
+    // Get the amount for the selected package
+    const amount = packageAmounts[pkg];
+
+    if (!amount) {
+      alert('Invalid package selected.');
       return;
     }
 
     console.log('Sending data to backend:', {
       phone_number: formattedPhoneNumber,
-      amount: parsedAmount,
+      package: pkg,
+      amount: amount,
     });
 
     try {
@@ -46,7 +58,8 @@ export default function Page() {
         },
         body: JSON.stringify({
           phone_number: formattedPhoneNumber,
-          amount: parsedAmount,
+          package: pkg,
+          amount: amount,
         }),
       });
 
@@ -70,7 +83,7 @@ export default function Page() {
           htmlFor='phone-number'
           className='block text-sm font-medium text-gray-700'
         >
-          Enter phone number
+          Enter your phone number to pay
         </label>
         <div className='mt-2'>
           <input
@@ -83,44 +96,31 @@ export default function Page() {
           />
         </div>
       </div>
+      <div className='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
+        {[
+          { name: 'Basic', description: '10 for 1hr', color: 'blue' },
+          { name: 'Standard', description: '20 for 3hrs', color: 'green' },
+          { name: 'Premium', description: '30 for 6.5hrs', color: 'purple' },
+          { name: 'Ultimate', description: '50 for 12hrs', color: 'red' },
+          { name: 'Economy', description: '80 for 24hrs', color: 'yellow' },
+          { name: 'Business', description: '100 for 2 days', color: 'indigo' },
+          
 
-      <div className='mb-8 max-w-md mx-auto'>
-        <label
-          htmlFor='amount'
-          className='block text-sm font-medium text-gray-700'
-        >
-          Enter amount to deposit
-        </label>
-        <div className='mt-2 flex gap-4'>
-          <input
-            type='number'
-            id='amount'
-            placeholder='Minimum KES 10'
-            className='block w-full rounded-full border-2 shadow-lg focus:border-green-700 focus:ring-green-700 sm:text-lg px-4 py-3 text-gray-900 placeholder-gray-400'
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-        </div>
-        <div className='mt-4 flex gap-4 justify-center'>
-          {[100, 200, 500, 1000].map((value) => (
+        ].map((pkg) => (
+          <div
+            key={pkg.name}
+            className={`bg-${pkg.color}-500 text-white rounded-full shadow-xl p-8 flex flex-col items-center`}
+          >
+            <h1 className='text-xl font-semibold'>{pkg.name}</h1>
+            <p className='mt-2 text-xl text-center'>{pkg.description}</p>
             <button
-              key={value}
-              className='px-4 py-2 bg-gray-200 rounded-full shadow hover:bg-gray-300'
-              onClick={() => handleAddAmount(value)}
+              className={`mt-4 w-3/4 bg-${pkg.color}-600 hover:bg-${pkg.color}-700 text-white py-2 rounded-md`}
+              onClick={() => handleBuy(pkg.description)}
             >
-              +{value}
+              Buy
             </button>
-          ))}
-        </div>
-      </div>
-
-      <div className='max-w-md mx-auto'>
-        <button
-          className='w-20 bg-green-500 hover:bg-green-600 text-white py-3 rounded-full shadow-lg'
-          onClick={handleBuy}
-        >
-          Deposit
-        </button>
+          </div>
+        ))}
       </div>
     </div>
   );
