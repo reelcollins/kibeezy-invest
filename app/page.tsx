@@ -1,11 +1,19 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Page() {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [amount, setAmount] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [polling, setPolling] = useState<boolean>(false);
+  const [checkoutRequestId, setCheckoutRequestId] = useState<string | null>(null);
+  const router = useRouter();
 
+  
   const formatPhoneNumber = (input: string) => {
     if (input.startsWith('0')) {
       return '254' + input.slice(1);
@@ -18,7 +26,42 @@ export default function Page() {
     setAmount((currentAmount + value).toString());
   };
 
+  const pollTransactionStatus = async () => {
+    if (!checkoutRequestId) return;
+
+    setPolling(true);
+    const pollInterval = setInterval(async () => {
+      try {
+        const response = await fetch("https://api.kibeezy.com/mpesa/query/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            CheckoutRequestID: checkoutRequestId,
+          }),
+        });
+        const data = await response.json();
+
+        if (response.ok && data.ResultCode === "0") {
+          clearInterval(pollInterval);
+          setPolling(false);
+          toast.success("Payment successful!");
+          router.push("/order");
+        } else if (response.ok && data.ResultCode !== "0") {
+          clearInterval(pollInterval);
+          setPolling(false);
+          toast.error(`Payment failed: ${data.ResultDesc}`);
+        }
+      } catch (error) {
+        console.error("Error checking transaction status:", error);
+      }
+    }, 5000); // Poll every 5 seconds
+  };
+
   const handleBuy = async () => {
+    if (isLoading || polling) return;
+
     if (!phoneNumber || !amount) {
       alert('Please enter both a valid phone number and amount.');
       return;
@@ -38,6 +81,8 @@ export default function Page() {
       amount: parsedAmount,
     });
 
+    setIsLoading(true);
+
     try {
       const response = await fetch('https://api.kibeezy.com/api/stkpush/', {
         method: 'POST',
@@ -51,15 +96,21 @@ export default function Page() {
       });
 
       const data = await response.json();
+      console.log("STK Push Response:", data);
 
       if (response.ok) {
+        setCheckoutRequestId(data.CheckoutRequestID);
         alert('STK Push initiated successfully! Check your phone.');
+        pollTransactionStatus();
+        setTimeout(pollTransactionStatus, 5000);
       } else {
         alert(`Error: ${data.error || 'Failed to initiate STK Push.'}`);
       }
     } catch (error) {
       console.error('Error initiating STK Push:', error);
       alert('An unexpected error occurred. Please try again later.');
+    }finally {
+      setIsLoading(false);
     }
   };
 
