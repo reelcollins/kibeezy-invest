@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,9 +11,9 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [polling, setPolling] = useState<boolean>(false);
   const [checkoutRequestId, setCheckoutRequestId] = useState<string | null>(null);
+  const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
 
-  
   const formatPhoneNumber = (input: string) => {
     if (input.startsWith('0')) {
       return '254' + input.slice(1);
@@ -30,7 +30,13 @@ export default function Page() {
     if (!checkoutRequestId) return;
 
     setPolling(true);
-    const pollInterval = setInterval(async () => {
+
+    // Clear any previous intervals
+    if (pollIntervalRef.current) {
+      clearInterval(pollIntervalRef.current);
+    }
+
+    pollIntervalRef.current = setInterval(async () => {
       try {
         const response = await fetch("https://api.kibeezy.com/api/query/", {
           method: "POST",
@@ -44,20 +50,32 @@ export default function Page() {
         const data = await response.json();
 
         if (response.ok && data.ResultCode === "0") {
-          clearInterval(pollInterval);
+          clearInterval(pollIntervalRef.current!); // Stop polling on success
+          pollIntervalRef.current = null;
           setPolling(false);
+          setCheckoutRequestId(null); // Reset CheckoutRequestId after successful payment
           toast.success("Payment successful!");
           router.push("/about");
         } else if (response.ok && data.ResultCode !== "0") {
-          clearInterval(pollInterval);
+          clearInterval(pollIntervalRef.current!); // Stop polling on failure
+          pollIntervalRef.current = null;
           setPolling(false);
           toast.error(`Payment failed: ${data.ResultDesc}`);
         }
       } catch (error) {
         console.error("Error checking transaction status:", error);
       }
-    }, 500); // Poll every 5 seconds
+    }, 5000); // Poll every 5 seconds
   };
+
+  useEffect(() => {
+    // Clear the interval on component unmount
+    return () => {
+      if (pollIntervalRef.current) {
+        clearInterval(pollIntervalRef.current);
+      }
+    };
+  }, []);
 
   const handleBuy = async () => {
     if (isLoading || polling) return;
@@ -69,17 +87,11 @@ export default function Page() {
 
     const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
 
-    // Validate amount as a number
     const parsedAmount = parseFloat(amount);
     if (isNaN(parsedAmount) || parsedAmount < 10) {
       alert('Please enter a valid amount (minimum KES 10).');
       return;
     }
-
-    console.log('Sending data to backend:', {
-      phone_number: formattedPhoneNumber,
-      amount: parsedAmount,
-    });
 
     setIsLoading(true);
 
@@ -96,20 +108,18 @@ export default function Page() {
       });
 
       const data = await response.json();
-      console.log("STK Push Response:", data);
 
       if (response.ok) {
         setCheckoutRequestId(data.CheckoutRequestID);
         alert('STK Push initiated successfully! Check your phone.');
         pollTransactionStatus();
-        setTimeout(pollTransactionStatus, 5000);
       } else {
         alert(`Error: ${data.error || 'Failed to initiate STK Push.'}`);
       }
     } catch (error) {
       console.error('Error initiating STK Push:', error);
       alert('An unexpected error occurred. Please try again later.');
-    }finally {
+    } finally {
       setIsLoading(false);
     }
   };
