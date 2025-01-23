@@ -56,7 +56,7 @@ export default function Page() {
       } catch (error) {
         console.error("Error checking transaction status:", error);
       }
-    }, 5000); // Poll every 5 seconds
+    }, 500); // Poll every 5 seconds
   };
 
   const handleBuy = async () => {
