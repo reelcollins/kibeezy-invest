@@ -32,7 +32,7 @@ export default function Page() {
     setPolling(true);
     const pollInterval = setInterval(async () => {
       try {
-        const response = await fetch("https://api.kibeezy.com/mpesa/query/", {
+        const response = await fetch("https://api.kibeezy.com/api/query/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
