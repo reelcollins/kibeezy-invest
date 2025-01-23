@@ -65,7 +65,7 @@ export default function Page() {
       } catch (error) {
         console.error("Error checking transaction status:", error);
       }
-    }, 5000); // Poll every 5 seconds
+    }, 500); // Poll every 5 seconds
   };
 
   useEffect(() => {
@@ -150,7 +150,7 @@ export default function Page() {
           htmlFor='amount'
           className='block text-sm font-medium text-gray-700'
         >
-          Enter amount to deposit
+          Enter amount to invest
         </label>
         <div className='mt-2 flex gap-4'>
           <input
@@ -180,7 +180,7 @@ export default function Page() {
           className='w-20 bg-green-500 hover:bg-green-600 text-white py-3 rounded-full shadow-lg'
           onClick={handleBuy}
         >
-          Deposit
+          Invest
         </button>
       </div>
     </div>
