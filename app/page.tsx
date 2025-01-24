@@ -27,9 +27,14 @@ export default function Page() {
   };
 
   const pollTransactionStatus = async () => {
-    if (!checkoutRequestId) return;
+    if (!checkoutRequestId) {
+      console.log("No CheckoutRequestID set, aborting polling.");
+      return;
+    }
 
     setPolling(true);
+    let retryCount = 0;
+    const maxRetries = 10;
 
     // Clear any previous intervals
     if (pollIntervalRef.current) {
@@ -38,6 +43,8 @@ export default function Page() {
 
     pollIntervalRef.current = setInterval(async () => {
       try {
+        console.log("Sending CheckoutRequestID:", checkoutRequestId);
+
         const response = await fetch("https://api.kibeezy.com/api/query/", {
           method: "POST",
           headers: {
@@ -45,15 +52,20 @@ export default function Page() {
           },
           body: JSON.stringify({
             CheckoutRequestID: checkoutRequestId,
+            PhoneNumber: phoneNumber, // Include phone number
+            Amount: parseFloat(amount), // Include amount
           }),
         });
+
         const data = await response.json();
 
         if (response.ok && data.ResultCode === "0") {
           clearInterval(pollIntervalRef.current!); // Stop polling on success
           pollIntervalRef.current = null;
           setPolling(false);
-          setCheckoutRequestId(null); // Reset CheckoutRequestId after successful payment
+          setCheckoutRequestId(null);
+          setPhoneNumber('');
+          setAmount('');
           toast.success("Payment successful!");
           router.push("/about");
         } else if (response.ok && data.ResultCode !== "0") {
@@ -65,7 +77,16 @@ export default function Page() {
       } catch (error) {
         console.error("Error checking transaction status:", error);
       }
-    }, 500); // Poll every 5 seconds
+
+      // Stop polling after max retries
+      retryCount += 1;
+      if (retryCount >= maxRetries) {
+        clearInterval(pollIntervalRef.current!);
+        pollIntervalRef.current = null;
+        setPolling(false);
+        toast.error("Transaction status could not be verified. Please try again later.");
+      }
+    }, 5000); // Poll every 5 seconds
   };
 
   useEffect(() => {
@@ -79,50 +100,84 @@ export default function Page() {
 
   const handleBuy = async () => {
     if (isLoading || polling) return;
-
+  
     if (!phoneNumber || !amount) {
       alert('Please enter both a valid phone number and amount.');
       return;
     }
-
+  
+    if (!/^(?:254|07)\d{8}$/.test(phoneNumber)) {
+      alert('Please enter a valid phone number (e.g., 0712345678 or 254712345678).');
+      return;
+    }
+  
     const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
-
     const parsedAmount = parseFloat(amount);
+  
     if (isNaN(parsedAmount) || parsedAmount < 10) {
       alert('Please enter a valid amount (minimum KES 10).');
       return;
     }
-
+  
     setIsLoading(true);
-
+    let checkoutRequestId: string | null = null;
+  
+    // Retry loop to ensure CheckoutRequestID is set
+    const maxRetries = 5;  // Max retries to avoid infinite loop
+    let retries = 0;
+  
     try {
-      const response = await fetch('https://api.kibeezy.com/api/stkpush/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          phone_number: formattedPhoneNumber,
-          amount: parsedAmount,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setCheckoutRequestId(data.CheckoutRequestID);
-        alert('STK Push initiated successfully! Check your phone.');
-        pollTransactionStatus();
-      } else {
-        alert(`Error: ${data.error || 'Failed to initiate STK Push.'}`);
+      // Retry fetching CheckoutRequestID
+      while (!checkoutRequestId && retries < maxRetries) {
+        const response = await fetch("https://api.kibeezy.com/api/stkpush/", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            phone_number: formattedPhoneNumber,
+            amount: parsedAmount,
+          }),
+        });
+  
+        const data = await response.json();
+        console.log("STK Push Response Data:", data);
+  
+        // Check if the response is OK and contains a CheckoutRequestID
+        if (response.ok && data.CheckoutRequestID) {
+          console.log(checkoutRequestId)
+          checkoutRequestId = data.CheckoutRequestID;
+          console.log(checkoutRequestId)
+            toast.success('STK Push initiated successfully! Check your phone.');
+      
+        } else if (!response.ok) {
+          toast.error(`Error: ${data.error || 'Failed to initiate STK Push.'}`);
+          break;  // Exit the loop if an error occurs
+        } else {
+          console.log('Retrying to get CheckoutRequestID...');
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retrying
+        }
+  
+        retries += 1;
       }
+  
+      // Check if we successfully got the CheckoutRequestID and start polling
+      if (checkoutRequestId) {
+        setCheckoutRequestId(checkoutRequestId);  // Update state with the valid CheckoutRequestID
+        pollTransactionStatus();  // Start polling
+      } else {
+        toast.error('Failed to initiate STK Push after several attempts.');
+      }
+  
     } catch (error) {
       console.error('Error initiating STK Push:', error);
-      alert('An unexpected error occurred. Please try again later.');
+      toast.error('An unexpected error occurred. Please try again later.');
     } finally {
       setIsLoading(false);
     }
   };
+  
+  
 
   return (
     <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
@@ -177,12 +232,14 @@ export default function Page() {
 
       <div className='max-w-md mx-auto'>
         <button
-          className='w-20 bg-green-500 hover:bg-green-600 text-white py-3 rounded-full shadow-lg'
+          className={`w-20 bg-green-500 hover:bg-green-600 text-white py-3 rounded-full shadow-lg ${isLoading || polling ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={handleBuy}
+          disabled={isLoading || polling}
         >
-          Invest
+          {isLoading ? "Loading..." : "Invest"}
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 }
