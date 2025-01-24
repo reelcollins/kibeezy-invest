@@ -17,11 +17,10 @@ function Page() {
     backgroundImage: "url('https://kibeezy.s3.eu-north-1.amazonaws.com/Untitled+(4).png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    minHeight: "100vh",
+    minHeight: "50vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "20px",
   };
 
   if (isLoading) {
@@ -65,19 +64,25 @@ function Page() {
   }
 
   return (
-    <div style={loginBackgroundStyle} className="flex flex-col items-center justify-center text-white text-center space-y-6">
-      <h1 style={graffitiFont} className="text-4xl">
-        Kibeezy.com
-      </h1>
-      <button
-        onClick={() => (window.location.href = "/api/auth/login")}
-        className="px-6 py-3 bg-blue-500 hover:bg-blue-700 font-bold rounded"
+    <div className="min-h-screen flex flex-col lg:flex-row">
+      {/* Image Section */}
+      <div
+        style={loginBackgroundStyle}
+        className="flex-1 flex flex-col items-center justify-center text-white text-center space-y-6 lg:min-h-screen lg:w-1/2"
       >
-        Login
-      </button>
+        <h1 style={graffitiFont} className="text-4xl">
+          Kibeezy.com
+        </h1>
+        <button
+          onClick={() => (window.location.href = "/api/auth/login")}
+          className="px-6 py-3 bg-blue-500 hover:bg-blue-700 font-bold rounded"
+        >
+          Login
+        </button>
+      </div>
 
-      {/* Payment Packages Section */}
-      <div className="mt-10 w-full max-w-4xl">
+      {/* Packages Section */}
+      <div className="flex-1 flex flex-col justify-center items-center p-8 lg:w-1/2">
         <Packages />
       </div>
     </div>
