@@ -17,7 +17,7 @@ function Page() {
     backgroundImage: "url('https://kibeezy.s3.eu-north-1.amazonaws.com/Untitled+(4).png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    minHeight: "50vh",
+    minHeight: "70vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -43,7 +43,7 @@ function Page() {
     return (
       <div className="min-h-screen bg-white">
         {/* Header Section */}
-        <div className="flex justify-between items-center bg-black text-white px-6 py-4">
+        <header className="flex justify-between items-center bg-black text-white px-6 py-4">
           <h1 style={graffitiFont} className="text-2xl">
             Welcome, {user.name}!
           </h1>
@@ -53,22 +53,22 @@ function Page() {
           >
             Logout
           </button>
-        </div>
+        </header>
 
         {/* Main Content Section */}
-        <div className="p-8">
+        <main className="max-w-screen-xl mx-auto p-8 space-y-12">
           <Invest />
-        </div>
+        </main>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row">
+    <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-2">
       {/* Image Section */}
-      <div
+      <section
         style={loginBackgroundStyle}
-        className="flex-1 flex flex-col items-center justify-center text-white text-center space-y-6 lg:min-h-screen lg:w-1/2"
+        className="flex flex-col items-center justify-center text-white text-center space-y-6 lg:min-h-screen"
       >
         <h1 style={graffitiFont} className="text-4xl">
           Kibeezy.com
@@ -79,12 +79,14 @@ function Page() {
         >
           Login
         </button>
-      </div>
+      </section>
 
       {/* Packages Section */}
-      <div className="flex-1 flex flex-col justify-center items-center p-8 lg:w-1/2">
-        <Packages />
-      </div>
+      <section className="flex flex-col justify-center items-center p-8 lg:p-16 bg-gray-100">
+        <div className="max-w-4xl mx-auto">
+          <Packages />
+        </div>
+      </section>
     </div>
   );
 }
