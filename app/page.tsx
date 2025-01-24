@@ -10,7 +10,7 @@ export default function Page() {
   const [amount, setAmount] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [polling, setPolling] = useState<boolean>(false);
-  const [checkoutRequestId, setCheckoutRequestId] = useState<string | null>(null);
+  const checkoutRequestIdRef = useRef<string | null>(null);  // Use ref to store CheckoutRequestID
   const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
 
@@ -27,7 +27,7 @@ export default function Page() {
   };
 
   const pollTransactionStatus = async () => {
-    if (!checkoutRequestId) {
+    if (!checkoutRequestIdRef.current) {
       console.log("No CheckoutRequestID set, aborting polling.");
       return;
     }
@@ -43,7 +43,7 @@ export default function Page() {
 
     pollIntervalRef.current = setInterval(async () => {
       try {
-        console.log("Sending CheckoutRequestID:", checkoutRequestId);
+        console.log("Sending CheckoutRequestID:", checkoutRequestIdRef.current);
 
         const response = await fetch("https://api.kibeezy.com/api/query/", {
           method: "POST",
@@ -51,7 +51,7 @@ export default function Page() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            CheckoutRequestID: checkoutRequestId,
+            CheckoutRequestID: checkoutRequestIdRef.current,
             PhoneNumber: phoneNumber, // Include phone number
             Amount: parseFloat(amount), // Include amount
           }),
@@ -63,9 +63,6 @@ export default function Page() {
           clearInterval(pollIntervalRef.current!); // Stop polling on success
           pollIntervalRef.current = null;
           setPolling(false);
-          setCheckoutRequestId(null);
-          setPhoneNumber('');
-          setAmount('');
           toast.success("Payment successful!");
           router.push("/about");
         } else if (response.ok && data.ResultCode !== "0") {
@@ -86,7 +83,7 @@ export default function Page() {
         setPolling(false);
         toast.error("Transaction status could not be verified. Please try again later.");
       }
-    }, 5000); // Poll every 5 seconds
+    }, 15000); // Poll every 5 seconds
   };
 
   useEffect(() => {
@@ -100,32 +97,32 @@ export default function Page() {
 
   const handleBuy = async () => {
     if (isLoading || polling) return;
-  
+
     if (!phoneNumber || !amount) {
       alert('Please enter both a valid phone number and amount.');
       return;
     }
-  
+
     if (!/^(?:254|07)\d{8}$/.test(phoneNumber)) {
       alert('Please enter a valid phone number (e.g., 0712345678 or 254712345678).');
       return;
     }
-  
+
     const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
     const parsedAmount = parseFloat(amount);
-  
+
     if (isNaN(parsedAmount) || parsedAmount < 10) {
       alert('Please enter a valid amount (minimum KES 10).');
       return;
     }
-  
+
     setIsLoading(true);
     let checkoutRequestId: string | null = null;
-  
+
     // Retry loop to ensure CheckoutRequestID is set
     const maxRetries = 5;  // Max retries to avoid infinite loop
     let retries = 0;
-  
+
     try {
       // Retry fetching CheckoutRequestID
       while (!checkoutRequestId && retries < maxRetries) {
@@ -139,17 +136,17 @@ export default function Page() {
             amount: parsedAmount,
           }),
         });
-  
+
         const data = await response.json();
         console.log("STK Push Response Data:", data);
-  
+
         // Check if the response is OK and contains a CheckoutRequestID
         if (response.ok && data.CheckoutRequestID) {
-          console.log(checkoutRequestId)
+          console.log('Received CheckoutRequestID:', data.CheckoutRequestID);
           checkoutRequestId = data.CheckoutRequestID;
-          console.log(checkoutRequestId)
-            toast.success('STK Push initiated successfully! Check your phone.');
-      
+          checkoutRequestIdRef.current = checkoutRequestId; // Store in ref
+
+          toast.success('STK Push initiated successfully! Check your phone.');
         } else if (!response.ok) {
           toast.error(`Error: ${data.error || 'Failed to initiate STK Push.'}`);
           break;  // Exit the loop if an error occurs
@@ -157,18 +154,17 @@ export default function Page() {
           console.log('Retrying to get CheckoutRequestID...');
           await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retrying
         }
-  
+
         retries += 1;
       }
-  
+
       // Check if we successfully got the CheckoutRequestID and start polling
       if (checkoutRequestId) {
-        setCheckoutRequestId(checkoutRequestId);  // Update state with the valid CheckoutRequestID
         pollTransactionStatus();  // Start polling
       } else {
         toast.error('Failed to initiate STK Push after several attempts.');
       }
-  
+
     } catch (error) {
       console.error('Error initiating STK Push:', error);
       toast.error('An unexpected error occurred. Please try again later.');
@@ -176,8 +172,6 @@ export default function Page() {
       setIsLoading(false);
     }
   };
-  
-  
 
   return (
     <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
