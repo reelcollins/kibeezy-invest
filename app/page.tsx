@@ -13,7 +13,7 @@ function Page() {
   const { user, error, isLoading } = useUser();
 
   const loginBackgroundStyle: React.CSSProperties = {
-    backgroundImage: "url('https://kibeezy.s3.eu-north-1.amazonaws.com/Untitled-2+(4).png')",
+    backgroundImage: "url('https://kibeezy.s3.eu-north-1.amazonaws.com/Untitled+(4).png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     minHeight: "100vh",
