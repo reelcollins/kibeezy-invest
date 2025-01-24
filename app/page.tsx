@@ -40,9 +40,9 @@ function Page() {
     );
   }
 
-  if (error) {
-    return <div>{error.message}</div>;
-  }
+  // if (error) {
+  //   return <div>{error.message}</div>;
+  // }
 
   if (user) {
     return (
@@ -87,9 +87,9 @@ function Page() {
             </Button>
           </Flex>
 
-          
+          <Spinner />
 
-                     
+          {/*           
           <Flex
             as="nav"
             padding="0.5rem 1rem"
@@ -115,9 +115,9 @@ function Page() {
             >
               Checkout
             </Button>
-          </Flex> 
+          </Flex> */}
 
-           <Button
+          {/* <Button
             onClick={() => window.location.href = "/checkout"}
             fontSize="lg"
             fontWeight="bold"
@@ -130,7 +130,7 @@ function Page() {
             marginBottom="2rem" // Adjust margin as necessary
           >
             Proceed to Checkout
-          </Button>
+          </Button> */}
         </VStack>
       </ChakraProvider>
     );

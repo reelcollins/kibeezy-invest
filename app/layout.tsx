@@ -28,18 +28,20 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={inter.className}>
 				<Provider>
-					<Providers>
-						<UserProvider>
-							<Theme>
-								<Setup />
-								<Navbar />
-								<div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 my-8'>
-									{children}
-								</div>
-								<Footer />
-							</Theme>
-						</UserProvider>
-					</Providers>
+					<UserProvider>
+						<Providers>
+							
+								<Theme>
+									<Setup />
+									<Navbar />
+									<div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 my-8'>
+										{children}
+									</div>
+									<Footer />
+								</Theme>
+							
+						</Providers>
+					</UserProvider>
 				</Provider>
 
 			</body>
