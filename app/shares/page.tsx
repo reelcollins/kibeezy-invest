@@ -16,8 +16,10 @@ export default function InvestorDashboard() {
 
       try {
         const response = await axios.get(
-          `https://api.kibeezy.com/api/shares/${user.sub}/` // Use user.sub as the dynamic user ID
+          `https://api.kibeezy.com/api/shares/${encodeURIComponent(user.sub)}/` // Use user.sub as the dynamic user ID
         );
+        console.log(user.sub);
+        console.log(encodeURIComponent(user.sub));
         setInvestorData(response.data);
         setLoading(false);
       } catch (err) {
