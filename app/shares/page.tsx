@@ -6,6 +6,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function InvestorDashboard() {
   const { user, isLoading: authLoading } = useUser(); // Get logged-in user details
+  const [allUserData, setAllUserData] = useState([]);
   const [investorData, setInvestorData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,12 +16,16 @@ export default function InvestorDashboard() {
       if (!user) return; // Wait until the user is available
 
       try {
-        const response = await axios.get(
-          `https://api.kibeezy.com/api/shares/${encodeURIComponent(user.sub)}/` // Use user.sub as the dynamic user ID
+        // Fetch all users' payment data
+        const response = await axios.get("https://api.kibeezy.com/api/shares/");
+        setAllUserData(response.data.users);
+
+        // Filter data for the logged-in user
+        const loggedInUserData = response.data.users.find(
+          (u) => u.user_id === user.sub
         );
-        console.log(user.sub);
-        console.log(encodeURIComponent(user.sub));
-        setInvestorData(response.data);
+
+        setInvestorData(loggedInUserData || { user_id: user.sub, payments: [], user_total: 0, user_percentage_share: 0 });
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch data. Please try again later.");
@@ -63,13 +68,11 @@ export default function InvestorDashboard() {
             <strong>Total Payments:</strong> ${investorData.user_total}
           </p>
           <p className="text-gray-700">
-            <strong>Percentage Share:</strong>{" "}
-            {investorData.user_percentage_share}%
+            <strong>Percentage Share:</strong> {investorData.user_percentage_share}%
           </p>
           <p className="text-gray-700">
-            <strong>All Users&apos; Total Payments:</strong> ${investorData.total_payments}
-        </p>
-
+            <strong>All Users&apos; Total Payments:</strong> ${allUserData.reduce((sum, user) => sum + user.user_total, 0)}
+          </p>
         </div>
 
         {/* Payment Details */}
@@ -100,7 +103,7 @@ export default function InvestorDashboard() {
                     {payment.phone_number}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
-                    ${parseFloat(payment.amount).toFixed(2)}
+                    ${parseFloat(payment.amount)}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
                     {payment.status}
