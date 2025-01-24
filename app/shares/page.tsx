@@ -16,7 +16,7 @@ export default function InvestorDashboard() {
 
       try {
         const response = await axios.get(
-          `https://api.kibeezy.com/api/shares/${encodeURIComponent(user.sub)}/` // Use user.sub as the dynamic user ID
+          `http://127.0.0.1:8000/api/shares/${encodeURIComponent(user.sub)}/` // Use user.sub as the dynamic user ID
         );
         setInvestorData(response.data);
         setLoading(false);
@@ -65,9 +65,9 @@ export default function InvestorDashboard() {
             {investorData.user_percentage_share}%
           </p>
           <p className="text-gray-700">
-            <strong>All Users' Total Payments:</strong> $
-            {investorData.total_payments}
-          </p>
+            <strong>All Users&apos; Total Payments:</strong> ${investorData.total_payments}
+        </p>
+
         </div>
 
         {/* Payment Details */}
