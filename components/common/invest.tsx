@@ -4,8 +4,9 @@ import { useState, useRef, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
-export default function Page() {
+export default function Invest() {  // Changed default export to named export
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [amount, setAmount] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -13,6 +14,7 @@ export default function Page() {
   const checkoutRequestIdRef = useRef<string | null>(null);  // Use ref to store CheckoutRequestID
   const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
+  const { user } = useUser();
 
   const formatPhoneNumber = (input: string) => {
     if (input.startsWith('0')) {
@@ -27,24 +29,23 @@ export default function Page() {
   };
 
   const pollTransactionStatus = async () => {
+     // Get user from Auth0
+  
     if (!checkoutRequestIdRef.current) {
       console.log("No CheckoutRequestID set, aborting polling.");
       return;
     }
-
+  
     setPolling(true);
     let retryCount = 0;
     const maxRetries = 10;
-
-    // Clear any previous intervals
+  
     if (pollIntervalRef.current) {
       clearInterval(pollIntervalRef.current);
     }
-
+  
     pollIntervalRef.current = setInterval(async () => {
       try {
-        console.log("Sending CheckoutRequestID:", checkoutRequestIdRef.current);
-
         const response = await fetch("https://api.kibeezy.com/api/query/", {
           method: "POST",
           headers: {
@@ -52,21 +53,22 @@ export default function Page() {
           },
           body: JSON.stringify({
             CheckoutRequestID: checkoutRequestIdRef.current,
-            PhoneNumber: phoneNumber, // Include phone number
-            Amount: parseFloat(amount), // Include amount
+            PhoneNumber: phoneNumber,
+            Amount: parseFloat(amount),
+            UserID: user?.sub, // Include the user's unique Auth0 ID
           }),
         });
-
+  
         const data = await response.json();
-
+  
         if (response.ok && data.ResultCode === "0") {
-          clearInterval(pollIntervalRef.current!); // Stop polling on success
+          clearInterval(pollIntervalRef.current!);
           pollIntervalRef.current = null;
           setPolling(false);
           toast.success("Payment successful!");
-          router.push("/about");
+          router.push("/shares");
         } else if (response.ok && data.ResultCode !== "0") {
-          clearInterval(pollIntervalRef.current!); // Stop polling on failure
+          clearInterval(pollIntervalRef.current!);
           pollIntervalRef.current = null;
           setPolling(false);
           toast.error(`Payment failed: ${data.ResultDesc}`);
@@ -74,8 +76,7 @@ export default function Page() {
       } catch (error) {
         console.error("Error checking transaction status:", error);
       }
-
-      // Stop polling after max retries
+  
       retryCount += 1;
       if (retryCount >= maxRetries) {
         clearInterval(pollIntervalRef.current!);
@@ -83,8 +84,9 @@ export default function Page() {
         setPolling(false);
         toast.error("Transaction status could not be verified. Please try again later.");
       }
-    }, 15000); // Poll every 5 seconds
+    }, 15000);
   };
+  
 
   useEffect(() => {
     // Clear the interval on component unmount
