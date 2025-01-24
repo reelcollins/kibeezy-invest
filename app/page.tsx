@@ -5,14 +5,14 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { Invest } from "@/components/common"; // Adjust the path as needed
 import { Spinner } from "@/components/common"; // Assuming Spinner is in the same path
 
-const graffitiFont = {
+const graffitiFont: React.CSSProperties = {
   fontFamily: "Permanent Marker, cursive",
 };
 
 function Page() {
   const { user, error, isLoading } = useUser();
 
-  const loginBackgroundStyle = {
+  const loginBackgroundStyle: React.CSSProperties = {
     backgroundImage: "url('https://kibeezy.s3.eu-north-1.amazonaws.com/Untitled-2+(4).png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -21,7 +21,7 @@ function Page() {
     justifyContent: "center",
     alignItems: "center",
     color: "#fff",
-    textAlign: "center",
+    textAlign: "center" as const, // Ensures type safety
     padding: "20px",
   };
 
