@@ -65,14 +65,16 @@ export default function InvestorDashboard() {
             <strong>User ID:</strong> {investorData.user_id}
           </p>
           <p className="text-gray-700">
-            <strong>Total Payments:</strong> ${investorData.user_total}
+            <strong>Total Payments:</strong> Ksh.{investorData.user_total}
           </p>
           <p className="text-gray-700">
             <strong>Percentage Share:</strong> {investorData.user_percentage_share}%
           </p>
           <p className="text-gray-700">
-            <strong>All Users&apos; Total Payments:</strong> ${allUserData.reduce((sum, user) => sum + user.user_total, 0)}
-          </p>
+            <strong>All Users&apos; Total Payments:</strong> Ksh.
+            {allUserData.reduce((sum, user) => sum + parseFloat(user.user_total || 0), 0).toFixed(2)}
+            </p>
+
         </div>
 
         {/* Payment Details */}
@@ -103,7 +105,7 @@ export default function InvestorDashboard() {
                     {payment.phone_number}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
-                    ${parseFloat(payment.amount)}
+                    Ksh.{parseFloat(payment.amount)}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
                     {payment.status}

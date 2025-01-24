@@ -14,3 +14,4 @@ export { default as PropertyMatterPortEmbed } from './PropertyMatterPortEmbed';
 export { default as PropertiesMap } from './PropertiesMap';
 export { default as UploadMap } from './UploadMap';
 export { default as Invest } from './invest';
+export { default as Packages } from './Packages';
