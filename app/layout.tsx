@@ -9,6 +9,7 @@ import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
 import { register } from 'swiper/element/bundle';
 register();
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 const inter = Inter({
 	subsets: ['latin'] });
@@ -28,14 +29,16 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<Provider>
 					<Providers>
-						<Theme>
-							<Setup />
-							<Navbar />
-							<div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 my-8'>
-								{children}
-							</div>
-							<Footer />
-						</Theme>
+						<UserProvider>
+							<Theme>
+								<Setup />
+								<Navbar />
+								<div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 my-8'>
+									{children}
+								</div>
+								<Footer />
+							</Theme>
+						</UserProvider>
 					</Providers>
 				</Provider>
 
