@@ -1,12 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useUser } from '@auth0/nextjs-auth0/client';
 import { GiBee } from 'react-icons/gi';
 import { NavLink } from '../common';
 
 export default function Navbar() {
 	// State to track gradient background position
 	const [gradientPosition, setGradientPosition] = useState(0);
+	const { user } = useUser();
 
 	// Update gradient position periodically
 	useEffect(() => {
@@ -40,7 +42,11 @@ export default function Navbar() {
 					<div className="flex space-x-4">
 						<NavLink href="/about" className="text-white hover:text-gray-300 text-lg font-medium">About</NavLink>
 						<NavLink href="/demo" className="text-white hover:text-gray-300 text-lg font-medium">Demo</NavLink>
-						<NavLink href="/api/auth/login" className="text-white hover:text-gray-300 text-lg font-medium">Login</NavLink>
+						{user ? (
+							<NavLink href="/api/auth/logout" className="text-white hover:text-red-700 text-lg font-medium">Logout</NavLink>
+						) : (
+							<NavLink href="/api/auth/login" className="text-white hover:text-blue-300 text-lg font-medium">Login</NavLink>
+						)}
 					</div>
 				</div>
 			</div>

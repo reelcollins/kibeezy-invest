@@ -37,16 +37,12 @@ function Page() {
           <h1 className="text-md">
             Welcome, {user.name}!
           </h1>
-          <button
-            onClick={() => (window.location.href = "/api/auth/logout")}
-            className="px-4 py-2 bg-gray-800 hover:bg-red-700 font-bold rounded"
-          >
-            Logout
-          </button>
+          
         </header>
-
+        
         {/* Main Content Section */}
         <main className="max-w-screen-xl mx-auto p-4 space-y-2 lg:grid lg:grid-cols-2 lg:gap-4">
+
           <div className="lg:order-1">
             <Overview />
           </div>
