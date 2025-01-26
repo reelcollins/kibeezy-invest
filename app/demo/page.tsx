@@ -15,7 +15,7 @@ const packageAmounts = {
   '100 for 2days': 100,
 };
 
-export default function Packages() {
+export default function Page() {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [selectedPackage, setSelectedPackage] = useState<string>('');
 

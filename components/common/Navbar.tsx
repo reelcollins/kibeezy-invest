@@ -25,7 +25,7 @@ export default function Navbar() {
 
 	return (
 		<nav style={gradientStyle}>
-			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+			<div className="mx-auto max-w-7xl px-6 sm:px-2 lg:px-4">
 				<div className="relative flex h-16 items-center justify-between">
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 						<div className="flex flex-shrink-0 items-center">
@@ -36,6 +36,11 @@ export default function Navbar() {
 								</span>
 							</NavLink>
 						</div>
+					</div>
+					<div className="flex space-x-4">
+						<NavLink href="/about" className="text-white hover:text-gray-300 text-lg font-medium">About</NavLink>
+						<NavLink href="/demo" className="text-white hover:text-gray-300 text-lg font-medium">Demo</NavLink>
+						<NavLink href="/api/auth/login" className="text-white hover:text-gray-300 text-lg font-medium">Login</NavLink>
 					</div>
 				</div>
 			</div>

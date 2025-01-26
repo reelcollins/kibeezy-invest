@@ -4,21 +4,14 @@ import React from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { Invest } from "@/components/common"; // Adjust the path as needed
 import { Spinner } from "@/components/common"; // Assuming Spinner is in the same path
-import { Packages } from "@/components/common"; // Import PaymentPackages component
+import { About } from "@/components/common"; // Import PaymentPackages component
 import { Overview } from "@/components/common";
+import { Image } from "@/components/common";
 
 function Page() {
   const { user, error, isLoading } = useUser();
 
-  const loginBackgroundStyle: React.CSSProperties = {
-    backgroundImage: "url('https://kibeezy.s3.eu-north-1.amazonaws.com/Untitled+(4).png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    minHeight: "70vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
+
 
   if (isLoading) {
     return (
@@ -68,23 +61,13 @@ function Page() {
   return (
     <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-2">
       {/* Image Section */}
-      <section
-        style={loginBackgroundStyle}
-        className="flex flex-col items-center justify-center text-white text-center space-y-6 lg:min-h-screen"
-      >
-        
-        <button
-          onClick={() => (window.location.href = "/api/auth/login")}
-          className="px-6 py-3 bg-blue-500 hover:bg-blue-700 font-bold rounded"
-        >
-          Login
-        </button>
-      </section>
+      <Image />
+
 
       {/* Packages Section */}
       <section className="flex flex-col justify-center items-center p-8 lg:p-16 bg-gray-100">
         <div className="max-w-4xl mx-auto">
-          <Packages />
+          <About />
         </div>
       </section>
     </div>
