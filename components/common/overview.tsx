@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation"; // Importing useRouter for navigation
+import { Spinner } from "@/components/common";
+
 
 export default function Overview() {
   const { user, isLoading: authLoading } = useUser(); // Get logged-in user details
@@ -41,7 +43,7 @@ export default function Overview() {
   if (authLoading || loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="text-gray-600">Loading data...</div>
+        <Spinner md />
       </div>
     );
   }
