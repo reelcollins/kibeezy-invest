@@ -214,7 +214,7 @@ export default function Invest() {  // Changed default export to named export
           />
         </div>
         <div className='mt-4 flex gap-4 justify-center'>
-          {[100, 200, 500, 1000].map((value) => (
+          {[500, 1000, 2000, 5000].map((value) => (
             <button
               key={value}
               className='px-4 py-2 bg-gray-200 rounded-full shadow hover:bg-gray-300'
