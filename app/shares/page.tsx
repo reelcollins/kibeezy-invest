@@ -74,10 +74,13 @@ export default function InvestorDashboard() {
           <p className="text-gray-700">
             <strong>Amount to be raised:</strong> Ksh. 1,000,000 for 10%
           </p>
-          {/* <p className="text-gray-700">
-            <strong>All Users&apos; Total Payments:</strong> Ksh.
-            {allUserData.reduce((sum, user) => sum + parseFloat(user.user_total || 0), 0).toFixed(2)}
-            </p> */}
+          <p className="text-gray-700">
+            <strong>Remaining Percentage Share:</strong> {(
+              ((1000000 - allUserData.reduce((sum, user) => sum + parseFloat(user.user_total || 0), 0)) / 1000000) * 10
+            )}
+            %
+          </p>
+
 
         </div>
 

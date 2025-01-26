@@ -81,6 +81,13 @@ export default function Overview() {
           <p className="text-gray-700">
             <strong>Amount to be raised:</strong> Ksh. 1,000,000 for 10%
           </p>
+          <p className="text-gray-700">
+            <strong>Remaining Percentage Share:</strong> {(
+              ((1000000 - allUserData.reduce((sum, user) => sum + parseFloat(user.user_total || 0), 0)) / 1000000) * 10
+            )}
+            %
+          </p>
+
         </div>
 
         {/* Button to navigate to the Shares page */}
