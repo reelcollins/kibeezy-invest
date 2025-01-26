@@ -7,10 +7,6 @@ import { Spinner } from "@/components/common"; // Assuming Spinner is in the sam
 import { Packages } from "@/components/common"; // Import PaymentPackages component
 import { Overview } from "@/components/common";
 
-const graffitiFont: React.CSSProperties = {
-  fontFamily: "Permanent Marker, cursive",
-};
-
 function Page() {
   const { user, error, isLoading } = useUser();
 
@@ -44,13 +40,13 @@ function Page() {
     return (
       <div className="min-h-screen bg-white">
         {/* Header Section */}
-        <header className="flex justify-between items-center bg-gray-800 text-white px-6 py-4">
-          <h1 style={graffitiFont} className="text-2xl">
+        <header className="flex justify-between items-center bg-black text-white px-6 py-2 shadow-xl rounded-lg">
+          <h1 className="text-md">
             Welcome, {user.name}!
           </h1>
           <button
             onClick={() => (window.location.href = "/api/auth/logout")}
-            className="px-4 py-2 bg-red-500 hover:bg-red-700 font-bold rounded"
+            className="px-4 py-2 bg-gray-800 hover:bg-red-700 font-bold rounded"
           >
             Logout
           </button>
@@ -76,9 +72,7 @@ function Page() {
         style={loginBackgroundStyle}
         className="flex flex-col items-center justify-center text-white text-center space-y-6 lg:min-h-screen"
       >
-        <h1 style={graffitiFont} className="text-4xl">
-          Kibeezy.com
-        </h1>
+        
         <button
           onClick={() => (window.location.href = "/api/auth/login")}
           className="px-6 py-3 bg-blue-500 hover:bg-blue-700 font-bold rounded"
