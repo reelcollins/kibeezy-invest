@@ -53,7 +53,7 @@ function Page() {
         </header>
 
         {/* Main Content Section */}
-        <main className="max-w-screen-xl mx-auto p-2 space-y-12 lg:grid lg:grid-cols-2 lg:gap-8">
+        <main className="max-w-screen-xl mx-auto p-4 space-y-2 lg:grid lg:grid-cols-2 lg:gap-4">
           <div className="lg:order-1">
             <Overview />
           </div>

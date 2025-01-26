@@ -62,7 +62,7 @@ export default function Overview() {
 
   return (
     <div>
-      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-4">
         <h1 className="text-xl font-semibold text-gray-800 mb-4">
           Investor Dashboard
         </h1>
@@ -79,8 +79,7 @@ export default function Overview() {
             <strong>Percentage Share:</strong> {investorData.user_percentage_share}%
           </p>
           <p className="text-gray-700">
-            <strong>All Users&apos; Total Payments:</strong> Ksh.
-            {allUserData.reduce((sum, user) => sum + parseFloat(user.user_total || 0), 0).toFixed(2)}
+            <strong>Amount to be raised:</strong> Ksh. 1,000,000 for 10%
           </p>
         </div>
 
