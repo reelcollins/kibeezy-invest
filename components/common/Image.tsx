@@ -16,9 +16,9 @@ export default function Image() {
             >
             <button
             onClick={() => (window.location.href = "/api/auth/login")}
-            className="px-6 py-3 bg-blue-500 hover:bg-blue-700 font-bold rounded"
+            className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 font-bold rounded"
             >
-            Login
+            Invest
             </button>
         </section>
 
