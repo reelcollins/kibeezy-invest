@@ -5,6 +5,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { Invest } from "@/components/common"; // Adjust the path as needed
 import { Spinner } from "@/components/common"; // Assuming Spinner is in the same path
 import { Packages } from "@/components/common"; // Import PaymentPackages component
+import { Overview } from "@/components/common";
 
 const graffitiFont: React.CSSProperties = {
   fontFamily: "Permanent Marker, cursive",
@@ -43,7 +44,7 @@ function Page() {
     return (
       <div className="min-h-screen bg-white">
         {/* Header Section */}
-        <header className="flex justify-between items-center bg-black text-white px-6 py-4">
+        <header className="flex justify-between items-center bg-gray-800 text-white px-6 py-4">
           <h1 style={graffitiFont} className="text-2xl">
             Welcome, {user.name}!
           </h1>
@@ -56,8 +57,13 @@ function Page() {
         </header>
 
         {/* Main Content Section */}
-        <main className="max-w-screen-xl mx-auto p-8 space-y-12">
-          <Invest />
+        <main className="max-w-screen-xl mx-auto p-2 space-y-12 lg:grid lg:grid-cols-2 lg:gap-8">
+          <div className="lg:order-1">
+            <Overview />
+          </div>
+          <div className="lg:order-2">
+            <Invest />
+          </div>
         </main>
       </div>
     );
