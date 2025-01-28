@@ -16,7 +16,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
 	title: 'Kibeezy WiFi',
-	description: 'Kibeezy WiFi Welcome page',
+	description: 'Invest page',
 	};
 
 export default function RootLayout({
