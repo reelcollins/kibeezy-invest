@@ -105,10 +105,11 @@ export default function Invest() {  // Changed default export to named export
       return;
     }
 
-    if (!/^(?:254|07)\d{8}$/.test(phoneNumber)) {
-      alert('Please enter a valid phone number (e.g., 0712345678 or 254712345678).');
+    if (!/^(?:254|07|01)\d{8}$/.test(phoneNumber)) {
+      alert('Please enter a valid phone number (e.g., 0712345678, 0112345678, or 254712345678).');
       return;
     }
+    
 
     const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
     const parsedAmount = parseFloat(amount);
