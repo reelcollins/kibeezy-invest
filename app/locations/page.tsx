@@ -80,19 +80,17 @@ export default function Page() {
     }
   
     return (
-      <div className={styles.homeWrapper}>
-        {/* Search Bar */}
-        <div className={styles.autocompleteWrapper}>
-          <PlacesAutocomplete
-            onAddressSelect={(address) => {
-              getGeocode({ address: address }).then((results) => {
-                const { lat, lng } = getLatLng(results[0]);
-                setLat(lat);
-                setLng(lng);
-              });
-            }}
-          />
-        </div>
+        <div className={styles.homeWrapper}>
+        {/* Search Bar - Directly use the component */}
+        <PlacesAutocomplete
+          onAddressSelect={(address) => {
+            getGeocode({ address: address }).then((results) => {
+              const { lat, lng } = getLatLng(results[0]);
+              setLat(lat);
+              setLng(lng);
+            });
+          }}
+        />
   
         {/* Map Container */}
         <div className={styles.mapContainer}>
