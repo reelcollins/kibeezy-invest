@@ -1,0 +1,103 @@
+/* Home.module.css */
+
+/* Wrapper for the entire page */
+.homeWrapper {
+  position: relative;
+  min-height: 100vh;
+  background-color: #f4f6f9; /* Light, clean background */
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.autocompleteWrapper {
+  position: relative;
+  z-index: 10;
+  width: 300px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.85); /* Light transparency for elegance */
+  border-radius: 10px;
+/* Softer shadow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensure nothing peeks through */
+  backdrop-filter: blur(10px); /* Optional blur for added elegance */
+}
+
+
+
+
+/* Search Bar input field */
+.autocompleteInput {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-weight: 500;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.autocompleteInput:focus {
+  border-color: #007bff; /* Highlight on focus */
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* Soft shadow on focus */
+}
+
+/* Suggestions dropdown */
+.suggestionWrapper {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  max-height: 180px;
+  overflow-y: auto;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.suggestionWrapper li {
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.suggestionWrapper li:hover {
+  background-color: #f0f8ff; /* Light blue hover */
+  transform: translateX(5px); /* Slight hover effect */
+}
+
+.suggestionWrapper li strong {
+  font-weight: 600;
+}
+
+/* Map container */
+.mapContainer {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Spinner */
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* Light overlay */
+}
