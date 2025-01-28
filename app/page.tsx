@@ -58,12 +58,14 @@ function Page() {
   return (
     <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-2">
       {/* Image Section */}
+      
       <Image />
-
 
       {/* Packages Section */}
       <section className="flex flex-col justify-center items-center p-8 lg:p-16 bg-gray-100">
+        
         <div className="max-w-4xl mx-auto">
+        
           <About />
         </div>
       </section>

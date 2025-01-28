@@ -9,6 +9,7 @@ import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
 import { register } from 'swiper/element/bundle';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { Analytics } from "@vercel/analytics/react";
 register();
 
 const inter = Inter({
@@ -40,6 +41,7 @@ export default function RootLayout({
                 <Navbar />
                 <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 my-8">
                   {children}
+                  <Analytics />
                 </div>
                 <Footer />
               </Theme>
