@@ -9,9 +9,8 @@ const YouTubeShort = () => {
         </h1>
         <div className="aspect-w-16 aspect-h-9">
           <iframe
-            className="rounded-lg"
-            width="560"
-            height="315"
+            className="rounded-lg lg:w-[500px] sm:w-[360px]"
+            height="515"
             src="https://www.youtube.com/embed/ZAeSypE81vM"
             title="YouTube Short"
             frameBorder="0"
