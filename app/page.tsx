@@ -7,6 +7,7 @@ import { Spinner } from "@/components/common"; // Assuming Spinner is in the sam
 import { About } from "@/components/common"; // Import PaymentPackages component
 import { Overview } from "@/components/common";
 import { Image } from "@/components/common";
+import { YouTubeShort } from "@/components/common";
 
 function Page() {
   const { user, error, isLoading } = useUser();
@@ -66,6 +67,8 @@ function Page() {
           <About />
         </div>
       </section>
+
+      <YouTubeShort/>
     </div>
   );
 }

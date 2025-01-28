@@ -17,3 +17,5 @@ export { default as Invest } from './invest';
 export { default as About } from './About';
 export { default as Overview } from './overview';
 export { default as Image } from './Image';
+export { default as YouTubeShort } from './Short';
+
