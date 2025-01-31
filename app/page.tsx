@@ -12,8 +12,6 @@ import { YouTubeShort } from "@/components/common";
 function Page() {
   const { user, error, isLoading } = useUser();
 
-
-
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -38,7 +36,6 @@ function Page() {
           <h1 className="text-md">
             Welcome, {user.name}!
           </h1>
-          
         </header>
         
         {/* Main Content Section */}
@@ -56,21 +53,33 @@ function Page() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-2">
-      {/* Image Section */}
-      
-      <Image />
-
-      {/* Packages Section */}
-      <section className="flex flex-col justify-center items-center p-8 lg:p-16 bg-gray-100">
+    <div>
+      <div className="bg-white shadow-xl flex justify-center items-center">
         
-        <div className="max-w-4xl mx-auto">
+          <div className="italic text-lg font-bold text-center inline-block 
+            bg-gradient-to-r from-indigo-600 to-pink-500 text-transparent bg-clip-text 
+            rounded-lg  animate-gradient-x">
+            "It's a hotspot, not WiFi"
+          </div>
         
-          <About />
-        </div>
-      </section>
+      </div>
 
-      <YouTubeShort/>
+
+      <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-2">
+        {/* New "Hotspot" Message Section */}
+        
+        {/* Image Section */}
+        <Image />
+
+        {/* Packages Section */}
+        <section className="flex flex-col justify-center items-center p-8 lg:p-16 bg-gray-100">
+          <div className="max-w-4xl mx-auto">
+            <About />
+          </div>
+        </section>
+
+        <YouTubeShort />
+      </div>
     </div>
   );
 }
