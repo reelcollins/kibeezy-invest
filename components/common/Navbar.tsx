@@ -40,8 +40,10 @@ export default function Navbar() {
 						</div>
 					</div>
 					<div className="flex space-x-4">
-						<NavLink href="/about" className="text-white hover:text-gray-300 text-lg font-medium">About</NavLink>
+						
+						<NavLink href="/stations" className="text-white hover:text-gray-300 text-lg font-medium">Stations</NavLink>
 						<NavLink href="/demo" className="text-white hover:text-gray-300 text-lg font-medium">Demo</NavLink>
+						<NavLink href="/about" className="text-white hover:text-gray-300 text-lg font-medium">About</NavLink>
 						{user ? (
 							<NavLink href="/api/auth/logout" className="text-white hover:text-red-700 text-lg font-medium">Logout</NavLink>
 						) : (
