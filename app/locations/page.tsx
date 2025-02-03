@@ -18,7 +18,7 @@ import { Spinner } from "@/components/common";
 
 async function fetchdetails() {
   const response = await fetch(
-    "https://plusplus-gamma.vercel.app/get-station/"
+    "https://api.kibeezy.com/get-station/"
   );
   if (response.ok) {
     const responseBody = await response.json();
@@ -50,9 +50,9 @@ export default function Page() {
       lng: string;
       date_created: number;
     }
-  
-    const [lat, setLat] = useState(27.672932021393862);
-    const [lng, setLng] = useState(85.31184012689732);
+
+    const [lat, setLat] = useState(-1.1036439899237742);
+    const [lng, setLng] = useState(37.01336244887943);
   
     const libraries = useMemo(() => ["places"], []);
     const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
