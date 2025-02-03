@@ -2,12 +2,7 @@
 
 import React from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { Invest } from "@/components/common"; // Adjust the path as needed
-import { Spinner } from "@/components/common"; // Assuming Spinner is in the same path
-import { About } from "@/components/common"; // Import PaymentPackages component
-import { Overview } from "@/components/common";
-import { Image } from "@/components/common";
-import { YouTubeShort } from "@/components/common";
+import { YouTubeShort, StationShort, Image, Overview, About, Spinner, Invest } from "@/components/common";
 
 function Page() {
   const { user, error, isLoading } = useUser();
@@ -79,6 +74,8 @@ function Page() {
         </section>
 
         <YouTubeShort />
+        <StationShort />
+        
       </div>
     </div>
   );
