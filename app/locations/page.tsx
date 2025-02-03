@@ -18,7 +18,7 @@ import { Spinner } from "@/components/common";
 
 async function fetchdetails() {
   const response = await fetch(
-    "https://api.kibeezy.com/get-station/"
+    "https://api.kibeezy.com/api/get-station/"
   );
   if (response.ok) {
     const responseBody = await response.json();
