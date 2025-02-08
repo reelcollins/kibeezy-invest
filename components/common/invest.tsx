@@ -65,8 +65,9 @@ export default function Invest() {  // Changed default export to named export
           clearInterval(pollIntervalRef.current!);
           pollIntervalRef.current = null;
           setPolling(false);
-          toast.success("Payment successful!");
-          window.location.reload();
+          toast.success("Payment successful! Reload Page.");
+
+          // window.location.reload();
         } else if (response.ok && data.ResultCode !== "0") {
           clearInterval(pollIntervalRef.current!);
           pollIntervalRef.current = null;
