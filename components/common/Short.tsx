@@ -11,7 +11,7 @@ const YouTubeShort = () => {
           <iframe
             className="rounded-lg lg:w-[500px] sm:w-[360px]"
             height="515"
-            src="https://www.youtube.com/embed/ZAeSypE81vM"
+            src="https://youtu.be/qFBGgdSgcrM"
             title="YouTube Short"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

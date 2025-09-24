@@ -54,7 +54,7 @@ function Page() {
           <div className="italic text-lg font-bold text-center inline-block 
             bg-gradient-to-r from-indigo-600 to-pink-500 text-transparent bg-clip-text 
             rounded-lg  animate-gradient-x">
-            &quot;It&apos;s a hotspot, not WiFi&quot;
+            &quot;Kibeezy, Make Life Easy&quot;
           </div>
         
       </div>

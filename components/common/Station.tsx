@@ -11,7 +11,7 @@ const StationShort = () => {
           <iframe
             className="rounded-lg lg:w-[500px] sm:w-[360px]"
             height="515"
-            src="https://www.youtube.com/embed/9hq5P_zlqXk"
+            src="https://www.youtube.com/watch?v=SseDKtxYrg8&t=673s"
             title="YouTube Short"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
