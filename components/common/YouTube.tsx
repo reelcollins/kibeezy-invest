@@ -1,6 +1,6 @@
 import React from "react";
 
-const YouTubeShort = () => {
+const YouTube = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white shadow-lg rounded-2xl p-6">
@@ -9,10 +9,10 @@ const YouTubeShort = () => {
         </h1>
         <div className="aspect-w-16 aspect-h-9">
           <iframe
-            className="rounded-lg lg:w-[500px] sm:w-[360px]"
-            height="515"
-            src="https://youtu.be/qFBGgdSgcrM"
-            title="YouTube Short"
+            className="rounded-lg lg:w-[560px] sm:w-[400px] w-full max-w-full"
+            height="315"
+            src="https://www.youtube.com/embed/SseDKtxYrg8?si=Kb-35-bAMEaG8Spl"
+            title="YouTube Livestream"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
@@ -26,4 +26,4 @@ const YouTubeShort = () => {
   );
 };
 
-export default YouTubeShort;
+export default YouTube;

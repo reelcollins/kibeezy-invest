@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { YouTubeShort, StationShort, Image, Overview, About, Spinner, Invest } from "@/components/common";
+import { YouTube, StationShort, Image, Overview, About, Spinner, Invest } from "@/components/common";
 
 function Page() {
   const { user, error, isLoading } = useUser();
@@ -73,8 +73,8 @@ function Page() {
           </div>
         </section>
 
-        <YouTubeShort />
-        <StationShort />
+        <YouTube />
+        {/* <StationShort /> */}
         
       </div>
     </div>

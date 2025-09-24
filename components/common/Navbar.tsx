@@ -34,7 +34,7 @@ export default function Navbar() {
 							<NavLink href="/" isBanner>
 								<span className="flex items-center text-xl font-bold ml-1 text-white">
 									<GiBee className="h-4 w-4 text-white ml-2" />
-									Kibeezy WiFi
+									Kibeezy Technologies™
 								</span>
 							</NavLink>
 						</div>
